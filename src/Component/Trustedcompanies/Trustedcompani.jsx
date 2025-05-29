@@ -8,7 +8,7 @@ import paypal from "../../assets/paypal.png";
 const TrustedCompanies = () => {
   return (
     <section className="py-10 bg-white text-center gap-3">
-      <p className="text-green-500 text-xl mb-8">Trusted by learners from</p>
+      <p className="text-slate-500 font-semibold text-xl mb-8">Trusted by learners from</p>
       <div className="flex justify-center items-center flex-wrap gap-x-10 gap-y-6">
         <img src={microsoft} alt="Microsoft" className="h-10 object-contain" />
         <img src={walmart} alt="Walmart" className="h-10 object-contain" />

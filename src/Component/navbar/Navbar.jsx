@@ -11,40 +11,49 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Top Contact Bar */}
-      {/* Top Contact Bar */}
-      <div className="bg-green-400 text-white text-sm">
-        <div className="container mx-auto flex flex-col md:flex-row justify-between items-center py-2 px-4 md:px-8 gap-1 md:gap-0">
-          <span>📍 Mufassil Thana, Bettiah, 845438</span>
-          <div className="flex items-center gap-3">
-            <span>📞 +91 8757921402 | ✉️ info@cihsstudies.com</span>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gray-200"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gray-200"
-            >
-              <FaTwitter />
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gray-200"
-            >
-              <FaInstagram />
-            </a>
-          </div>
-        </div>
-      </div>
+   {/* Top Contact Bar */}
+<div className="w-full flex flex-col md:flex-row justify-between items-center py-2 px-4 md:px-20 gap-2 md:gap-0 bg-green-100 text-sm">
+  {/* Left: Address & Phone */}
+  <div className="flex flex-col md:flex-row md:items-center gap-1 text-center md:text-left">
+    <span>📍 Mufassil Thana, Bettiah, 845438</span>
+    <span className="md:ml-4">📞 +91 8757921402</span>
+  </div>
+
+  {/* Center: Social Icons */}
+  <div className="flex justify-center items-center gap-3">
+    <a
+      href="https://facebook.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:text-gray-200"
+    >
+      <FaFacebookF />
+    </a>
+    <a
+      href="https://twitter.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:text-gray-200"
+    >
+      <FaTwitter />
+    </a>
+    <a
+      href="https://instagram.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="hover:text-gray-200"
+    >
+      <FaInstagram />
+    </a>
+  </div>
+
+  {/* Right: Email */}
+  <div className="text-center md:text-right">
+    ✉️ info@cihsstudies.com
+  </div>
+</div>
+
+
 
       {/* Main Navbar */}
       <nav className="bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)]">

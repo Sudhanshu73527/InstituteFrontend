@@ -49,7 +49,7 @@ const getStars = (rating) => {
 const Testimonials = () => {
   return (
     <section className="py-16 px-4 bg-white text-center">
-      <h2 className="text-3xl font-semibold mb-2 text-green-500">What Students's say's about us</h2>
+      <h2 className="text-3xl font-semibold mb-2 text-slate-500">What Students's say's about us</h2>
       <p className="text-gray-500 max-w-xl mx-auto mb-10 text-slate-900">
         Hear from our learners as they share their journeys of transformation,
         success, and how our platform has made a difference in their lives.

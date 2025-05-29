@@ -14,7 +14,7 @@ const HeroCTA = () => {
       </p>
 
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <button className="bg-green-500 text-white font-semibold px-6 py-3 rounded-md hover:bg-blue-700 transition">
+        <button className="bg-green-500 text-white font-semibold px-6 py-3 rounded-md hover:bg-purple-800 transition">
           Get started
         </button>
         <a
