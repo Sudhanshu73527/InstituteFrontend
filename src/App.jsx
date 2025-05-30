@@ -10,6 +10,7 @@ import TopCourses from './Component/Topcourse/Topcourse'
 import Highlights from './Component/Highligts/Highligts'
 import InfoSection from './Component/Infosection/Infosection'
 import Contact from './Component/contact/Contact'
+import Sexa from './Component/Sexa/Sexa'
 // import HeroSection from './Component/Herosection/Herosection'
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
       <Placements/>
       <HeroCTA/>
       <Contact/>
+      <Sexa/>
       <TopCourses/>
       <Highlights/>
       <Footer/>
