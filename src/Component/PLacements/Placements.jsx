@@ -1,71 +1,106 @@
 import React from "react";
+import { Star } from "lucide-react";
+import image from "../../assets/python.jpg";
+import image1 from "../../assets/shal3.jpeg";
 
-// Import images
-import img1 from "../../assets/shal1.jpeg";
-import img2 from "../../assets/shal2.jpeg";
-import img3 from "../../assets/shal3.jpeg";
-import img4 from "../../assets/shal4.jpeg";
-import img5 from "../../assets/shal5.jpeg";
-import img6 from "../../assets/shal6.jpeg";
-import img7 from "../../assets/shal7.jpeg";
-import img8 from "../../assets/shal8.jpeg";
-import img9 from "../../assets/shal9.jpeg";
-import img10 from "../../assets/shal10.jpeg";
+const courses = [
+  {
+    id: 1,
+    title: "Safety Course",
+    author: "CIHS",
+    rating: 3,
+    reviews: 5,
+    price: "₹35,000",
+    image: image1,
+  },
+  {
+    id: 2,
+    title: "Safety Course",
+    author: "CIHS",
+    rating: 4,
+    reviews: 5,
+    price: "₹35,000",
+    image: image,
+  },
+  {
+    id: 3,
+    title: "Safety Course",
+    author: "CIHS",
+    rating: 5,
+    reviews: 1,
+    price: "₹35,000",
+    image: image,
+  },
+  {
+    id: 4,
+    title: "Safety Course",
+    author: "CIHS",
+    rating: 4,
+    reviews: 3,
+    price: "₹35,000",
+    image: image,
+  },
+];
 
-// Images array
-const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10];
+const StarRating = ({ rating }) => {
+  const totalStars = 5;
+  return (
+    <div className="flex items-center">
+      {[...Array(totalStars)].map((_, i) => (
+        <Star
+          key={i}
+          size={14}
+          className={i < rating ? "text-red-500 fill-red-500" : "text-gray-300"}
+        />
+      ))}
+    </div>
+  );
+};
 
 const Placements = () => {
   return (
-    <div className="py-16 px-4 bg-gradient-to-br from-green-50 to-white">
-      {/* Heading and Prompt */}
-      <div className="text-center mb-12">
-        <h1 className="text-3xl md:text-4xl font-bold uppercase text-green-600">
-          100% Placement Guaranteed
-        </h1>
-        <p className="text-gray-700 mt-4 max-w-2xl mx-auto text-sm md:text-base">
-          At CIHS Studies, we take pride in securing the future of our students with 100% placement assurance in reputable organizations across the country.
-        </p>
-      </div>
+    <section className="py-20 px-4 text-center bg-white">
+      {/* New Placement-Focused Heading and Prompt */}
+      <h2 className="text-2xl md:text-3xl font-bold text-slate-600 mb-2">
+       Placement History At Chis
+      </h2>
+      <p className="text-gray-500 max-w-2xl mx-auto mb-10">
+        Our industry-aligned courses are carefully curated to ensure you don’t just learn — you get placed. With 100% placement assurance, we guide your journey from classroom to career.
+      </p>
 
-      {/* Carousel */}
-      <div className="overflow-hidden relative">
-        <div className="flex w-max animate-scroll gap-6 px-4">
-          {images.map((src, index) => (
-            <div
-              key={index}
-              className="flex-shrink-0 rounded-xl overflow-hidden shadow-md ring-2 ring-green-100 transition-all duration-300 hover:scale-105 hover:brightness-110"
-            >
-              <img
-                src={src}
-                alt={`Placement ${index + 1}`}
-                className="w-48 h-48 object-cover rounded-xl"
-              />
-            </div>
-          ))}
+      {/* Course Cards */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+  {courses.map((course) => (
+    <div
+      key={course.id}
+      className="border border-yellow-300 rounded-lg overflow-hidden bg-white shadow-sm text-left"
+    >
+      <img
+        src={course.image}
+        alt={course.title}
+        className="w-full h-40 object-cover"
+      />
+      <div className="p-4">
+        <h3 className="font-semibold text-sm md:text-base">
+          {course.title}
+        </h3>
+        <p className="text-sm text-gray-500 mb-1">{course.author}</p>
+        <div className="flex items-center gap-1 text-sm text-gray-700 mb-2">
+          {course.rating}
+          <StarRating rating={course.rating} />
+          <span className="text-gray-500">({course.reviews})</span>
         </div>
+        <p className="text-md font-semibold">{course.price}</p>
       </div>
-
-      {/* Scroll Animation */}
-      <style>
-        {`
-          @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-
-          .animate-scroll {
-            animation: scroll 25s linear infinite;
-          }
-
-          @media (max-width: 768px) {
-            .animate-scroll {
-              animation-duration: 35s;
-            }
-          }
-        `}
-      </style>
     </div>
+  ))}
+</div>
+
+
+      <button className="mt-10 px-6 py-2 bg-gray-100 hover:bg-gray-200 text-sm rounded-md font-medium">
+        Show all courses
+      </button>
+    </section>
   );
 };
 

@@ -1,35 +1,37 @@
 // src/components/TopCourses.jsx
 import React from "react";
 import { Star } from "lucide-react";
-import image from "../../assets/python.jpg"
+import image from "../../assets/python.jpg";
+import image1 from "../../assets/shal3.jpeg"
 const courses = [
   {
     id: 1,
-    title: "Safty course",
+    title: "Diploma in Fire and Industrial Safety (One Year) ",
     author: "CIHS",
-    rating: 3,
+    rating: 4.5,
     reviews: 5,
-    price: "35000",
+    price: "38,000/",
     image: image,
   },
   {
     id: 2,
-    title: "Safty course",
+    title: "IOSH ",
     author: "CIHS",
     rating: 4,
     reviews: 5,
-    price: "35000",
-    image: image,
+    price: "10,000/",
+    image: image1,
   },
   {
     id: 3,
-    title: "Safty course",
+    title: "ADIS & PDIS ",
     author: "CIHS",
     rating: 5,
     reviews: 1,
-    price: "35000",
+    price: "",
     image: image,
   },
+ 
   {
     id: 4,
     title: "Safty course",
@@ -60,13 +62,13 @@ const TopCourses = () => {
   return (
     <section className="py-20 px-4 text-center bg-white">
       <h2 className="text-2xl md:text-3xl font-bold text-green-500 mb-2">
-        Learn from the best
+        Course Atchis
       </h2>
       <p className="text-gray-500 max-w-2xl mx-auto mb-10">
         Discover our top-rated courses across various categories. From coding and design to business and wellness, our courses are crafted to deliver results.
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
         {courses.map((course) => (
           <div
             key={course.id}
@@ -75,7 +77,7 @@ const TopCourses = () => {
             <img
               src={course.image}
               alt={course.title}
-              className="w-full h-40 object-cover"
+              className="w-full h-42 object-cover"
             />
             <div className="p-4">
               <h3 className="font-semibold text-sm md:text-base">
