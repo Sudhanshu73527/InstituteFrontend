@@ -1,4 +1,3 @@
-// src/components/Highlights.jsx
 import React from "react";
 
 const metrics = [
@@ -51,16 +50,17 @@ const metrics = [
     color: "bg-rose-500",
   },
 ];
+
 const Highlights = () => {
   return (
     <section className="py-16 px-4 bg-green-100">
-    <h1 className="text-xl font-bold text-center  uppercase"><strong className="text-green-500">CIHS</strong> Highligts</h1> <br />
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+      <h1 className="text-xl font-bold text-center uppercase">
+        <strong className="text-green-500">CIHS</strong> Highlights
+      </h1>
+      <br />
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
         {metrics.map((item, i) => (
-          <div
-            key={i}
-            className="border rounded-md shadow-sm overflow-hidden"
-          >
+          <div key={i} className="border rounded-md shadow-sm overflow-hidden">
             <div className={`${item.color} text-white px-4 py-2 text-sm font-semibold`}>
               {item.title}
             </div>

@@ -76,7 +76,7 @@ import consultImage from "../../assets/chuma1.png"; // Replace with actual path
 
 const Contact = () => {
   return (
-    <div className="bg-green-700 w-full py-10 px-4 md:px-16">
+    <div className="bg-green-500 w-full py-10 px-4 md:px-16">
       {/* Top Heading */}
       <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-10">
         Book Your Free Consultancy
@@ -84,7 +84,7 @@ const Contact = () => {
 
       <div className="flex flex-col md:flex-row items-center justify-between bg-white rounded-2xl overflow-hidden shadow-lg">
         {/* Left Section - Image & Text */}
-        <div className="md:w-1/2 p-8 bg-green-700">
+        <div className="md:w-1/2 p-8 bg-green-500">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Book a <span className="text-white">Free Consultation</span>
           </h2>

@@ -11,6 +11,7 @@ import Highlights from './Component/Highligts/Highligts'
 import InfoSection from './Component/Infosection/Infosection'
 import Contact from './Component/contact/Contact'
 import Sexa from './Component/Sexa/Sexa'
+import Practical from './Component/Practical/Practical'
 // import HeroSection from './Component/Herosection/Herosection'
 
 const App = () => {
@@ -19,15 +20,16 @@ const App = () => {
       <Navbar/>
       {/* <HeroSection/> */}
       <Hero/>
-      <InfoSection/>
       <TrustedCompanies/>
-      <Testimonials/>
+      <InfoSection/>
       <Placements/>
-      <HeroCTA/>
-      <Contact/>
-      <Sexa/>
       <TopCourses/>
+      <Practical/>
+      <Testimonials/>
+      <Contact/>
       <Highlights/>
+       <Sexa/>
+       <HeroCTA/>
       <Footer/>
     </div>
   )

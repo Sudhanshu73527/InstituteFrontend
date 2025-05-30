@@ -1,12 +1,12 @@
-// src/components/TopCourses.jsx
 import React from "react";
 import { Star } from "lucide-react";
 import image from "../../assets/python.jpg";
-import image1 from "../../assets/shal3.jpeg"
+import image1 from "../../assets/shal3.jpeg";
+
 const courses = [
   {
     id: 1,
-    title: "Diploma in Fire and Industrial Safety (One Year) ",
+    title: "Diploma in Fire and Industrial Safety (One Year)",
     author: "CIHS",
     rating: 4.5,
     reviews: 5,
@@ -15,7 +15,7 @@ const courses = [
   },
   {
     id: 2,
-    title: "IOSH ",
+    title: "IOSH",
     author: "CIHS",
     rating: 4,
     reviews: 5,
@@ -24,21 +24,20 @@ const courses = [
   },
   {
     id: 3,
-    title: "ADIS & PDIS ",
+    title: "ADIS & PDIS",
     author: "CIHS",
     rating: 5,
     reviews: 1,
     price: "",
     image: image,
   },
- 
   {
     id: 4,
-    title: "Safty course",
+    title: "Safety course",
     author: "CIHS",
     rating: 4,
     reviews: 3,
-    price: "35000",
+    price: "35,000/",
     image: image,
   },
 ];
@@ -61,8 +60,8 @@ const StarRating = ({ rating }) => {
 const TopCourses = () => {
   return (
     <section className="py-20 px-4 text-center bg-white">
-      <h2 className="text-2xl md:text-3xl font-bold text-green-500 mb-2">
-        Course Atchis
+      <h2 className="text-2xl md:text-3xl font-bold text-slate-500 mb-2 uppercase">
+        Course At cihs
       </h2>
       <p className="text-gray-500 max-w-2xl mx-auto mb-10">
         Discover our top-rated courses across various categories. From coding and design to business and wellness, our courses are crafted to deliver results.
@@ -72,7 +71,7 @@ const TopCourses = () => {
         {courses.map((course) => (
           <div
             key={course.id}
-            className="border border-yellow-300 rounded-lg overflow-hidden bg-white shadow-sm text-left"
+            className="border border-yellow-300 rounded-lg overflow-hidden bg-white shadow-sm text-left transform transition duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1"
           >
             <img
               src={course.image}

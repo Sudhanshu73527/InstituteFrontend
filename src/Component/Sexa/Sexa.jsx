@@ -3,13 +3,12 @@ import {
   FaUniversity,
   FaUserGraduate,
   FaChalkboardTeacher,
-  FaHandsHelping,
 } from "react-icons/fa";
 
 const Sexa = () => {
   const categories = [
     {
-      title: "University",
+      title: "Institute",
       icon: <FaUniversity className="text-4xl text-blue-600" />,
     },
     {
@@ -18,24 +17,29 @@ const Sexa = () => {
     },
     {
       title: "Guides",
-      icon: <FaChalkboardTeacher className="text-4xl text-gray-700" />,
-    },
-    {
-      title: "Mentors",
-      icon: <FaHandsHelping className="text-4xl text-blue-400" />,
+      icon: <FaChalkboardTeacher className="text-4xl text-blue-700 " />,
     },
   ];
 
   return (
-    <div className="bg-[#183162] p-6 rounded-t-[20px]">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 justify-items-center">
+    <div className="bg-green-500 p-6 rounded">
+      {/* Heading and Prompt */}
+      <div className="text-center text-white mb-8">
+        <h2 className="text-2xl md:text-3xl font-bold uppercase">Our Core Strengths</h2>
+        <p className="text-sm md:text-base mt-2">
+          Empowering students through strong academic, guidance, and institutional support.
+        </p>
+      </div>
+
+      {/* Category Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 justify-items-center hover:text-white">
         {categories.map((category, idx) => (
           <div
             key={idx}
-            className="bg-white w-48 h-40 flex flex-col items-center justify-center rounded-sm shadow-md"
+            className="bg-white hover:bg-blue-400 w-44 h-36 flex flex-col items-center justify-center rounded-sm shadow-md"
           >
             {category.icon}
-            <p className="mt-4 text-lg font-semibold text-black">
+            <p className="mt-3 text-lg font-semibold text-black hover:text-white">
               {category.title}
             </p>
           </div>

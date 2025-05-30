@@ -2,6 +2,7 @@ import React from "react";
 import { Star } from "lucide-react";
 import image from "../../assets/python.jpg";
 import image1 from "../../assets/shal3.jpeg";
+import PaginatedCarousel from "../caresoul";
 
 const courses = [
   {
@@ -61,14 +62,14 @@ const Placements = () => {
   return (
     <section className="py-20 px-4 text-center bg-white">
       {/* New Placement-Focused Heading and Prompt */}
-      <h2 className="text-2xl md:text-3xl font-bold text-slate-600 mb-2">
-       Placement History At Chis
+      <h2 className="text-2xl md:text-3xl font-bold text-slate-600 mb-2 uppercase">
+       Placement History At Cihs
       </h2>
       <p className="text-gray-500 max-w-2xl mx-auto mb-10">
         Our industry-aligned courses are carefully curated to ensure you don’t just learn — you get placed. With 100% placement assurance, we guide your journey from classroom to career.
       </p>
 
-      {/* Course Cards */}
+      {/* Course Cards
       <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
   {courses.map((course) => (
     <div
@@ -94,12 +95,10 @@ const Placements = () => {
       </div>
     </div>
   ))}
-</div>
+</div> */}
+<PaginatedCarousel/>
 
-
-      <button className="mt-10 px-6 py-2 bg-gray-100 hover:bg-gray-200 text-sm rounded-md font-medium">
-        Show all courses
-      </button>
+      
     </section>
   );
 };
