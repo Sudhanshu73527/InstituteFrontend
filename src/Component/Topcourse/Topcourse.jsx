@@ -33,11 +33,11 @@ const courses = [
   },
   {
     id: 4,
-    title: "Safety course",
+    title: "OSHA 30Hours  ",
     author: "CIHS",
     rating: 4,
     reviews: 3,
-    price: "35,000/",
+    price: "11,000/",
     image: image,
   },
 ];

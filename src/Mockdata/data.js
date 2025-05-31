@@ -31,7 +31,13 @@ export const NavbarMenu = [
      submenu: [
       { id: 1, title: "Popular Programs", link: "/programs/popular" },
       { id: 2, title: "New Programs", link: "/programs/new" },
-      { id: 2, title: "old Programs", link: "/programs/old" },
+      { id: 3,title: "old Programs", link: "/programs/old" },
+      { id: 1, title: "Popular Programs", link: "/programs/popular" },
+      { id: 2, title: "New Programs", link: "/programs/new" },
+      { id: 3,title: "old Programs", link: "/programs/old" },
+      { id: 1, title: "Popular Programs", link: "/programs/popular" },
+      { id: 2, title: "New Programs", link: "/programs/new" },
+      { id: 3,title: "old Programs", link: "/programs/old" },
     ],
   },
   {
