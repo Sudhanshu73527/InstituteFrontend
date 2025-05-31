@@ -12,6 +12,8 @@ import InfoSection from './Component/Infosection/Infosection'
 import Contact from './Component/contact/Contact'
 import Sexa from './Component/Sexa/Sexa'
 import Practical from './Component/Practical/Practical'
+import SafetyHighlights from './Component/Saftyhighligts/Saftyhighighligts'
+import Plan from './Component/Cihsplan/Plan'
 // import HeroSection from './Component/Herosection/Herosection'
 
 const App = () => {
@@ -25,6 +27,8 @@ const App = () => {
       <Placements/>
       <TopCourses/>
       <Practical/>
+      <SafetyHighlights/>
+      <Plan/>
       <Testimonials/>
       <Contact/>
       <Highlights/>

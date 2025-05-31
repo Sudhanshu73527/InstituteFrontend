@@ -54,7 +54,7 @@ const metrics = [
 const Highlights = () => {
   return (
     <section className="py-16 px-4 bg-green-100">
-      <h1 className="text-xl font-bold text-center uppercase">
+      <h1 className="text-3xl font-bold text-center uppercase">
         <strong className="text-green-500">CIHS</strong> Highlights
       </h1>
       <br />

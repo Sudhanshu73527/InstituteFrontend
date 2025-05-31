@@ -71,13 +71,18 @@ const HeroSection = () => {
     </div>
 
     {/* Right Image Section */}
-    <div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center items-center">
-      <img
-        src={DumbbellImg}
-        alt="Safety"
-        className="w-[300px] md:w-[500px] z-10"
-      />
-    </div>
+   {/* Right Image Section */}
+<div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center items-center">
+  <motion.img
+    src={DumbbellImg}
+    alt="Safety"
+    className="w-[300px] md:w-[460px] z-10 mx-auto"
+    initial={{ x: -200, opacity: 0 }}
+    animate={{ x: 0, opacity: 1 }}
+    transition={{ duration: 1, type: "spring" }}
+  />
+</div>
+
   </div>
 </section>
 
