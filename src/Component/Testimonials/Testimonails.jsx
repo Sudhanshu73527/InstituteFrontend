@@ -52,7 +52,7 @@ const Testimonials = () => {
       <h2 className="text-3xl font-semibold mb-2 text-slate-500">What Students's say's about us</h2>
       <p className="text-gray-500 max-w-xl mx-auto mb-10 text-slate-900">
         Hear from our learners as they share their journeys of transformation,
-        success, and how our platform has made a difference in their lives.
+        success, and how our platform has made a difference in their lives and.
       </p>
       <div className="grid md:grid-cols-3 gap-6">
         {testimonials.map((t, idx) => (
