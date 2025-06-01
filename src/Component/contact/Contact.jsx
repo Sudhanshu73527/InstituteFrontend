@@ -88,7 +88,7 @@ const Contact = () => {
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
             Book a <span className="text-white">Free Consultation</span>
           </h2>
-          <p className="text-white mb-6">
+          <p className="text-white mb-6 text-lg">
             Schedule a free session with a PhD mentor and subject expert for
             title selection or any other guidance you need.
           </p>
@@ -142,7 +142,12 @@ const Contact = () => {
                 className="w-full p-3 rounded-xl bg-purple-800 text-white placeholder-white focus:outline-none"
               />
             </div>
-            <button className="bg-purple-800 rounded text-white text-center">Submit</button>
+
+            <div className="flex justify-center">
+    <button className="bg-purple-800 rounded text-white px-6 py-2 font-semibold hover:bg-purple-900 transition">
+      Submit
+    </button>
+  </div>
           </form>
         </div>
       </div>
