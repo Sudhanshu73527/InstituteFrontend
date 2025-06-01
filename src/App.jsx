@@ -6,14 +6,16 @@ import Footer from './Component/footer/Footer'
 import Testimonials from './Component/Testimonials/Testimonails'
 import HeroCTA from './Component/Herocta/Herocta'
 import Placements from './Component/PLacements/Placements'
-import TopCourses from './Component/Topcourse/Topcourse'
+// import TopCourses from './Component/Topcourse/Topcourse'
 import Highlights from './Component/Highligts/Highligts'
 import InfoSection from './Component/Infosection/Infosection'
 import Contact from './Component/contact/Contact'
 import Sexa from './Component/Sexa/Sexa'
 import Practical from './Component/Practical/Practical'
 import SafetyHighlights from './Component/Saftyhighligts/Saftyhighighligts'
-import Plan from './Component/Cihsplan/Plan'
+import PopularCourses from './Component/PopularCourses/PopularCourses'
+// import Plan from './Component/Cihsplan/Plan'
+// import Ragistrationform from './Component/Regestration/Ragistrartionform'
 // import HeroSection from './Component/Herosection/Herosection'
 
 const App = () => {
@@ -24,11 +26,13 @@ const App = () => {
       <Hero/>
       <TrustedCompanies/>
       <InfoSection/>
+      <PopularCourses/>
       <Placements/>
-      <TopCourses/>
+      {/* <TopCourses/> */}
       <Practical/>
       <SafetyHighlights/>
-      <Plan/>
+      {/* <Plan/> */}
+      {/* <Ragistrationform/> */}
       <Testimonials/>
       <Contact/>
       <Highlights/>

@@ -1,5 +1,5 @@
 import React from "react";
-import libraryImage from "../../assets/shal1.jpeg"; // Replace with actual path
+import libraryImage from "../../assets/fee.jpeg"; // Replace with actual path
 
 const planData = [
   { shift: "Morning", duration: "6–11AM (5hrs)", economical: 350, premium: 400 },

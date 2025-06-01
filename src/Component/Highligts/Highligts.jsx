@@ -1,4 +1,5 @@
 import React from "react";
+import CountUp from "react-countup"; // ✅ Import CountUp
 
 const metrics = [
   {
@@ -66,7 +67,11 @@ const Highlights = () => {
             </div>
             <div className="p-4 text-center">
               <h3 className="text-2xl font-bold text-gray-800">
-                {item.value}
+                <CountUp
+                  end={parseInt(item.value)}
+                  duration={2}
+                  suffix="+"
+                />
                 <span className="text-lg font-semibold"> {item.label}</span>
               </h3>
               <p className="text-sm text-gray-600 mt-2">{item.description}</p>

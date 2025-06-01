@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import image from "../assets/shal1.jpeg";
 import image1 from "../assets/shal3.jpeg";
-import image2 from "../assets/shal5.jpeg";
-
+import image2 from "../assets/shal2.jpeg";
+import image3 from "../assets/shal4.jpeg"
+import image4 from "../assets/shal5.jpeg"
+import image5 from "../assets/shal6.jpeg"
+import image6 from "../assets/shal7.jpeg"
+import image7 from "../assets/shal8.jpeg"
+import image8 from "../assets/shal9.jpeg"
 // Unique IDs and cleaned data
 const cardData = [
   {
@@ -30,7 +35,7 @@ const cardData = [
     rating: 5,
     reviews: 1,
     price: "₹35,000",
-    image: image,
+    image: image3,
   },
   {
     id: 4,
@@ -39,7 +44,7 @@ const cardData = [
     rating: 4,
     reviews: 3,
     price: "₹35,000",
-    image: image,
+    image: image4,
   },
   {
     id: 5,
@@ -48,7 +53,7 @@ const cardData = [
     rating: 4,
     reviews: 3,
     price: "₹35,000",
-    image: image,
+    image: image5,
   },
   {
     id: 6,
@@ -57,7 +62,7 @@ const cardData = [
     rating: 4,
     reviews: 3,
     price: "₹35,000",
-    image: image,
+    image: image6,
   },
   {
     id: 7,
@@ -66,7 +71,7 @@ const cardData = [
     rating: 4,
     reviews: 3,
     price: "₹35,000",
-    image: image,
+    image: image7,
   },
   {
     id: 8,
@@ -75,16 +80,7 @@ const cardData = [
     rating: 4,
     reviews: 3,
     price: "₹35,000",
-    image: image,
-  },
-  {
-    id: 9,
-    title: "Safety Course",
-    author: "CIHS",
-    rating: 4,
-    reviews: 3,
-    price: "₹35,000",
-    image: image,
+    image: image8,
   },
 ];
 
