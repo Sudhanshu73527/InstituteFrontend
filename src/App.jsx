@@ -16,7 +16,7 @@ import SafetyHighlights from './Component/Saftyhighligts/Saftyhighighligts'
 import PopularCourses from './Component/PopularCourses/PopularCourses'
 import Saftyfaq from './Component/Saftyfaq/Saftyfaq'
 // import Plan from './Component/Cihsplan/Plan'
-// import Ragistrationform from './Component/Regestration/Ragistrartionform'
+import Ragistrationform from './Component/Regestration/Ragistrartionform'
 // import HeroSection from './Component/Herosection/Herosection'
 
 const App = () => {
@@ -33,13 +33,13 @@ const App = () => {
       <Practical/>
       <SafetyHighlights/>
       {/* <Plan/> */}
-      {/* <Ragistrationform/> */}
       <Testimonials/>
       <Contact/>
       <Highlights/>
       <Saftyfaq/>
        <Sexa/>
        <HeroCTA/>
+       <Ragistrationform/>
       <Footer/>
     </div>
   )

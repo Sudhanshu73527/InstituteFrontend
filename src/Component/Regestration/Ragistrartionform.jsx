@@ -8,22 +8,8 @@ const RegistrationForm = () => {
     dob: "",
     bloodGroup: "",
     learningMode: "",
-    presentAddress: {
-      village: "",
-      po: "",
-      pin: "",
-      ps: "",
-      state: "",
-      landmark: "",
-    },
-    permanentAddress: {
-      village: "",
-      po: "",
-      pin: "",
-      ps: "",
-      state: "",
-      landmark: "",
-    },
+    presentAddress: { village: "", po: "", pin: "", ps: "", state: "", landmark: "" },
+    permanentAddress: { village: "", po: "", pin: "", ps: "", state: "", landmark: "" },
     emergency1: "",
     emergency2: "",
     qualification: [],
@@ -39,18 +25,13 @@ const RegistrationForm = () => {
     batchStartDate: "",
   });
 
-  const courses = [
-    "DIFS (1 Year)", "ADIS", "PDIS", "PG Diploma", "NEBOSH", "IOSH", "OSHA", "Diploma (Engg.)", "B. Tech", "MBA"
-  ];
+  const courses = ["DIFS (1 Year)", "ADIS", "PDIS", "PG Diploma", "NEBOSH", "IOSH", "OSHA", "Diploma (Engg.)"];
 
   const handleInputChange = (e, section, key) => {
-    if (section === "presentAddress" || section === "permanentAddress") {
+    if (section) {
       setFormData({
         ...formData,
-        [section]: {
-          ...formData[section],
-          [key]: e.target.value,
-        },
+        [section]: { ...formData[section], [key]: e.target.value },
       });
     } else {
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -67,144 +48,154 @@ const RegistrationForm = () => {
   };
 
   const formatMessage = () => {
-  const data = formData;
-  return `
-*📋 Admission Form Submission*
-👤 *Name:* ${data.studentName}
-📅 *Date of Admission:* ${data.admissionDate}
-👨‍👧 *Father's Name:* ${data.fatherName}
-🎂 *DOB:* ${data.dob}
-🩸 *Blood Group:* ${data.bloodGroup}
-🧑‍💻 *Learning Mode:* ${data.learningMode}
+    const d = formData;
+    return `*📋 Admission Form Submission*
+👤 *Name:* ${d.studentName}
+📅 *Date of Admission:* ${d.admissionDate}
+👨‍👧 *Father's Name:* ${d.fatherName}
+🎂 *DOB:* ${d.dob}
+🩸 *Blood Group:* ${d.bloodGroup}
+🧑‍💻 *Learning Mode:* ${d.learningMode}
 
 📍 *Present Address:*
-🏘️ Village: ${data.presentAddress.village}
-🏤 P.O: ${data.presentAddress.po}
-🛂 PS: ${data.presentAddress.ps}
-🗺️ State: ${data.presentAddress.state}
-📮 PIN: ${data.presentAddress.pin}
-📌 Landmark: ${data.presentAddress.landmark}
+🏘️ Village: ${d.presentAddress.village}
+🏤 P.O: ${d.presentAddress.po}
+🛂 PS: ${d.presentAddress.ps}
+🗺️ State: ${d.presentAddress.state}
+📮 PIN: ${d.presentAddress.pin}
+📌 Landmark: ${d.presentAddress.landmark}
 
 🏠 *Permanent Address:*
-🏘️ Village: ${data.permanentAddress.village}
-🏤 P.O: ${data.permanentAddress.po}
-🛂 PS: ${data.permanentAddress.ps}
-🗺️ State: ${data.permanentAddress.state}
-📮 PIN: ${data.permanentAddress.pin}
-📌 Landmark: ${data.permanentAddress.landmark}
+🏘️ Village: ${d.permanentAddress.village}
+🏤 P.O: ${d.permanentAddress.po}
+🛂 PS: ${d.permanentAddress.ps}
+🗺️ State: ${d.permanentAddress.state}
+📮 PIN: ${d.permanentAddress.pin}
+📌 Landmark: ${d.permanentAddress.landmark}
 
 📞 *Emergency Contacts:*
-📱 1: ${data.emergency1}
-📱 2: ${data.emergency2}
+📱 1: ${d.emergency1}
+📱 2: ${d.emergency2}
 
-🎓 *Courses Chosen:* ${data.selectedCourses.join(", ")}
+🎓 *Courses Chosen:* ${d.selectedCourses.join(", ")}
 
 💰 *Fee Details:*
-📊 Total Fee: ₹${data.totalFee}
-💵 Advance Fee: ₹${data.advanceFee}
-🧾 Receipt No: ${data.receiptNo}
+📊 Total Fee: ₹${d.totalFee}
+💵 Advance Fee: ₹${d.advanceFee}
+🧾 Receipt No: ${d.receiptNo}
 
-🏨 *Hostel:* ${data.hostel} (${data.ac})
-🩺 *Medical Issues:* ${data.medicalIssue}
-📝 *Doctor's Note:* ${data.medicalNote}
+🏨 *Hostel:* ${d.hostel} (${d.ac})
+🩺 *Medical Issues:* ${d.medicalIssue}
+📝 *Doctor's Note:* ${d.medicalNote}
 
 📚 *Batch Details:*
-🔢 Batch No: ${data.batchNo}
-📆 Start Date: ${data.batchStartDate}
-  `.trim();
-};
-
+🔢 Batch No: ${d.batchNo}
+📆 Start Date: ${d.batchStartDate}`;
+  };
 
   const sendToWhatsApp = () => {
     const message = encodeURIComponent(formatMessage());
-    const whatsappNumber = "91 87579 21402";
+    const whatsappNumber = "918757921402";
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, "_blank");
   };
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-6 bg-green-100 text-black">
-      <h1 className="text-2xl font-bold text-center uppercase mb-6">Admission Form</h1>
+    <div className="max-w-4xl mx-auto p-6 bg-gradient-to-br from-green-100 via-white to-green-200 rounded-2xl shadow-2xl">
+      <h1 className="text-3xl font-bold text-center text-green-700 mb-6 uppercase">Admission Form</h1>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input name="studentName" placeholder="Name of Student" className="input-style" onChange={handleInputChange} />
-        <input name="admissionDate" placeholder="Date of Admission" className="input-style" onChange={handleInputChange} />
-        <input name="fatherName" placeholder="Father's Name" className="input-style" onChange={handleInputChange} />
-        <input name="dob" placeholder="Date of Birth" className="input-style" onChange={handleInputChange} />
-        <input name="bloodGroup" placeholder="Blood Group" className="input-style" onChange={handleInputChange} />
-        <input name="learningMode" placeholder="Mode of Learning (Online/Offline/Hybrid)" className="input-style" onChange={handleInputChange} />
-      </div>
+      {/* Form Sections */}
+      <FormSection title="Basic Details">
+        <Input name="studentName" placeholder="Student Name" onChange={handleInputChange} />
+        <Input name="admissionDate" placeholder="Admission Date" onChange={handleInputChange} type="date" />
+        <Input name="fatherName" placeholder="Father's Name" onChange={handleInputChange} />
+        <Input name="dob" placeholder="Date of Birth" onChange={handleInputChange} type="date" />
+        <Input name="bloodGroup" placeholder="Blood Group" onChange={handleInputChange} />
+        <Input name="learningMode" placeholder="Learning Mode (Online/Offline)" onChange={handleInputChange} />
+      </FormSection>
 
-      <h3 className="mt-6 font-semibold text-lg">Present Address</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input placeholder="Village" className="input-style" onChange={(e) => handleInputChange(e, "presentAddress", "village")} />
-        <input placeholder="P.O." className="input-style" onChange={(e) => handleInputChange(e, "presentAddress", "po")} />
-        <input placeholder="PIN Code" className="input-style" onChange={(e) => handleInputChange(e, "presentAddress", "pin")} />
-        <input placeholder="PS" className="input-style" onChange={(e) => handleInputChange(e, "presentAddress", "ps")} />
-        <input placeholder="State" className="input-style" onChange={(e) => handleInputChange(e, "presentAddress", "state")} />
-        <input placeholder="Landmark" className="input-style" onChange={(e) => handleInputChange(e, "presentAddress", "landmark")} />
-      </div>
+      <FormSection title="Present Address">
+        <Input placeholder="Village" onChange={(e) => handleInputChange(e, "presentAddress", "village")} />
+        <Input placeholder="P.O." onChange={(e) => handleInputChange(e, "presentAddress", "po")} />
+        <Input placeholder="PIN" onChange={(e) => handleInputChange(e, "presentAddress", "pin")} />
+        <Input placeholder="PS" onChange={(e) => handleInputChange(e, "presentAddress", "ps")} />
+        <Input placeholder="State" onChange={(e) => handleInputChange(e, "presentAddress", "state")} />
+        <Input placeholder="Landmark" onChange={(e) => handleInputChange(e, "presentAddress", "landmark")} />
+      </FormSection>
 
-      <h3 className="mt-6 font-semibold text-lg">Permanent Address</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input placeholder="Village" className="input-style" onChange={(e) => handleInputChange(e, "permanentAddress", "village")} />
-        <input placeholder="P.O." className="input-style" onChange={(e) => handleInputChange(e, "permanentAddress", "po")} />
-        <input placeholder="PIN Code" className="input-style" onChange={(e) => handleInputChange(e, "permanentAddress", "pin")} />
-        <input placeholder="PS" className="input-style" onChange={(e) => handleInputChange(e, "permanentAddress", "ps")} />
-        <input placeholder="State" className="input-style" onChange={(e) => handleInputChange(e, "permanentAddress", "state")} />
-        <input placeholder="Landmark" className="input-style" onChange={(e) => handleInputChange(e, "permanentAddress", "landmark")} />
-      </div>
+      <FormSection title="Permanent Address">
+        <Input placeholder="Village" onChange={(e) => handleInputChange(e, "permanentAddress", "village")} />
+        <Input placeholder="P.O." onChange={(e) => handleInputChange(e, "permanentAddress", "po")} />
+        <Input placeholder="PIN" onChange={(e) => handleInputChange(e, "permanentAddress", "pin")} />
+        <Input placeholder="PS" onChange={(e) => handleInputChange(e, "permanentAddress", "ps")} />
+        <Input placeholder="State" onChange={(e) => handleInputChange(e, "permanentAddress", "state")} />
+        <Input placeholder="Landmark" onChange={(e) => handleInputChange(e, "permanentAddress", "landmark")} />
+      </FormSection>
 
-      <h3 className="mt-6 font-semibold text-lg">Emergency Contacts</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input name="emergency1" placeholder="Emergency Contact 1" className="input-style" onChange={handleInputChange} />
-        <input name="emergency2" placeholder="Emergency Contact 2" className="input-style" onChange={handleInputChange} />
-      </div>
+      <FormSection title="Emergency Contacts">
+        <Input name="emergency1" placeholder="Emergency Contact 1" onChange={handleInputChange} />
+        <Input name="emergency2" placeholder="Emergency Contact 2" onChange={handleInputChange} />
+      </FormSection>
 
-      <h3 className="mt-6 font-semibold text-lg">Course Selection</h3>
-      <div className="flex flex-wrap gap-3 mt-2">
-        {courses.map((course) => (
-          <label key={course} className="text-sm flex items-center space-x-1">
-            <input
-              type="checkbox"
-              checked={formData.selectedCourses.includes(course)}
-              onChange={() => handleCheckboxChange(course)}
-            />
-            <span>{course}</span>
-          </label>
-        ))}
-      </div>
+      <FormSection title="Course Selection">
+        <div className="flex flex-wrap gap-4">
+          {courses.map((course) => (
+            <label key={course} className="flex items-center gap-2 text-sm">
+              <input
+                type="checkbox"
+                checked={formData.selectedCourses.includes(course)}
+                onChange={() => handleCheckboxChange(course)}
+              />
+              {course}
+            </label>
+          ))}
+        </div>
+      </FormSection>
 
-      <h3 className="mt-6 font-semibold text-lg">Fee Details</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input name="totalFee" placeholder="Total Fee" className="input-style" onChange={handleInputChange} />
-        <input name="advanceFee" placeholder="Advance Fee" className="input-style" onChange={handleInputChange} />
-        <input name="receiptNo" placeholder="Fee Receipt No." className="input-style" onChange={handleInputChange} />
-      </div>
+      <FormSection title="Fee Details">
+        <Input name="totalFee" placeholder="Total Fee" onChange={handleInputChange} />
+        <Input name="advanceFee" placeholder="Advance Fee" onChange={handleInputChange} />
+        <Input name="receiptNo" placeholder="Receipt No." onChange={handleInputChange} />
+      </FormSection>
 
-      <h3 className="mt-6 font-semibold text-lg">Hostel & Medical</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input name="hostel" placeholder="Hostel (Yes/No)" className="input-style" onChange={handleInputChange} />
-        <input name="ac" placeholder="AC/Non-AC" className="input-style" onChange={handleInputChange} />
-        <input name="medicalIssue" placeholder="Medical Issues (Yes/No)" className="input-style" onChange={handleInputChange} />
-        <input name="medicalNote" placeholder="Doctor's Note if any" className="input-style" onChange={handleInputChange} />
-      </div>
+      <FormSection title="Hostel & Medical">
+        <Input name="hostel" placeholder="Hostel (Yes/No)" onChange={handleInputChange} />
+        <Input name="ac" placeholder="AC/Non-AC" onChange={handleInputChange} />
+        <Input name="medicalIssue" placeholder="Medical Issues (Yes/No)" onChange={handleInputChange} />
+        <Input name="medicalNote" placeholder="Doctor's Note" onChange={handleInputChange} />
+      </FormSection>
 
-      <h3 className="mt-6 font-semibold text-lg">Batch Details</h3>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input name="batchNo" placeholder="Batch Number" className="input-style" onChange={handleInputChange} />
-        <input name="batchStartDate" placeholder="Batch Starting Date" className="input-style" onChange={handleInputChange} />
-      </div>
+      <FormSection title="Batch Details">
+        <Input name="batchNo" placeholder="Batch Number" onChange={handleInputChange} />
+        <Input name="batchStartDate" placeholder="Batch Start Date" onChange={handleInputChange} type="date" />
+      </FormSection>
 
-      <div className="mt-8 text-center">
+      <div className="mt-6 text-center">
         <button
-          className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 w-full md:w-auto"
+          className="bg-green-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-green-700 transition duration-300"
           onClick={sendToWhatsApp}
         >
-          Submit Your data 
+          Submit Details
         </button>
       </div>
     </div>
   );
 };
+
+const FormSection = ({ title, children }) => (
+  <div className="mb-6">
+    <h3 className="text-xl font-semibold text-green-800 mb-2 border-b pb-1">{title}</h3>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{children}</div>
+  </div>
+);
+
+const Input = ({ name, placeholder, onChange, type = "text" }) => (
+  <input
+    type={type}
+    name={name}
+    placeholder={placeholder}
+    onChange={onChange}
+    className="border border-green-300 rounded-lg px-4 py-2 text-sm shadow-sm focus:ring-2 focus:ring-green-400 focus:outline-none"
+  />
+);
 
 export default RegistrationForm;
