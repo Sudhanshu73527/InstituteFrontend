@@ -11,81 +11,83 @@ const prompts = [
   "Ensuring compliance, safety, and risk management every day.",
 ];
 
+const highlightKeywords = ["safety", "compliant", "risk", "hazards", "leadership", "prevention", "compliance"];
+
 const HeroSection = () => {
   const [currentPromptIndex, setCurrentPromptIndex] = useState(0);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPromptIndex((prevIndex) => (prevIndex + 1) % prompts.length);
-    }, 5000); // Change every 5 seconds
+    }, 5000);
 
-    return () => clearInterval(interval); // Clean up
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="bg-green-200 w-full">
-  <div className="container mx-auto flex flex-col items-center md:flex-row md:items-center justify-between px-6 py-20 text-center md:text-left">
-    
-    {/* Left Text Section */}
-    <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
-      <div className="min-h-[130px] md:h-[130px] overflow-hidden">
-  <AnimatePresence mode="wait">
-    <motion.h1
-      key={currentPromptIndex}
-      initial={{ x: -100, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      exit={{ x: 100, opacity: 0 }}
-      transition={{ duration: 0.6 }}
-      className="text-3xl md:text-5xl font-extrabold text-black leading-tight mb-6"
-    >
-      {prompts[currentPromptIndex].split(" ").map((word, i) => (
-        <span
-          key={i}
-          className={
-            word.toLowerCase().includes("safety") ||
-            word.toLowerCase().includes("compliant")
-              ? "text-green-500"
-              : ""
-          }
-        >
-          {word}{" "}
-        </span>
-      ))}
-    </motion.h1>
-  </AnimatePresence>
-</div>
+    <section className="bg-gradient-to-br from-green-100 via-white to-green-200 w-full overflow-hidden">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 py-20 text-center md:text-left">
 
-      <p className="text-gray-600 text-base md:text-xl mb-8 max-w-md">
-        It is a  <strong className="text-green-700">long established</strong> fact that a reader will be by readable content of a
-        page when are the best product.
-      </p>
+        {/* Left Text Section */}
+        <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
+          <div className="min-h-[130px] md:h-[130px] overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.h1
+                key={currentPromptIndex}
+                initial={{ x: -100, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                exit={{ x: 100, opacity: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-3xl md:text-5xl font-extrabold text-gray-800 leading-tight mb-6"
+              >
+                {prompts[currentPromptIndex].split(" ").map((word, i) => (
+                  <span
+                    key={i}
+                    className={`${
+                      highlightKeywords.some((k) => word.toLowerCase().includes(k))
+                        ? "text-green-600 font-bold"
+                        : ""
+                    }`}
+                  >
+                    {word}{" "}
+                  </span>
+                ))}
+              </motion.h1>
+            </AnimatePresence>
+          </div>
 
-      <div className="flex flex-row justify-center md:justify-start items-center gap-4">
-  <button className="bg-green-700 text-white px-6 py-3 rounded-md font-semibold hover:bg-purple-800">
-    Book Now
-  </button>
-  <button className="flex items-center gap-2 text-black font-medium">
-    <FaPlay className="text-green-700" /> Watch Now
-  </button>
-</div>
-    </div>
+          <p className="text-gray-600 text-base md:text-lg mb-8 max-w-md">
+            It is a <strong className="text-green-700">long established</strong> fact that a reader will be distracted by readable content when focusing on the best product.
+          </p>
 
-    {/* Right Image Section */}
-   {/* Right Image Section */}
-<div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center items-center">
-  <motion.img
-    src={DumbbellImg}
-    alt="Safety"
-    className="w-[300px] md:w-[460px] z-10 mx-auto"
-    initial={{ x: -200, opacity: 0 }}
-    animate={{ x: 0, opacity: 1 }}
-    transition={{ duration: 1, type: "spring" }}
-  />
-</div>
+          <div className="flex flex-row justify-center md:justify-start items-center gap-4">
+            <button className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-green-700 transition duration-300">
+              Book Now
+            </button>
+            <button className="flex items-center gap-2 text-green-700 font-medium hover:underline">
+              <FaPlay className="text-green-600 animate-pulse" /> Watch Now
+            </button>
+          </div>
+        </div>
 
-  </div>
-</section>
-
+        {/* Right Image Section */}
+        <div className="w-full md:w-1/2 mt-10 md:mt-0 flex justify-center relative">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 1.2, type: "spring" }}
+            className="relative z-10"
+          >
+            <img
+              src={DumbbellImg}
+              alt="Safety"
+              className="w-[280px] md:w-[440px] object-contain"
+            />
+            <div className="absolute top-6 left-6 w-52 h-52 bg-green-300 rounded-full blur-3xl opacity-40 -z-10" />
+          </motion.div>
+        </div>
+      </div>
+    </section>
   );
 };
 

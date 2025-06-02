@@ -5,43 +5,52 @@ import {
   FaChalkboardTeacher,
 } from "react-icons/fa";
 
-const Sexa = () => {
-  const categories = [
-    {
-      title: "Institute",
-      icon: <FaUniversity className="text-4xl text-blue-600" />,
-    },
-    {
-      title: "Students",
-      icon: <FaUserGraduate className="text-4xl text-blue-500" />,
-    },
-    {
-      title: "Guides",
-      icon: <FaChalkboardTeacher className="text-4xl text-blue-700 " />,
-    },
-  ];
+const categories = [
+  {
+    title: "Institute",
+    icon: <FaUniversity />,
+    color: "text-blue-600",
+  },
+  {
+    title: "Students",
+    icon: <FaUserGraduate />,
+    color: "text-green-500",
+  },
+  {
+    title: "Guides",
+    icon: <FaChalkboardTeacher />,
+    color: "text-purple-600",
+  },
+];
 
+const Sexa = () => {
   return (
-    <div className="bg-green-500 p-6 rounded">
-      {/* Heading and Prompt */}
-      <div className="text-center text-white mb-8">
-        <h2 className="text-2xl md:text-3xl font-bold uppercase">Our Core Strengths</h2>
-        <p className="text-sm md:text-base mt-2">
+    <div className="bg-gradient-to-b from-green-500 to-green-600 py-12 px-6 rounded-xl shadow-lg">
+      {/* Heading */}
+      <div className="text-center text-white mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-wide">
+          Our Core Strengths
+        </h2>
+        <p className="text-md md:text-lg mt-2 max-w-xl mx-auto text-white/90">
           Empowering students through strong academic, guidance, and institutional support.
         </p>
       </div>
 
-      {/* Category Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 justify-items-center hover:text-white">
-        {categories.map((category, idx) => (
+      {/* Cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        {categories.map((cat, idx) => (
           <div
             key={idx}
-            className="bg-white hover:bg-blue-400 w-44 h-36 flex flex-col items-center justify-center rounded-sm shadow-md"
+            className="bg-white group rounded-2xl p-6 flex flex-col items-center justify-center shadow-md transition-all duration-300 hover:shadow-xl hover:bg-blue-50"
           >
-            {category.icon}
-            <p className="mt-3 text-lg font-semibold text-black hover:text-white">
-              {category.title}
-            </p>
+            <div
+              className={`text-4xl mb-4 transition-transform duration-300 group-hover:scale-110 ${cat.color}`}
+            >
+              {cat.icon}
+            </div>
+            <h3 className="text-lg font-semibold text-gray-800 group-hover:text-blue-700">
+              {cat.title}
+            </h3>
           </div>
         ))}
       </div>

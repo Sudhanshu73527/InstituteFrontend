@@ -14,6 +14,7 @@ import Sexa from './Component/Sexa/Sexa'
 import Practical from './Component/Practical/Practical'
 import SafetyHighlights from './Component/Saftyhighligts/Saftyhighighligts'
 import PopularCourses from './Component/PopularCourses/PopularCourses'
+import Saftyfaq from './Component/Saftyfaq/Saftyfaq'
 // import Plan from './Component/Cihsplan/Plan'
 // import Ragistrationform from './Component/Regestration/Ragistrartionform'
 // import HeroSection from './Component/Herosection/Herosection'
@@ -36,6 +37,7 @@ const App = () => {
       <Testimonials/>
       <Contact/>
       <Highlights/>
+      <Saftyfaq/>
        <Sexa/>
        <HeroCTA/>
       <Footer/>

@@ -1,59 +1,59 @@
 import React, { useState } from "react";
 import { NavbarMenu } from "../../Mockdata/data";
-import { PiStudent } from "react-icons/pi";
 import { MdMenu, MdClose } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
-import { motion, AnimatePresence } from "framer-motion";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 import logo from "../../assets/logo.png";
+
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <>
-   {/* Top Contact Bar */}
-{/*  */}
-
-
+      {/* Top Bar */}
+      {/* <div className="bg-green-600 text-white text-sm px-4 py-2 flex justify-between items-center">
+        <div className="hidden md:flex gap-4">
+          <span>Email: info@cihs.com</span>
+          <span>Phone: +91-9876543210</span>
+        </div>
+        <div className="flex gap-4 ml-auto text-lg">
+          <a href="#"><FaFacebookF /></a>
+          <a href="#"><FaTwitter /></a>
+          <a href="#"><FaInstagram /></a>
+        </div>
+      </div> */}
 
       {/* Main Navbar */}
-      <nav className="bg-white shadow-[0_4px_20px_rgba(0,0,0,0.1)]">
+      <nav className="bg-purple-100 shadow-[0_4px_20px_rgba(0,0,0,0.05)] sticky top-0 z-50">
         <div className="container mx-auto flex justify-between items-center py-4 px-4 md:px-8">
           {/* Logo */}
-          <div className="flex items-center gap-3 whitespace-nowrap">
-            <img
-              src={logo}
-              alt="CIHS Studies Logo"
-              className="h-10 w-auto object-contain"
-            />
+          <div className="flex items-center gap-3">
+            <img src={logo} alt="CIHS Logo" className="h-10 w-auto object-contain" />
             <div className="flex flex-col leading-tight">
-              <span className="text-xl font-bold uppercase"> <strong className="text-green-500">Cihs</strong> <strong>studies</strong></span>
-              <span className="text-sm text-green-500 uppercase">
-                private limited
+              <span className="text-xl font-bold uppercase">
+                <span className="text-green-600">Cihs</span> <span>studies</span>
               </span>
+              <span className="text-xs text-green-500 uppercase">Private Limited</span>
             </div>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:block ml-auto">
-            <ul className="flex items-center gap-4 text-black">
+          <div className="hidden md:flex items-center gap-6 ml-auto">
+            <ul className="flex items-center gap-4 text-black font-semibold uppercase">
               {NavbarMenu.map((item) => (
                 <li key={item.id} className="relative group">
-                  <a
-                    href={item.link}
-                    className="inline-block py-1 px-3 hover:text-green-500 font-semibold uppercase"
-                  >
+                  <a href={item.link} className="hover:text-green-600 duration-200">
                     {item.title}
                   </a>
-
                   {/* Submenu */}
                   {item.submenu && (
-                    <ul className="absolute top-full left-0 mt-1 min-w-[200px] bg-white border border-green-300 rounded-md shadow-lg opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
+                    <ul className="absolute top-full left-0 mt-2 w-48 bg-white border border-green-200 shadow-xl rounded-md opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
                       {item.submenu.map((sub, index) => (
                         <li key={index}>
                           <a
                             href={sub.link}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-green-500 hover:text-white font-semibold hover:underline uppercase whitespace-nowrap"
+                            className="block px-4 py-2 text-sm hover:bg-green-100 hover:text-green-600 transition"
                           >
                             {sub.title}
                           </a>
@@ -64,31 +64,32 @@ const Navbar = () => {
                 </li>
               ))}
             </ul>
-          </div>
 
-          {/* Desktop Search + Hamburger */}
-          <div className="flex items-center gap-3">
-            <div className="hidden md:flex items-center gap-2">
+            {/* Search Box */}
+            <div className="relative">
               <input
                 type="text"
                 placeholder="Search..."
                 className="border border-gray-300 rounded-full px-4 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-green-300"
               />
-              <button className="text-xl hover:bg-green-100 hover:text-green-500 rounded-full p-2 duration-200">
-                <CiSearch className="text-2xl" />
+              <button className="absolute right-2 top-1 text-xl text-gray-500 hover:text-green-600">
+                <CiSearch />
               </button>
             </div>
-            {/* Hamburger */}
+          </div>
+
+          {/* Hamburger */}
+          <div className="md:hidden">
             <button
-              className="text-2xl md:hidden hover:bg-green-100 hover:text-green-500 rounded-full p-2 duration-200"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="text-2xl text-green-600 hover:bg-green-100 rounded-full p-2"
             >
               {mobileMenuOpen ? <MdClose /> : <MdMenu />}
             </button>
           </div>
         </div>
 
-        {/* Animated Mobile Menu */}
+        {/* Mobile Menu */}
         <AnimatePresence>
           {mobileMenuOpen && (
             <motion.div
@@ -97,26 +98,24 @@ const Navbar = () => {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden px-4 pb-4 overflow-hidden space-y-4"
+              className="md:hidden px-4 pb-4 space-y-4 bg-white shadow-md"
             >
-              {/* Mobile Search */}
               <div className="flex items-center gap-2">
                 <input
                   type="text"
                   placeholder="Search..."
                   className="w-full border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-300"
                 />
-                <button className="text-xl hover:bg-green-100 hover:text-green-500 rounded-full p-2 duration-200">
-                  <CiSearch className="text-2xl" />
+                <button className="text-xl text-green-600">
+                  <CiSearch />
                 </button>
               </div>
-              {/* Mobile Links */}
-              <ul className="flex flex-col gap-2 text-gray-600">
+              <ul className="flex flex-col gap-2 text-gray-700 font-semibold uppercase">
                 {NavbarMenu.map((item) => (
                   <li key={item.id}>
                     <a
                       href={item.link}
-                      className="block py-2 px-3 rounded hover:bg-green-100 hover:text-green-500 font-semibold uppercase"
+                      className="block py-2 px-3 rounded hover:bg-green-100 hover:text-green-600"
                     >
                       {item.title}
                     </a>

@@ -76,85 +76,75 @@ import consultImage from "../../assets/chuma1.png"; // Replace with actual path
 
 const Contact = () => {
   return (
-    <div className="bg-green-500 w-full py-10 px-4 md:px-16">
-      {/* Top Heading */}
-      <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-10">
-        Book Your Free Consultancy
+    <section className="bg-gradient-to-r from-green-600 via-green-500 to-green-600 w-full py-16 px-6 md:px-20">
+      {/* Heading */}
+      <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-14 drop-shadow-lg">
+        Book Your <span className="text-yellow-300">Free Consultancy</span>
       </h2>
 
-      <div className="flex flex-col md:flex-row items-center justify-between bg-white rounded-2xl overflow-hidden shadow-lg">
+      <div className="flex flex-col md:flex-row items-center justify-between bg-white rounded-3xl shadow-2xl overflow-hidden max-w-6xl mx-auto">
         {/* Left Section - Image & Text */}
-        <div className="md:w-1/2 p-8 bg-green-500">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            Book a <span className="text-white">Free Consultation</span>
-          </h2>
-          <p className="text-white mb-6 text-lg">
-            Schedule a free session with a PhD mentor and subject expert for
-            title selection or any other guidance you need.
+        <div className="md:w-1/2 p-10 bg-green-600 flex flex-col items-center text-center space-y-6">
+          <h3 className="text-3xl font-bold text-yellow-300">
+            Book a <span className="underline decoration-yellow-400 decoration-4">Free Consultation</span>
+          </h3>
+          <p className="text-yellow-100 text-lg max-w-md">
+            Schedule a free session with a PhD mentor and subject expert for title selection or any other guidance you need.
           </p>
           <img
             src={consultImage}
             alt="Consultation"
-            className="w-full h-auto max-w-sm rounded-xl"
+            className="w-full max-w-sm rounded-2xl shadow-xl transform transition-transform duration-500 hover:scale-105"
           />
         </div>
 
         {/* Right Section - Form */}
-        <div className="md:w-1/2 bg-white p-8 rounded-xl shadow-lg">
-          <form className="space-y-5">
+        <div className="md:w-1/2 bg-white p-12 rounded-3xl shadow-xl">
+          <form className="space-y-8">
+            {[
+              { label: "Your Name", type: "text", placeholder: "Enter your name" },
+              { label: "Your Email", type: "email", placeholder: "Enter your email" },
+              { label: "Your Phone Number", type: "tel", placeholder: "Enter your phone number" },
+            ].map(({ label, type, placeholder }, i) => (
+              <div key={i}>
+                <label className="block text-gray-700 font-semibold mb-2 uppercase">
+                  {label}
+                </label>
+                <input
+                  type={type}
+                  placeholder={placeholder}
+                  className="w-full p-4 rounded-xl border-2 border-green-300 focus:border-yellow-400 transition outline-none text-gray-800"
+                />
+              </div>
+            ))}
+
             <div>
-              <label className="block font-semibold text-sm text-gray-800 mb-2 uppercase">
-                Your Name
-              </label>
-              <input
-                type="text"
-                placeholder="Enter your name"
-                className="w-full p-3 rounded-full bg-purple-800 text-white placeholder-white focus:outline-none"
-              />
-            </div>
-            <div>
-              <label className="block font-semibold text-sm text-gray-800 mb-2 uppercase">
-                Your Email
-              </label>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full p-3 rounded-full bg-purple-800 text-white placeholder-white focus:outline-none"
-              />
-            </div>
-            <div>
-              <label className="block font-semibold text-sm text-gray-800 mb-2 uppercase">
-                Your Phone Number
-              </label>
-              <input
-                type="text"
-                placeholder="Enter your phone number"
-                className="w-full p-3 rounded-full bg-purple-800 text-white placeholder-white focus:outline-none"
-              />
-            </div>
-            <div>
-              <label className="block font-semibold text-sm text-gray-800 mb-2 uppercase">
+              <label className="block text-gray-700 font-semibold mb-2 uppercase">
                 Message
               </label>
               <textarea
                 placeholder="Enter your message"
-                rows="3"
-                className="w-full p-3 rounded-xl bg-purple-800 text-white placeholder-white focus:outline-none"
+                rows="4"
+                className="w-full p-4 rounded-2xl border-2 border-green-300 focus:border-yellow-400 transition outline-none text-gray-800 resize-none"
               />
             </div>
 
             <div className="flex justify-center">
-    <button className="bg-purple-800 rounded text-white px-6 py-2 font-semibold hover:bg-purple-900 transition">
-      Submit
-    </button>
-  </div>
+              <button
+                type="submit"
+                className="bg-yellow-400 hover:bg-yellow-500 text-green-900 font-bold rounded-full px-14 py-3 shadow-lg transition"
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
 export default Contact;
+
 
 

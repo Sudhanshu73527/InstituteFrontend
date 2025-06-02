@@ -1,4 +1,6 @@
 import React from "react";
+import { motion } from "framer-motion";
+import { CheckCircle } from "lucide-react";
 
 const courses = [
   {
@@ -7,6 +9,7 @@ const courses = [
       "Comprehensive Fire & Safety Training Program",
       "Advanced Industrial Safety Techniques and Regulations",
     ],
+    color: "border-orange-500",
   },
   {
     title: "IOSH (Managing Safely)",
@@ -14,6 +17,7 @@ const courses = [
       "Globally Recognized Safety Course",
       "Designed for Managers and Supervisors",
     ],
+    color: "border-blue-500",
   },
   {
     title: "ADIS & PDIS",
@@ -21,6 +25,7 @@ const courses = [
       "Advanced Diploma in Industrial Safety (ADIS)",
       "Post Diploma in Industrial Safety (PDIS) – Government Approved",
     ],
+    color: "border-yellow-500",
   },
   {
     title: "OSHA 30-Hour Training",
@@ -28,39 +33,51 @@ const courses = [
       "Occupational Safety & Health Standards (General Industry)",
       "Authorized OSHA 30-Hour Certification Course",
     ],
+    color: "border-purple-500",
   },
 ];
 
 const PopularCourses = () => {
   return (
-    <section className="bg-green-100 py-12 px-4 text-center">
-      <h2 className="text-4xl font-bold text-green-700 mb-10">Popular Courses</h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-        {courses.map((course, idx) => (
-          <div
-            key={idx}
-            className="bg-white border border-gray-200 rounded-md shadow-sm flex flex-col h-full"
-          >
-            <div className="bg-green-500 text-white font-semibold text-lg py-3 rounded-t-md">
-              {course.title}
-            </div>
-            <div className="text-left px-6 py-4 flex-grow space-y-2">
-              {course.items.map((item, i) => (
-                <div key={i} className="text-sm text-gray-800">
-                  <span className="font-medium">{item}</span>
-                </div>
-              ))}
-            </div>
-            <div className="border-t border-gray-200 py-3">
-              <a
-                href="#"
-                className="text-sky-600 text-sm font-semibold hover:underline hover:text-green-500"
-              >
-                + Check More
-              </a>
-            </div>
-          </div>
-        ))}
+    <section className="bg-green-50 py-16 px-4 text-center">
+      <h2 className="text-4xl font-bold text-green-700 mb-12">
+        Popular Courses
+      </h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        {courses.map((course, idx) => {
+          const direction = idx % 2 === 0 ? -100 : 100;
+
+          return (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, x: direction }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 2, delay: idx * 0.2 }}
+              whileHover={{ scale: 1.03 }}
+              className={`bg-white rounded-2xl shadow-md border-t-4 ${course.color} flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300`}
+            >
+              <div className="bg-gradient-to-r from-green-500 to-green-600 text-white text-lg font-semibold py-4 px-6">
+                {course.title}
+              </div>
+              <div className="px-6 py-5 text-left flex-grow space-y-3">
+                {course.items.map((item, i) => (
+                  <div key={i} className="flex items-start text-gray-700 text-sm">
+                    <CheckCircle className="text-green-500 w-4 h-4 mt-1 mr-2" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+              <div className="px-6 pb-4 pt-2">
+                <a
+                  href="#"
+                  className="inline-block text-green-400 hover:text-green-500 text-sm font-semibold transition-colors duration-200"
+                >
+                  + Check More
+                </a>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
