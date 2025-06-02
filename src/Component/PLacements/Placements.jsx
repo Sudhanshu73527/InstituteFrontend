@@ -1,8 +1,8 @@
 import React from "react";
+import PaginatedCarousel from "../Carousel";
 import { Star } from "lucide-react";
 import image from "../../assets/python.jpg";
 import image1 from "../../assets/shal3.jpeg";
-import PaginatedCarousel from "../caresoul";
 
 const courses = [
   {
@@ -61,44 +61,15 @@ const StarRating = ({ rating }) => {
 const Placements = () => {
   return (
     <section className="py-20 px-4 text-center bg-white">
-      {/* New Placement-Focused Heading and Prompt */}
       <h2 className="text-2xl md:text-3xl font-bold text-slate-600 mb-2 uppercase">
-       Placement History At Cihs
+        Placement History At CIHS
       </h2>
       <p className="text-gray-500 max-w-2xl mx-auto mb-10">
         Our industry-aligned courses are carefully curated to ensure you don’t just learn — you get placed. With 100% placement assurance, we guide your journey from classroom to career.
       </p>
 
-      {/* Course Cards
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
-  {courses.map((course) => (
-    <div
-      key={course.id}
-      className="border border-yellow-300 rounded-lg overflow-hidden bg-white shadow-sm text-left"
-    >
-      <img
-        src={course.image}
-        alt={course.title}
-        className="w-full h-40 object-cover"
-      />
-      <div className="p-4">
-        <h3 className="font-semibold text-sm md:text-base">
-          {course.title}
-        </h3>
-        <p className="text-sm text-gray-500 mb-1">{course.author}</p>
-        <div className="flex items-center gap-1 text-sm text-gray-700 mb-2">
-          {course.rating}
-          <StarRating rating={course.rating} />
-          <span className="text-gray-500">({course.reviews})</span>
-        </div>
-        <p className="text-md font-semibold">{course.price}</p>
-      </div>
-    </div>
-  ))}
-</div> */}
-<PaginatedCarousel/>
-
-      
+      {/* Carousel Component */}
+      <PaginatedCarousel />
     </section>
   );
 };
