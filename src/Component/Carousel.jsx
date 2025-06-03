@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import image1 from "../assets/shal3.jpeg";
 import image2 from "../assets/shal2.jpeg";
 import image3 from "../assets/shal4.jpeg";
@@ -8,7 +9,6 @@ import image6 from "../assets/shal7.jpeg";
 import image7 from "../assets/shal8.jpeg";
 import image8 from "../assets/shal9.jpeg";
 
-// Course data
 const cardData = [
   { id: 1, title: "Industrial Safety", author: "CIHS", image: image1 },
   { id: 2, title: "Fire Safety", author: "CIHS", image: image2 },
@@ -63,24 +63,32 @@ const PaginatedCarousel = () => {
           fade ? "opacity-0" : "opacity-100"
         }`}
       >
-        {paginatedCards.map((course) => (
-          <div
-            key={course.id}
-            className="bg-white rounded-xl shadow-md hover:shadow-xl hover:scale-[1.02] transition-all duration-300 overflow-hidden border border-gray-100"
-          >
-            <img
-              src={course.image}
-              alt={course.title}
-              className="w-full h-44 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-lg font-semibold text-gray-800 mb-1">
-                {course.title}
-              </h3>
-              <p className="text-sm text-gray-500">{course.author}</p>
-            </div>
-          </div>
-        ))}
+        {paginatedCards.map((course, idx) => {
+          const direction = idx % 2 === 0 ? -100 : 100;
+
+          return (
+            <motion.div
+              key={course.id}
+              initial={{ opacity: 0, x: direction }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1.2, delay: idx * 0.2 }}
+              whileHover={{ scale: 1.03 }}
+              className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100"
+            >
+              <img
+                src={course.image}
+                alt={course.title}
+                className="w-full h-44 object-cover"
+              />
+              <div className="p-4">
+                <h3 className="text-lg font-semibold text-gray-800 mb-1">
+                  {course.title}
+                </h3>
+                <p className="text-sm text-gray-500">{course.author}</p>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* Pagination Dots */}

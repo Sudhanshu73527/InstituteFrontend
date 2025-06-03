@@ -17,6 +17,7 @@ import PopularCourses from './Component/PopularCourses/PopularCourses'
 import Saftyfaq from './Component/Saftyfaq/Saftyfaq'
 // import Plan from './Component/Cihsplan/Plan'
 import Ragistrationform from './Component/Regestration/Ragistrartionform'
+import BannerSectionOnly from './Component/Bannersectiononly/Bannersectiononly'
 // import HeroSection from './Component/Herosection/Herosection'
 
 const App = () => {
@@ -39,7 +40,8 @@ const App = () => {
       <Saftyfaq/>
        <Sexa/>
        <HeroCTA/>
-       <Ragistrationform/>
+       <Ragistrationform/> <br />
+       <BannerSectionOnly/> <br />
       <Footer/>
     </div>
   )

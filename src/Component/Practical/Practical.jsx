@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import image1 from "../../assets/shal7.jpeg";
 import image2 from "../../assets/shal10.jpeg";
 import image3 from "../../assets/shal8.jpeg";
@@ -38,9 +39,13 @@ const Practical = () => {
       </p>
 
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-        {practicals.map(({ id, title, description, date, image }) => (
-          <div
+        {practicals.map(({ id, title, description, date, image }, idx) => (
+          <motion.div
             key={id}
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.2, delay: idx * 0.2 }}
             className="relative bg-white/40 backdrop-blur-md shadow-xl rounded-2xl overflow-hidden group transition-transform duration-700 ease-in-out hover:shadow-2xl hover:scale-[1.015] border border-gray-100"
           >
             <div className="relative">
@@ -65,7 +70,7 @@ const Practical = () => {
               </h3>
               <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
