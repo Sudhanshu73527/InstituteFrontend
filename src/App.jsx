@@ -18,6 +18,7 @@ import Saftyfaq from './Component/Saftyfaq/Saftyfaq'
 // import Plan from './Component/Cihsplan/Plan'
 import Ragistrationform from './Component/Regestration/Ragistrartionform'
 import BannerSectionOnly from './Component/Bannersectiononly/Bannersectiononly'
+import BlogSection from './Component/BlogSection/BlogSection'
 // import HeroSection from './Component/Herosection/Herosection'
 
 const App = () => {
@@ -32,6 +33,7 @@ const App = () => {
       <Placements/>
       {/* <TopCourses/> */}
       <Practical/>
+      <BlogSection/>
       <SafetyHighlights/>
       {/* <Plan/> */}
       <Testimonials/>

@@ -40,8 +40,13 @@ export const NavbarMenu = [
       { id: 3,title: "old Programs", link: "/programs/old" },
     ],
   },
-  {
+   {
     id: 5,
+    title: "Blog",
+    link: "#",
+  },
+  {
+    id: 6,
     title: "Contact-Us",
     link: "#",
   },

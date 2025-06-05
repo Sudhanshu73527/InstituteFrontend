@@ -41,7 +41,7 @@ const PaginatedCarousel = () => {
 
     const interval = setInterval(() => {
       nextPage();
-    }, 4000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, [currentPage, isHovered]);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Lightbulb, ArrowRight } from "lucide-react";
 
+// Highlight content
 const highlights = [
   {
     id: "01",
@@ -28,6 +29,14 @@ const highlights = [
   },
 ];
 
+// Unique hover shadow colors per card
+const shadowColors = [
+  "hover:shadow-orange-400/60",
+  "hover:shadow-green-400/60",
+  "hover:shadow-blue-400/60",
+  "hover:shadow-purple-400/60",
+];
+
 const SafetyHighlights = () => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
@@ -45,18 +54,18 @@ const SafetyHighlights = () => {
             className={`relative flex flex-col items-center text-center bg-white rounded-3xl p-8 shadow-md transition-transform duration-500 ease-in-out
               ${
                 hoveredIndex === index
-                  ? "shadow-xl scale-105 z-10"
+                  ? `scale-105 z-10 shadow-2xl ${shadowColors[index % shadowColors.length]}`
                   : "hover:scale-102"
-              }`}
+              } ${shadowColors[index % shadowColors.length]}`}
             onMouseEnter={() => setHoveredIndex(index)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            {/* Numbered Circle with Icon */}
+            {/* Circle Icon with Animated Number */}
             <div
-              className={`relative flex items-center justify-center rounded-full w-24 h-24 mb-6 bg-gradient-to-tr from-orange-400 to-yellow-300 text-white shadow-lg
-              transition-all duration-500 ease-in-out
-              ${hoveredIndex === index ? "scale-110 shadow-2xl" : "shadow-md"}
-              `}
+              className={`relative flex items-center justify-center rounded-full w-24 h-24 mb-6 bg-gradient-to-tr from-orange-400 to-yellow-300 text-white
+              transition-all duration-500 ease-in-out ${
+                hoveredIndex === index ? "scale-110 shadow-2xl" : "shadow-md"
+              }`}
             >
               <Lightbulb
                 className={`w-10 h-10 text-white transition-transform duration-700 ease-in-out ${
@@ -65,9 +74,9 @@ const SafetyHighlights = () => {
               />
               <span
                 className={`absolute -top-3 -left-3 bg-orange-600 text-white font-bold text-sm w-7 h-7 rounded-full flex items-center justify-center
-                transition-transform duration-700 ease-in-out
-                ${hoveredIndex === index ? "rotate-[360deg]" : "rotate-0"}
-                `}
+                transition-transform duration-700 ease-in-out ${
+                  hoveredIndex === index ? "rotate-[360deg]" : "rotate-0"
+                }`}
               >
                 {item.id}
               </span>
@@ -75,7 +84,7 @@ const SafetyHighlights = () => {
 
             {/* Title */}
             <h3
-              className={`text-xl font-semibold text-gray-900 mb-3 transition-colors duration-500 ${
+              className={`text-xl font-semibold mb-3 transition-colors duration-500 ${
                 hoveredIndex === index ? "text-green-600" : "text-gray-900"
               }`}
             >
@@ -85,11 +94,11 @@ const SafetyHighlights = () => {
             {/* Description */}
             <p className="text-gray-600 text-base px-2">{item.description}</p>
 
-            {/* Arrow Connector */}
+            {/* Arrow */}
             {index < highlights.length - 1 && (
               <ArrowRight
                 size={28}
-                className={`hidden lg:block absolute right-[-48px] top-1/2 transform -translate-y-1/2 text-gray-400 transition-opacity duration-500 ease-in-out
+                className={`hidden lg:block absolute right-[-48px] top-1/2 transform -translate-y-1/2 text-gray-400 transition-all duration-500
                 ${
                   hoveredIndex === index
                     ? "opacity-100 translate-x-2"

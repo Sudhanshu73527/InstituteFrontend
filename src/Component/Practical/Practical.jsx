@@ -4,6 +4,7 @@ import image1 from "../../assets/shal7.jpeg";
 import image2 from "../../assets/shal10.jpeg";
 import image3 from "../../assets/shal8.jpeg";
 
+// Card data
 const practicals = [
   {
     id: 1,
@@ -28,6 +29,13 @@ const practicals = [
   },
 ];
 
+// Hover shadow color classes
+const shadowColors = [
+  "hover:shadow-purple-400/90",
+  "hover:shadow-purple-400/90",
+  "hover:shadow-purple-400/90",
+];
+
 const Practical = () => {
   return (
     <section className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
@@ -46,7 +54,7 @@ const Practical = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: idx * 0.2 }}
-            className="relative bg-white/40 backdrop-blur-md shadow-xl rounded-2xl overflow-hidden group transition-transform duration-700 ease-in-out hover:shadow-2xl hover:scale-[1.015] border border-gray-100"
+            className={`relative bg-white/40 backdrop-blur-md shadow-xl rounded-2xl overflow-hidden group transition duration-700 ease-in-out hover:scale-[1.015] border border-gray-100 ${shadowColors[idx % shadowColors.length]} hover:shadow-2xl`}
           >
             <div className="relative">
               <img

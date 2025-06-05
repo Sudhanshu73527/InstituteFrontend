@@ -10,6 +10,7 @@ const courses = [
       "Advanced Industrial Safety Techniques and Regulations",
     ],
     color: "border-orange-500",
+    hoverShadow: "hover:shadow-orange-400/50",
   },
   {
     title: "IOSH (Managing Safely)",
@@ -18,6 +19,7 @@ const courses = [
       "Designed for Managers and Supervisors",
     ],
     color: "border-blue-500",
+    hoverShadow: "hover:shadow-blue-400/50",
   },
   {
     title: "ADIS & PDIS",
@@ -26,6 +28,7 @@ const courses = [
       "Post Diploma in Industrial Safety (PDIS) – Government Approved",
     ],
     color: "border-yellow-500",
+    hoverShadow: "hover:shadow-yellow-300/50",
   },
   {
     title: "OSHA 30-Hour Training",
@@ -34,6 +37,7 @@ const courses = [
       "Authorized OSHA 30-Hour Certification Course",
     ],
     color: "border-purple-500",
+    hoverShadow: "hover:shadow-purple-400/50",
   },
 ];
 
@@ -67,13 +71,14 @@ const PopularCourses = () => {
         {courses.map((course, idx) => (
           <motion.div
             key={idx}
-            className={`bg-white rounded-2xl shadow-md border-t-4 ${course.color} flex flex-col overflow-hidden hover:shadow-lg transition-shadow duration-300`}
+            className={`bg-white rounded-2xl shadow-md border-t-4 ${course.color} ${course.hoverShadow}
+              flex flex-col overflow-hidden transition-shadow duration-500 ease-in-out`}
             custom={idx}
             initial="hidden"
             whileInView="visible"
             variants={cardVariants}
             viewport={{ once: true }}
-            whileHover={{ scale: 1.03 }}
+            whileHover={{ scale: 1.05 }}
           >
             <div className="bg-gradient-to-r from-green-500 to-green-600 text-white text-lg font-semibold py-4 px-6">
               {course.title}

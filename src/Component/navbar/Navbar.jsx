@@ -9,22 +9,18 @@ import logo from "../../assets/logo.png";
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const colorClasses = [
+    "text-green-600",
+    "text-blue-600",
+    "text-red-600",
+    "text-yellow-600",
+    "text-purple-600",
+    "text-pink-600",
+    "text-indigo-600",
+  ];
+
   return (
     <>
-      {/* Top Bar */}
-      {/* <div className="bg-green-600 text-white text-sm px-4 py-2 flex justify-between items-center">
-        <div className="hidden md:flex gap-4">
-          <span>Email: info@cihs.com</span>
-          <span>Phone: +91-9876543210</span>
-        </div>
-        <div className="flex gap-4 ml-auto text-lg">
-          <a href="#"><FaFacebookF /></a>
-          <a href="#"><FaTwitter /></a>
-          <a href="#"><FaInstagram /></a>
-        </div>
-      </div> */}
-
-      {/* Main Navbar */}
       <nav className="bg-purple-100 shadow-[0_4px_20px_rgba(0,0,0,0.05)] sticky top-0 z-50">
         <div className="container mx-auto flex justify-between items-center py-4 px-4 md:px-8">
           {/* Logo */}
@@ -40,29 +36,35 @@ const Navbar = () => {
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-6 ml-auto">
-            <ul className="flex items-center gap-4 text-black font-semibold uppercase">
-              {NavbarMenu.map((item) => (
-                <li key={item.id} className="relative group">
-                  <a href={item.link} className="hover:text-green-600 duration-200">
-                    {item.title}
-                  </a>
-                  {/* Submenu */}
-                  {item.submenu && (
-                    <ul className="absolute top-full left-0 mt-2 w-48 bg-white border border-green-200 shadow-xl rounded-md opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
-                      {item.submenu.map((sub, index) => (
-                        <li key={index}>
-                          <a
-                            href={sub.link}
-                            className="block px-4 py-2 text-sm hover:bg-green-100 hover:text-green-600 transition"
-                          >
-                            {sub.title}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </li>
-              ))}
+            <ul className="flex items-center gap-8 text-black font-semibold uppercase">
+              {NavbarMenu.map((item, index) => {
+                const colorClass = colorClasses[index % colorClasses.length];
+                return (
+                  <li key={item.id} className="relative group">
+                    <a
+                      href={item.link}
+                      className={`duration-200 ${colorClass} hover:underline hover:text-black`}
+                    >
+                      {item.title}
+                    </a>
+                    {/* Submenu */}
+                    {item.submenu && (
+                      <ul className="absolute top-full left-0 mt-2 w-48 bg-white border border-green-200 shadow-xl rounded-md opacity-0 group-hover:opacity-100 invisible group-hover:visible transition-all duration-300 z-50">
+                        {item.submenu.map((sub, subIndex) => (
+                          <li key={subIndex}>
+                            <a
+                              href={sub.link}
+                              className="block px-4 py-2 text-sm hover:bg-green-100 hover:text-green-600 transition"
+                            >
+                              {sub.title}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
 
             {/* Search Box */}
@@ -111,16 +113,19 @@ const Navbar = () => {
                 </button>
               </div>
               <ul className="flex flex-col gap-2 text-gray-700 font-semibold uppercase">
-                {NavbarMenu.map((item) => (
-                  <li key={item.id}>
-                    <a
-                      href={item.link}
-                      className="block py-2 px-3 rounded hover:bg-green-100 hover:text-green-600"
-                    >
-                      {item.title}
-                    </a>
-                  </li>
-                ))}
+                {NavbarMenu.map((item, index) => {
+                  const colorClass = colorClasses[index % colorClasses.length];
+                  return (
+                    <li key={item.id}>
+                      <a
+                        href={item.link}
+                        className={`block py-2 px-3 rounded hover:bg-green-100 ${colorClass} hover:text-black`}
+                      >
+                        {item.title}
+                      </a>
+                    </li>
+                  );
+                })}
               </ul>
             </motion.div>
           )}
