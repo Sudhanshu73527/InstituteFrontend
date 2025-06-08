@@ -1,8 +1,25 @@
 {
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/"
+      "source": "/:path*.(js|css|png|jpg|jpeg|gif|svg|ico|json|map)",
+      "destination": "/:path*"
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "/"
+    },
+    {
+      "source": "/dashboard/:path*",
+      "destination": "/"
+    },
+    {
+      "source": "/user/:path*",
+      "destination": "/"
+    },
+
+    {
+      "source": "/:path*",
+      "destination": "/"
     }
   ]
 }
