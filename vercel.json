@@ -1,24 +1,19 @@
 {
   "rewrites": [
     {
-      "source": "/:path*.(js|css|png|jpg|jpeg|gif|svg|ico|json|map)",
-      "destination": "/:path*"
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
     },
     {
-      "source": "/admin/:path*",
-      "destination": "/"
+      "source": "/files/(.*)",
+      "destination": "/files/$1"
     },
     {
-      "source": "/dashboard/:path*",
-      "destination": "/"
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
     },
     {
-      "source": "/user/:path*",
-      "destination": "/"
-    },
-
-    {
-      "source": "/:path*",
+      "source": "/(.*)",
       "destination": "/"
     }
   ]
