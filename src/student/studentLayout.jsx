@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import Header from "../student/components/header/Header";
-import Sidebar from "../student/components/Sidebar";
-import Footer from "../student/components/footer/Footer";
+import Header from "./components/header/Header";
+import Sidebar from "./components/sidebar";
+import Footer from "./components/footer/Footer";
 import { Box } from "@mui/material";
-import RouterCumb from "../student/components/RouterCumb"; // Optional: If you want breadcrumbs
-import ProgressBar from "../student/components/progressBar/ProgressBar"; // Optional: If you want a progress bar
+import RouterCumb from "./components/RouterCumb"; // Optional: If you want breadcrumbs
+import ProgressBar from "./components/progressBar/ProgressBar"; // Optional: If you want a progress bar
 import { useWindowContext } from "../context/windowContext"; // Assuming you have a context for window size
 import { ToastContainer } from "react-toastify";  // Optional: If you want toast notifications
 import "react-toastify/dist/ReactToastify.css";
