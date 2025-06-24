@@ -1,18 +1,25 @@
+/* First import TailwindCSS */
 @import "tailwindcss";
+
+/* Import Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-*{
-    /* margin: 0;
-    padding: 0; */
-    /* box-sizing: border-box; */
+
+/* Global Styles */
+* {
     font-family: "Playfair", serif;
+    /* Optional global reset */
+    /* margin: 0;
+    padding: 0;
+    box-sizing: border-box; */
 }
 
+/* Keyframe animations */
 @keyframes blink {
   0%, 100% { opacity: 1; transform: translateY(0); }
   50% { opacity: 0.5; transform: translateY(-5px); }
 }
 
+/* Example class using the keyframe animation */
 .blink-raise {
   animation: blink 1s infinite;
 }

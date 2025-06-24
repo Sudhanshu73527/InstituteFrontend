@@ -14,7 +14,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   }
 }));
 
-const StudentDashboard = () => {
+const AdminDashboard = () => {
   // Dummy function to handle file download
   const handleDownload = (fileName) => {
     console.log(`Downloading ${fileName}`);
@@ -142,4 +142,4 @@ const StudentDashboard = () => {
   );
 };
 
-export default StudentDashboard;
+export default AdminDashboard;
