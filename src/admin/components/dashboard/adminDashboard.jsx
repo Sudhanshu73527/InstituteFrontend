@@ -1,5 +1,5 @@
-import React from "react";
-import { Grid, Card, CardContent, Typography, Button } from "@mui/material";
+import React, { useState } from "react";
+import { Grid, Card, CardContent, Typography, Button, TextField } from "@mui/material";
 import { Assignment, Grade, CalendarToday, CloudDownload } from "@mui/icons-material";
 import { styled } from '@mui/system';
 
@@ -15,129 +15,108 @@ const StyledCard = styled(Card)(({ theme }) => ({
 }));
 
 const AdminDashboard = () => {
-  // Dummy function to handle file download
-  const handleDownload = (fileName) => {
-    console.log(`Downloading ${fileName}`);
-    // You can replace this with actual file fetching logic
+  const [certificateNumber, setCertificateNumber] = useState("");
+  const [studentName, setStudentName] = useState("");
+  const [passingYear, setPassingYear] = useState("");
+  const [verificationResult, setVerificationResult] = useState(null);
+  const [studentProfile, setStudentProfile] = useState(null);
+
+  // Dummy function to simulate certificate verification
+  const handleVerification = () => {
+    if (certificateNumber && studentName && passingYear) {
+      // Simulate a successful verification process
+      setVerificationResult("Success");
+      setStudentProfile({
+        name: studentName,
+        certificateNumber: certificateNumber,
+        passingYear: passingYear,
+        status: "Verified"
+      });
+    } else {
+      setVerificationResult("Failure");
+      setStudentProfile(null);
+    }
   };
 
   return (
     <main className="p-4 bg-gradient-to-br from-green-100 via-white to-green-200 w-full min-h-screen overflow-hidden">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">
-        Student Dashboard
-      </h1>
+      <h1 className="text-2xl font-bold text-gray-800 mb-6">Admin Dashboard</h1>
 
-      <Grid container spacing={3} sx={{ padding: { xs: 2, sm: 3 }, marginTop: 2 }}>
-        {/* Existing Cards */}
-        <Grid item xs={12} sm={4}>
-          <StyledCard>
-            <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-              <Assignment sx={{ fontSize: 60, color: "#3f51b5" }} />
-              <Typography variant="h6" component="div" sx={{ marginTop: 2, fontWeight: 600 }}>
-                Upcoming Assignments
-              </Typography>
-              <Typography variant="body1" sx={{ marginTop: 1 }}>
-                3 assignments due this week.
-              </Typography>
-            </CardContent>
-          </StyledCard>
-        </Grid>
-
-        <Grid item xs={12} sm={4}>
-          <StyledCard>
-            <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-              <Grade sx={{ fontSize: 60, color: "#3f51b5" }} />
-              <Typography variant="h6" component="div" sx={{ marginTop: 2, fontWeight: 600 }}>
-                Your Grades
-              </Typography>
-              <Typography variant="body1" sx={{ marginTop: 1 }}>
-                You have a B+ in Computer Science.
-              </Typography>
-            </CardContent>
-          </StyledCard>
-        </Grid>
-
-        <Grid item xs={12} sm={4}>
-          <StyledCard>
-            <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-              <CalendarToday sx={{ fontSize: 60, color: "#3f51b5" }} />
-              <Typography variant="h6" component="div" sx={{ marginTop: 2, fontWeight: 600 }}>
-                Schedule
-              </Typography>
-              <Typography variant="body1" sx={{ marginTop: 1 }}>
-                You have a lecture at 2 PM today.
-              </Typography>
-            </CardContent>
-          </StyledCard>
-        </Grid>
-      </Grid>
-
-      {/* Document Download Section */}
-      <section className="mt-8">
-        <h2 className="text-xl font-semibold mb-4">Download Documents</h2>
+      {/* Verification Section */}
+      <section className="mb-8">
+        <h2 className="text-xl font-semibold mb-4">Verify Certificate</h2>
 
         <Grid container spacing={3}>
-          {/* Hall Ticket */}
           <Grid item xs={12} sm={4}>
             <StyledCard>
-              <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-                <CloudDownload sx={{ fontSize: 40, color: "#3f51b5" }} />
-                <Typography variant="h6" component="div" sx={{ marginTop: 2, fontWeight: 600 }}>
-                  Hall Ticket
-                </Typography>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{ marginTop: 2 }}
-                  onClick={() => handleDownload("Hall Ticket")}
-                >
-                  Download
-                </Button>
-              </CardContent>
-            </StyledCard>
-          </Grid>
+              <CardContent>
+                <Typography variant="h6" sx={{ fontWeight: 600 }}>Certificate Verification</Typography>
 
-          {/* ID Card */}
-          <Grid item xs={12} sm={4}>
-            <StyledCard>
-              <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-                <CloudDownload sx={{ fontSize: 40, color: "#3f51b5" }} />
-                <Typography variant="h6" component="div" sx={{ marginTop: 2, fontWeight: 600 }}>
-                  ID Card
-                </Typography>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  sx={{ marginTop: 2 }}
-                  onClick={() => handleDownload("ID Card")}
-                >
-                  Download
-                </Button>
-              </CardContent>
-            </StyledCard>
-          </Grid>
+                <TextField
+                  label="Certificate Number"
+                  variant="outlined"
+                  fullWidth
+                  sx={{ mt: 2 }}
+                  value={certificateNumber}
+                  onChange={(e) => setCertificateNumber(e.target.value)}
+                />
+                <TextField
+                  label="Student Name"
+                  variant="outlined"
+                  fullWidth
+                  sx={{ mt: 2 }}
+                  value={studentName}
+                  onChange={(e) => setStudentName(e.target.value)}
+                />
+                <TextField
+                  label="Passing Year"
+                  variant="outlined"
+                  fullWidth
+                  sx={{ mt: 2 }}
+                  value={passingYear}
+                  onChange={(e) => setPassingYear(e.target.value)}
+                />
 
-          {/* Certificates */}
-          <Grid item xs={12} sm={4}>
-            <StyledCard>
-              <CardContent sx={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center" }}>
-                <CloudDownload sx={{ fontSize: 40, color: "#3f51b5" }} />
-                <Typography variant="h6" component="div" sx={{ marginTop: 2, fontWeight: 600 }}>
-                  Certificates
-                </Typography>
                 <Button
                   variant="contained"
                   color="primary"
-                  sx={{ marginTop: 2 }}
-                  onClick={() => handleDownload("Certificate")}
+                  sx={{ mt: 3 }}
+                  fullWidth
+                  onClick={handleVerification}
                 >
-                  Download
+                  Verify Certificate
                 </Button>
+
+                {verificationResult && (
+                  <Typography variant="body1" sx={{ mt: 2, color: verificationResult === "Success" ? "green" : "red" }}>
+                    {verificationResult === "Success" ? "Verification Success!" : "Verification Failed. Please check the details."}
+                  </Typography>
+                )}
+
+                {studentProfile && (
+                  <Card sx={{ mt: 3 }}>
+                    <CardContent>
+                      <Typography variant="h6" sx={{ fontWeight: 600 }}>Student Profile Summary</Typography>
+                      <Typography variant="body1">Name: {studentProfile.name}</Typography>
+                      <Typography variant="body1">Certificate Number: {studentProfile.certificateNumber}</Typography>
+                      <Typography variant="body1">Passing Year: {studentProfile.passingYear}</Typography>
+                      <Typography variant="body1">Status: {studentProfile.status}</Typography>
+                    </CardContent>
+                  </Card>
+                )}
               </CardContent>
             </StyledCard>
           </Grid>
         </Grid>
       </section>
+
+      {/* Other Sections */}
+      <Grid container spacing={3} sx={{ padding: { xs: 2, sm: 3 }, marginTop: 2 }}>
+        {/* Existing Cards */}
+       add other sections soon .. development mode
+      
+  
+      </Grid>
     </main>
   );
 };

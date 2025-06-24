@@ -9,6 +9,9 @@ import StudentDashboard from "./student/components/dashboard/studentDashboard"; 
 import Profile from './student/pages/profile/profile';
 import AdminLayout from './admin/adminLayout';
 import AdminDashboard from './admin/components/dashboard/adminDashboard';
+import Login from './auth/Login';
+import Forgot from './auth/Forgot';
+import ChangePassword from './auth/ChangePassword';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -22,6 +25,18 @@ const router = createBrowserRouter([
         path: "programs/popular",
         element: <PopularProgram />, // Popular programs page
       },
+      {
+        path:"/login",
+        element: <Login/>,
+      },
+      {
+        path : "/forgot-password",
+        element :<Forgot />,
+      },
+      {
+        path: "/change-password",
+        element: <ChangePassword/>, // Assuming Forgot component handles password change as well
+      }
     ],
   },
   {

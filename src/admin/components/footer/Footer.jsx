@@ -16,7 +16,7 @@ const Footer = () => {
       }}
     >
       <Typography variant="body2" sx={{ fontWeight: 500 }}>
-        © 2025 Student Dashboard. All rights reserved.
+        © 2025 Admin Dashboard. All rights reserved.
       </Typography>
       <Typography variant="body2" sx={{ mt: 1 }}>
         <Link href="#" color="inherit" sx={{ fontWeight: 600 }}>

@@ -19,37 +19,39 @@ function Sidebar({ className, toggleSidebar }) {
       {/* MAIN NAV */}
       <div className="px-2">
         <NavSection title="Main">
-          <NavItem to="/student" label="Dashboard" icon={<MdDashboard size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/admin" label="Dashboard" icon={<MdDashboard size={20} />} onClick={toggleSidebar} />
         </NavSection>
 
         {/* ACADEMIC */}
-        <NavSection title="Academics">
-          <NavItem to="/student/courses" label="Courses" icon={<FaBook size={20} />} onClick={toggleSidebar} />
-          <NavItem to="/student/assignments" label="Assignments" icon={<FaClipboardList size={20} />} onClick={toggleSidebar} />
-          <NavItem to="/student/grades" label="Grades" icon={<FaCalendarAlt size={20} />} onClick={toggleSidebar} />
-        </NavSection>
+        
 
         {/* PERSONAL */}
         <NavSection title="Personal">
-          <NavItem to="/student/profile" label="Profile" icon={<FaUserAlt size={20} />} onClick={toggleSidebar} />
-          <NavItem to="/student/calendar" label="Schedule" icon={<FaCalendarAlt size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/admin/profile" label="Profile" icon={<FaUserAlt size={20} />} onClick={toggleSidebar} />
+          
         </NavSection>
 
         {/* DOCUMENTS */}
         <NavSection title="Documents">
-          <NavItem to="/student/documents/hall-ticket" label="Hall Ticket" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
-          <NavItem to="/student/documents/id-card" label="ID Card" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
-          <NavItem to="/student/documents/certificates" label="Certificates" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/admin/register" label="Reg. New Student" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/admin/documents/hall-ticket" label="Hall Ticket" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/admin/documents/id-card" label="ID Card" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/admin/documents/certificates" label="Certificates" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
+        </NavSection>
+
+        {/* CERTIFICATE VERIFICATION - New Section for Admin */}
+        <NavSection title="Certificate">
+          <NavItem to="/admin/certificate-verification" label="Verify Certificates" icon={<FaClipboardList size={20} />} onClick={toggleSidebar} />
         </NavSection>
 
         {/* SETTINGS */}
         <NavSection title="Settings">
-          <NavItem to="/student/settings" label="Settings" icon={<FaCog size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/admin/settings" label="Settings" icon={<FaCog size={20} />} onClick={toggleSidebar} />
         </NavSection>
 
         {/* LOGOUT */}
         <NavSection title="Logout">
-          <NavItem to="/student/logout" label="Logout" icon={<FaSignOutAlt size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/admin/logout" label="Logout" icon={<FaSignOutAlt size={20} />} onClick={toggleSidebar} />
         </NavSection>
       </div>
     </aside>
