@@ -1,76 +1,3 @@
-// import React from "react";
-// import illustration from "../../assets/shal1.jpeg"; // Make sure to place your image accordingly
-
-// const Contact = () => {
-//   return (
-//     <div className="bg-green-700 text-white py-10 px-4 md:px-16 flex flex-col md:flex-row items-center justify-between">
-//       {/* Left Side: Text + Image */}
-//       <div className="md:w-1/2 w-full mb-8 md:mb-0">
-//         <h2 className="text-2xl md:text-3xl font-bold mb-4">Book a Free Consultation</h2>
-//         <p className="mb-6 text-white">
-//           Schedule a free session with a PhD mentor and subject expert for title selection or
-//           any other guidance you need.
-//         </p>
-//         <img src={illustration} alt="Consultation Illustration" className="w-full max-w-md" />
-//       </div>
-
-//       {/* Right Side: Form */}
-//       <div className="bg-white p-6 md:p-10 rounded-2xl shadow-lg w-full md:w-[45%]">
-//         <form className="space-y-5">
-//           {/* Name Field */}
-//           <div>
-//             <label className="text-sm font-bold text-gray-800 block mb-1 uppercase">Your Name</label>
-//             <input
-//               type="text"
-//               placeholder="Enter your name"
-//               className="w-full px-5 py-3 rounded-full bg-purple-900 text-white placeholder-purple-300 focus:outline-none"
-//             />
-//           </div>
-
-//           {/* Email Field */}
-//           <div>
-//             <label className="text-sm font-bold text-gray-800 block mb-1 uppercase">Your Email</label>
-//             <input
-//               type="email"
-//               placeholder="Enter your email"
-//               className="w-full px-5 py-3 rounded-full bg-purple-900 text-white placeholder-purple-300 focus:outline-none"
-//             />
-//           </div>
-
-//           {/* Phone Field */}
-//           <div>
-//             <label className="text-sm font-bold text-gray-800 block mb-1 uppercase">Your Phone Number</label>
-//             <input
-//               type="text"
-//               placeholder="Enter your phone number"
-//               className="w-full px-5 py-3 rounded-full bg-purple-900 text-white placeholder-purple-300 focus:outline-none"
-//             />
-//           </div>
-
-//           {/* Message Field */}
-//           <div>
-//             <label className="text-sm font-bold text-gray-800 block mb-1 uppercase">Message</label>
-//             <textarea
-//               rows="4"
-//               placeholder="Enter your message"
-//               className="w-full px-5 py-3 rounded-2xl bg-purple-900 text-white placeholder-purple-300 focus:outline-none resize-none"
-//             ></textarea>
-//           </div>
-//         </form>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Contact;
-
-
-
-
-
-
-
-
 import React, { useState } from "react";
 import consultImage from "../../assets/chuma1.png";
 
@@ -97,94 +24,77 @@ const Contact = () => {
 *Phone:* ${phone}%0A
 *Message:* ${message}`;
 
-    const phoneNumber = "918757921402"; // Replace with your WhatsApp number (with country code, no +)
-
+    const phoneNumber = "918757921402";
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
   };
 
   return (
-    <section className="bg-gradient-to-r from-green-600 via-green-500 to-green-600 w-full py-16 px-6 md:px-20">
-      <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-14 drop-shadow-lg">
+    <section className="bg-green-600 w-full py-10 px-4 sm:px-6 md:px-10 lg:px-20">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white text-center mb-8">
         Book Your <span className="text-yellow-300">Free Consultancy</span>
       </h2>
 
-      <div className="flex flex-col md:flex-row items-center justify-between bg-white rounded-3xl shadow-2xl overflow-hidden max-w-6xl mx-auto">
-        <div className="md:w-1/2 p-10 bg-green-600 flex flex-col items-center text-center space-y-6">
-          <h3 className="text-3xl font-bold text-yellow-300">
-            Book a <span className="underline decoration-yellow-400 decoration-4">Free Consultation</span>
+      <div className="flex flex-col md:flex-row items-center justify-center bg-white rounded-2xl shadow-xl max-w-6xl mx-auto overflow-hidden md:scale-105 lg:scale-110 transition-transform duration-300">
+        {/* Left: Image + Text */}
+        <div className="md:w-1/2 bg-green-600 p-6 sm:p-8 lg:p-12 text-center space-y-4">
+          <h3 className="text-lg md:text-2xl font-bold text-yellow-300">
+            Book a <span className="underline decoration-yellow-400">Free Consultation</span>
           </h3>
-          <p className="text-yellow-100 text-lg max-w-md">
-            Schedule a free session with a PhD mentor and subject expert for title selection or any other guidance you need.
+          <p className="text-yellow-100 text-sm md:text-base max-w-xs md:max-w-md mx-auto">
+          Need expert guidance on workplace safety or compliance?
           </p>
           <img
             src={consultImage}
             alt="Consultation"
-            className="w-full max-w-sm rounded-2xl shadow-xl transform transition-transform duration-500 hover:scale-105"
+            className="w-full max-w-xs md:max-w-sm mx-auto rounded-xl shadow-md"
           />
         </div>
 
-        <div className="md:w-1/2 bg-white p-12 rounded-3xl shadow-xl">
-          <form onSubmit={handleSubmit} className="space-y-8">
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2 uppercase">Your Name</label>
-              <input
-                type="text"
-                name="name"
-                placeholder="Enter your name"
-                onChange={handleChange}
-                value={form.name}
-                className="w-full p-4 rounded-xl border-2 border-green-300 focus:border-yellow-400 transition outline-none text-gray-800"
-                required
-              />
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2 uppercase">Your Email</label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Enter your email"
-                onChange={handleChange}
-                value={form.email}
-                className="w-full p-4 rounded-xl border-2 border-green-300 focus:border-yellow-400 transition outline-none text-gray-800"
-                required
-              />
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2 uppercase">Your Phone Number</label>
-              <input
-                type="tel"
-                name="phone"
-                placeholder="Enter your phone number"
-                onChange={handleChange}
-                value={form.phone}
-                className="w-full p-4 rounded-xl border-2 border-green-300 focus:border-yellow-400 transition outline-none text-gray-800"
-                required
-              />
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2 uppercase">Message</label>
-              <textarea
-                name="message"
-                placeholder="Enter your message"
-                rows="4"
-                onChange={handleChange}
-                value={form.message}
-                className="w-full p-4 rounded-2xl border-2 border-green-300 focus:border-yellow-400 transition outline-none text-gray-800 resize-none"
-                required
-              />
-            </div>
-
-            <div className="flex justify-center">
-              <button
-                type="submit"
-                className="bg-yellow-400 hover:bg-yellow-500 text-green-900 font-bold rounded-full px-14 py-3 shadow-lg transition"
-              >
-                Submit
-              </button>
-            </div>
+        {/* Right: Form */}
+        <div className="md:w-1/2 p-6 sm:p-8 lg:p-12 bg-white">
+          <form onSubmit={handleSubmit} className="space-y-4 text-sm md:text-base">
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              value={form.name}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 md:py-3 border border-green-300 rounded-md focus:outline-none focus:border-yellow-400 text-gray-800"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              value={form.email}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 md:py-3 border border-green-300 rounded-md focus:outline-none focus:border-yellow-400 text-gray-800"
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="Your Phone Number"
+              value={form.phone}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 md:py-3 border border-green-300 rounded-md focus:outline-none focus:border-yellow-400 text-gray-800"
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              rows="3"
+              value={form.message}
+              onChange={handleChange}
+              required
+              className="w-full px-4 py-2 md:py-3 border border-green-300 rounded-md focus:outline-none focus:border-yellow-400 text-gray-800 resize-none"
+            />
+            <button
+              type="submit"
+              className="w-full bg-yellow-400 hover:bg-yellow-500 text-green-900 font-semibold py-2 md:py-3 rounded-full transition"
+            >
+              Submit
+            </button>
           </form>
         </div>
       </div>
@@ -193,6 +103,3 @@ const Contact = () => {
 };
 
 export default Contact;
-
-
-

@@ -8,7 +8,7 @@ const theme = createTheme({
   // You can customize your theme here, e.g., adding breakpoints, colors, etc.
 })
 
-const App = () => {
+const App = () =>  {
   return (
     // Wrap the RouterProvider with ThemeProvider to ensure all components have access to the theme
     <ThemeProvider theme={theme}>

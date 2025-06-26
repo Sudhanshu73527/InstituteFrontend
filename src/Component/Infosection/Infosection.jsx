@@ -1,20 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { Users, ClipboardList, ShieldCheck } from "lucide-react";
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 60 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.3,
-      duration: 0.7,
-      type: "spring",
-      stiffness: 60,
-    },
-  }),
-};
 
 const cards = [
   {
@@ -61,13 +46,8 @@ const InfoSection = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {cards.map((card, index) => (
-          <motion.div
+          <div
             key={index}
-            custom={index}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.4 }}
-            variants={cardVariants}
             className={`bg-gradient-to-br ${card.colorFrom} ${card.colorTo} ${card.borderColor} rounded-3xl shadow-md p-8 text-center transform transition-all duration-300 hover:-translate-y-1 ${card.hoverShadow}`}
           >
             <div className="mb-4 flex justify-center">{card.icon}</div>
@@ -75,7 +55,7 @@ const InfoSection = () => {
               {card.title}
             </h3>
             <p className="text-sm text-gray-700">{card.content}</p>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

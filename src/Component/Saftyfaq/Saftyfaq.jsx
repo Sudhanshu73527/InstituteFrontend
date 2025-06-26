@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
 const faqs = [
@@ -47,36 +46,21 @@ const Saftyfaq = () => {
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="rounded-xl border border-gray-200 bg-white shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg"
+            className="rounded-xl border border-gray-200 bg-white shadow-md overflow-hidden"
           >
             <button
               onClick={() => toggleFAQ(index)}
-              className="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-green-700 text-lg transition duration-300 focus:outline-none"
+              className="w-full flex justify-between items-center px-6 py-5 text-left font-semibold text-green-700 text-lg"
             >
               <span>{faq.question}</span>
-              <motion.span
-                initial={false}
-                animate={{ rotate: openIndex === index ? 180 : 0 }}
-                transition={{ duration: 0.3 }}
-              >
-                {openIndex === index ? <FaMinus /> : <FaPlus />}
-              </motion.span>
+              <span>{openIndex === index ? <FaMinus /> : <FaPlus />}</span>
             </button>
 
-            <AnimatePresence initial={false}>
-              {openIndex === index && (
-                <motion.div
-                  key="answer"
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: "auto" }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className="px-6 pb-5 text-gray-600 text-sm leading-relaxed"
-                >
-                  {faq.answer}
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {openIndex === index && (
+              <div className="px-6 pb-5 text-gray-600 text-sm leading-relaxed">
+                {faq.answer}
+              </div>
+            )}
           </div>
         ))}
       </div>

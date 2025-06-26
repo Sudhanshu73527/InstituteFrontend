@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 
 const courses = [
@@ -10,7 +9,6 @@ const courses = [
       "Advanced Industrial Safety Techniques and Regulations",
     ],
     color: "border-orange-500",
-    hoverShadow: "hover:shadow-orange-400/50",
   },
   {
     title: "IOSH (Managing Safely)",
@@ -19,7 +17,6 @@ const courses = [
       "Designed for Managers and Supervisors",
     ],
     color: "border-blue-500",
-    hoverShadow: "hover:shadow-blue-400/50",
   },
   {
     title: "ADIS & PDIS",
@@ -28,7 +25,6 @@ const courses = [
       "Post Diploma in Industrial Safety (PDIS) – Government Approved",
     ],
     color: "border-yellow-500",
-    hoverShadow: "hover:shadow-yellow-300/50",
   },
   {
     title: "OSHA 30-Hour Training",
@@ -37,48 +33,22 @@ const courses = [
       "Authorized OSHA 30-Hour Certification Course",
     ],
     color: "border-purple-500",
-    hoverShadow: "hover:shadow-purple-400/50",
   },
 ];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.2,
-      duration: 0.8,
-      ease: "easeOut",
-    },
-  }),
-};
 
 const PopularCourses = () => {
   return (
     <section className="bg-green-50 py-16 px-4 text-center">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="text-4xl font-bold text-green-700 mb-12"
-      >
+      <h2 className="text-4xl font-bold text-green-700 mb-12">
         Popular Courses
-      </motion.h2>
+      </h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
         {courses.map((course, idx) => (
-          <motion.div
+          <div
             key={idx}
-            className={`bg-white rounded-2xl shadow-md border-t-4 ${course.color} ${course.hoverShadow}
-              flex flex-col overflow-hidden transition-shadow duration-500 ease-in-out`}
-            custom={idx}
-            initial="hidden"
-            whileInView="visible"
-            variants={cardVariants}
-            viewport={{ once: true }}
-            whileHover={{ scale: 1.05 }}
+            className={`bg-white rounded-2xl shadow-md border-t-4 ${course.color}
+              flex flex-col overflow-hidden`}
           >
             <div className="bg-gradient-to-r from-green-500 to-green-600 text-white text-lg font-semibold py-4 px-6">
               {course.title}
@@ -94,12 +64,12 @@ const PopularCourses = () => {
             <div className="px-6 pb-4 pt-2">
               <a
                 href="#"
-                className="inline-block text-green-400 hover:text-green-500 text-sm font-semibold transition-colors duration-200"
+                className="inline-block text-green-400 text-sm font-semibold"
               >
                 + Check More
               </a>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>
