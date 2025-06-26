@@ -5,26 +5,26 @@ import { FiArrowRight } from "react-icons/fi";
 const testimonials = [
   {
     name: "Sahil Bhaiya",
-    position: "",
+    position: "Safety Officer, Mumbai",
     rating: 4.5,
     review:
-      "I've been using Imagify for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.",
+      "The Safety Officer training course was incredibly practical. Real-life scenarios, case studies, and expert guidance helped me land my first job within weeks of completion.",
     image: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
     name: "Sudhanshu",
-    position: "",
+    position: "Trainee, CIHS Institute",
     rating: 4,
     review:
-      "I've been using Imagify for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.",
+      "CIHS provided me with strong fundamentals in industrial safety. Their personalized mentoring and practical drills made all the difference in my learning journey.",
     image: "https://randomuser.me/api/portraits/men/45.jpg",
   },
   {
     name: "Sunny",
-    position: "",
+    position: "Fire & Safety Intern",
     rating: 4,
     review:
-      "I've been using Imagify for nearly two years, primarily for Instagram, and it has been incredibly user-friendly, making my work much easier.",
+      "The course on safety risk management was very informative. I especially appreciated the hands-on training and live fire drills which built my confidence.",
     image: "https://randomuser.me/api/portraits/men/52.jpg",
   },
 ];
@@ -71,7 +71,7 @@ const Testimonials = () => {
       </h2>
       <p className="text-gray-600 max-w-3xl mx-auto mb-12 text-lg leading-relaxed">
         Hear from our learners as they share their journeys of transformation,
-        success, and how our platform has made a difference in their lives.
+        success, and how our Safety Officer courses have made a difference in their careers.
       </p>
 
       <div className="grid gap-8 md:grid-cols-3 max-w-7xl mx-auto">

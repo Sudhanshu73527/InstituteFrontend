@@ -29,11 +29,17 @@ const practicals = [
   },
 ];
 
-// Hover shadow color classes
-const shadowColors = [
-  "hover:shadow-purple-400/90",
-  "hover:shadow-purple-400/90",
-  "hover:shadow-purple-400/90",
+// Shadow colors
+const baseShadowColors = [
+  "shadow-purple-200",
+  "shadow-purple-200",
+  "shadow-purple-200",
+];
+
+const hoverShadowColors = [
+  "hover:shadow-purple-300/90",
+  "hover:shadow-purple-300/90",
+  "hover:shadow-purple-300/90",
 ];
 
 const Practical = () => {
@@ -47,39 +53,44 @@ const Practical = () => {
       </p>
 
       <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-        {practicals.map(({ id, title, description, date, image }, idx) => (
-          <motion.div
-            key={id}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1.2, delay: idx * 0.2 }}
-            className={`relative bg-white/40 backdrop-blur-md shadow-xl rounded-2xl overflow-hidden group transition duration-700 ease-in-out hover:scale-[1.015] border border-gray-100 ${shadowColors[idx % shadowColors.length]} hover:shadow-2xl`}
-          >
-            <div className="relative">
-              <img
-                src={image}
-                alt={title}
-                className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-              <span className="absolute top-4 left-4 bg-purple-600/90 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
-                {new Date(date).toLocaleDateString("en-IN", {
-                  day: "numeric",
-                  month: "short",
-                  year: "numeric",
-                })}
-              </span>
-            </div>
+        {practicals.map(({ id, title, description, date, image }, idx) => {
+          const baseColor = baseShadowColors[idx % baseShadowColors.length];
+          const hoverColor = hoverShadowColors[idx % hoverShadowColors.length];
 
-            <div className="p-5">
-              <h3 className="text-xl font-semibold text-slate-700 mb-2 group-hover:text-purple-600 transition-colors">
-                {title}
-              </h3>
-              <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
-            </div>
-          </motion.div>
-        ))}
+          return (
+            <motion.div
+              key={id}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: idx * 0.2 }}
+              className={`relative bg-white/40 backdrop-blur-md ${baseColor} ${hoverColor} shadow-xl rounded-2xl overflow-hidden group transition duration-700 ease-in-out hover:scale-[1.015] border border-gray-100 hover:shadow-2xl`}
+            >
+              <div className="relative">
+                <img
+                  src={image}
+                  alt={title}
+                  className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <span className="absolute top-4 left-4 bg-purple-600/90 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">
+                  {new Date(date).toLocaleDateString("en-IN", {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric",
+                  })}
+                </span>
+              </div>
+
+              <div className="p-5">
+                <h3 className="text-xl font-semibold text-slate-700 mb-2 group-hover:text-purple-600 transition-colors">
+                  {title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">{description}</p>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

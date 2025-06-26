@@ -71,19 +71,44 @@
 
 
 
-import React from "react";
-import consultImage from "../../assets/chuma1.png"; // Replace with actual path
+import React, { useState } from "react";
+import consultImage from "../../assets/chuma1.png";
 
 const Contact = () => {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const { name, email, phone, message } = form;
+
+    const whatsappMessage = `Hello, I would like to book a free consultancy.%0A
+*Name:* ${name}%0A
+*Email:* ${email}%0A
+*Phone:* ${phone}%0A
+*Message:* ${message}`;
+
+    const phoneNumber = "918757921402"; // Replace with your WhatsApp number (with country code, no +)
+
+    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
+  };
+
   return (
     <section className="bg-gradient-to-r from-green-600 via-green-500 to-green-600 w-full py-16 px-6 md:px-20">
-      {/* Heading */}
       <h2 className="text-4xl md:text-5xl font-extrabold text-white text-center mb-14 drop-shadow-lg">
         Book Your <span className="text-yellow-300">Free Consultancy</span>
       </h2>
 
       <div className="flex flex-col md:flex-row items-center justify-between bg-white rounded-3xl shadow-2xl overflow-hidden max-w-6xl mx-auto">
-        {/* Left Section - Image & Text */}
         <div className="md:w-1/2 p-10 bg-green-600 flex flex-col items-center text-center space-y-6">
           <h3 className="text-3xl font-bold text-yellow-300">
             Book a <span className="underline decoration-yellow-400 decoration-4">Free Consultation</span>
@@ -98,34 +123,57 @@ const Contact = () => {
           />
         </div>
 
-        {/* Right Section - Form */}
         <div className="md:w-1/2 bg-white p-12 rounded-3xl shadow-xl">
-          <form className="space-y-8">
-            {[
-              { label: "Your Name", type: "text", placeholder: "Enter your name" },
-              { label: "Your Email", type: "email", placeholder: "Enter your email" },
-              { label: "Your Phone Number", type: "tel", placeholder: "Enter your phone number" },
-            ].map(({ label, type, placeholder }, i) => (
-              <div key={i}>
-                <label className="block text-gray-700 font-semibold mb-2 uppercase">
-                  {label}
-                </label>
-                <input
-                  type={type}
-                  placeholder={placeholder}
-                  className="w-full p-4 rounded-xl border-2 border-green-300 focus:border-yellow-400 transition outline-none text-gray-800"
-                />
-              </div>
-            ))}
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2 uppercase">Your Name</label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                onChange={handleChange}
+                value={form.name}
+                className="w-full p-4 rounded-xl border-2 border-green-300 focus:border-yellow-400 transition outline-none text-gray-800"
+                required
+              />
+            </div>
 
             <div>
-              <label className="block text-gray-700 font-semibold mb-2 uppercase">
-                Message
-              </label>
+              <label className="block text-gray-700 font-semibold mb-2 uppercase">Your Email</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Enter your email"
+                onChange={handleChange}
+                value={form.email}
+                className="w-full p-4 rounded-xl border-2 border-green-300 focus:border-yellow-400 transition outline-none text-gray-800"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2 uppercase">Your Phone Number</label>
+              <input
+                type="tel"
+                name="phone"
+                placeholder="Enter your phone number"
+                onChange={handleChange}
+                value={form.phone}
+                className="w-full p-4 rounded-xl border-2 border-green-300 focus:border-yellow-400 transition outline-none text-gray-800"
+                required
+              />
+            </div>
+
+            <div>
+              <label className="block text-gray-700 font-semibold mb-2 uppercase">Message</label>
               <textarea
+                name="message"
                 placeholder="Enter your message"
                 rows="4"
+                onChange={handleChange}
+                value={form.message}
                 className="w-full p-4 rounded-2xl border-2 border-green-300 focus:border-yellow-400 transition outline-none text-gray-800 resize-none"
+                required
               />
             </div>
 
