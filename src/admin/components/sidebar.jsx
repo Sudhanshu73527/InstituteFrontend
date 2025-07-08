@@ -33,6 +33,8 @@ function Sidebar({ className, toggleSidebar }) {
 
         {/* DOCUMENTS */}
         <NavSection title="Documents">
+          <NavItem to="/admin/Course-List" label="All Course" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
+          {/* <NavItem to="/admin/Add-Course" label="Add-Course" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} /> */}
           <NavItem to="/admin/register" label="Reg. New Student" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
           <NavItem to="/admin/documents/hall-ticket" label="Hall Ticket" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
           <NavItem to="/admin/documents/id-card" label="ID Card" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />

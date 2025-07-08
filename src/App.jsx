@@ -1,20 +1,37 @@
-import React from 'react'
-import { RouterProvider } from 'react-router-dom'
-import { ThemeProvider, createTheme } from '@mui/material/styles' // Import ThemeProvider and createTheme
-import router from './Router'
+import React from 'react';
+import { RouterProvider } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ToastContainer } from 'react-toastify'; // ✅ Import ToastContainer
+import 'react-toastify/dist/ReactToastify.css';  // ✅ Import styles
+import { AuthProvider } from './context/AuthContext';
+import router from './Router';
 
-// Create a theme
-const theme = createTheme({
-  // You can customize your theme here, e.g., adding breakpoints, colors, etc.
-})
+const theme = createTheme();
+const queryClient = new QueryClient();
 
-const App = () =>  {
+const App = () => {
   return (
-    // Wrap the RouterProvider with ThemeProvider to ensure all components have access to the theme
     <ThemeProvider theme={theme}>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <RouterProvider router={router} />
+          <ToastContainer
+            position="top-right"
+            autoClose={3000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="colored" // "light" | "dark" | "colored"
+          />
+        </AuthProvider>
+      </QueryClientProvider>
     </ThemeProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;

@@ -1,97 +1,64 @@
-import React from 'react'; // Ensure this import is present at the top of your JSX files
-
+import React from 'react';
 import { createBrowserRouter } from "react-router-dom";
-import Layout from "./Layout"; // Assuming Layout is the main layout component
-import StudentLayout from "./student/studentLayout"; // Import the student layout
-import Home from "./pages/Home"; // Home Page
-import PopularProgram from "./pages/Programs/PopularProgram"; // Popular Programs Page
-import StudentDashboard from "./student/components/dashboard/studentDashboard"; // Student Dashboard
+import Layout from "./Layout";
+import StudentLayout from "./student/studentLayout";
+import Home from "./pages/Home";
+import PopularProgram from "./pages/Programs/PopularProgram";
+import StudentDashboard from "./student/components/dashboard/studentDashboard";
 import Profile from './student/pages/profile/profile';
 import AdminLayout from './admin/adminLayout';
 import AdminDashboard from './admin/components/dashboard/adminDashboard';
+import StudentRegistrationForm from './admin/pages/StudentReg/StudentRegistrationForm';
 import Login from './auth/Login';
 import Forgot from './auth/Forgot';
 import ChangePassword from './auth/ChangePassword';
+import ProtectedRoute from "../src/admin/components/secureRoute/ProtectedRoute"; // import here
+import CreateCourseForm from './admin/pages/Course/CreateCourseForm';
+import CourseList from './admin/pages/Course/CourseList';
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />, // Main layout for general pages (non-student specific)
+    element: <Layout />,
     children: [
-      {
-        index: true,
-        element: <Home />, // Default page (Home)
-      },
-      {
-        path: "programs/popular",
-        element: <PopularProgram />, // Popular programs page
-      },
-      {
-        path:"/login",
-        element: <Login/>,
-      },
-      {
-        path : "/forgot-password",
-        element :<Forgot />,
-      },
-      {
-        path: "/change-password",
-        element: <ChangePassword/>, // Assuming Forgot component handles password change as well
-      }
+      { index: true, element: <Home /> },
+      { path: "programs/popular", element: <PopularProgram /> },
+      { path: "login", element: <Login /> },
+      { path: "forgot-password", element: <Forgot /> },
+      { path: "change-password", element: <ChangePassword /> },
     ],
   },
+
+  // ✅ Protected Student Routes
   {
     path: "/student",
-    element: <StudentLayout />, // Layout for the student section
+    element: <ProtectedRoute role="student" />, // Protect entire student section
     children: [
       {
-        index: true,
-        element: <StudentDashboard />, // Dashboard for student
+        element: <StudentLayout />,
+        children: [
+          { index: true, element: <StudentDashboard /> },
+          { path: "profile", element: <Profile /> },
+        ],
       },
-      {
-        path: "documents/hall-ticket",
-        // element: < H
-      },
-      {
-        path: "/student/profile",
-        element: < Profile />,
-      }
-      
-      // {
-      //   path: "assignments",
-      //   element: <div>Assignments Page</div>, // Replace with your Assignments page
-      // },
-      // {
-      //   path: "grades",
-      //   element: <div>Grades Page</div>, // Replace with your Grades page
-      // },
-      // {
-      //   path: "schedule",
-      //   element: <div>Schedule Page</div>, // Replace with your Schedule page
-      // },
-      // {
-      //   path: "settings",
-      //   element: <div>Settings Page</div>, // Replace with your Settings page
-      // },
     ],
   },
+
+  // ✅ Protected Admin Routes
   {
     path: "/admin",
-    element: <AdminLayout />, // Layout for the student section
+    element: <ProtectedRoute role="admin" />, // Protect entire admin section
     children: [
       {
-        index: true,
-        element: <AdminDashboard/>, // Dashboard for student
+        element: <AdminLayout />,
+        children: [
+          { index: true, element: <AdminDashboard /> },
+          { path: "profile", element: <Profile /> },
+          {path: "Course-List", element: <CourseList/> },
+          { path: "Add-Course", element: <CreateCourseForm /> },
+          { path: "register", element: <StudentRegistrationForm /> },
+        ],
       },
-      {
-        path: "documents/hall-ticket",
-        // element: < H
-      },
-      {
-        path: "/admin/profile",
-        element: < Profile />,
-      }
-      
-  
     ],
   },
 ]);

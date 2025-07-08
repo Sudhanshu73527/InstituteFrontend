@@ -6,23 +6,45 @@ import {
   FaEyeSlash,
   FaKey,
 } from "react-icons/fa";
-import "./Login.css"; // Ensure this contains autofill fixes
+import { useAuth } from "../context/AuthContext"; // ✅ Make sure path is correct
+import { useNavigate } from "react-router-dom";
+import "./Login.css"; // Optional styling file
 
 const Login = () => {
+  const { login } = useAuth(); // ✅ use login from context
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState(null); // Optional: Error handling
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(form);
-  };
-
   const togglePasswordVisibility = () => {
     setShowPassword((prev) => !prev);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+
+    try {
+      const user = await login(form); // Calls login from AuthContext
+
+      // Role-based navigation
+      if (user.role === "student") {
+        navigate("/student");
+      } else if (user.role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/");
+      }
+    } catch (err) {
+      console.error("Login failed:", err);
+      setError("Invalid credentials. Please try again.");
+    }
   };
 
   return (
@@ -42,6 +64,13 @@ const Login = () => {
           <p className="text-sm text-gray-400">Please enter your credentials</p>
         </div>
 
+        {/* Optional Error Message */}
+        {error && (
+          <div className="mb-4 text-red-400 text-sm text-center">
+            {error}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email */}
           <div className="relative flex items-center border border-gray-600 rounded-xl px-4 py-2 bg-[#1e293b] focus-within:border-teal-500 transition duration-300">
@@ -54,7 +83,7 @@ const Login = () => {
               value={form.email}
               onChange={handleChange}
               required
-              className="w-full text-sm placeholder-gray-400 outline-none bg-transparent text-white autofill:bg-transparent"
+              className="w-full text-sm placeholder-gray-400 outline-none bg-transparent text-white"
             />
           </div>
 
@@ -84,14 +113,14 @@ const Login = () => {
             <button
               type="button"
               className="flex items-center justify-end gap-1 text-sm text-teal-400 hover:text-teal-300 transition"
-              onClick={() => alert("Redirect to forgot password page.")}
+              onClick={() => navigate("/forgot-password")}
             >
               <FaKey className="text-teal-300" />
               Forgot Password?
             </button>
           </div>
 
-          {/* Login Button */}
+          {/* Submit Button */}
           <button
             type="submit"
             className="w-full bg-gradient-to-r from-teal-500 to-green-500 hover:from-teal-600 hover:to-green-600 text-white font-bold py-2 rounded-xl shadow-md transform hover:scale-105 transition-transform duration-300"
