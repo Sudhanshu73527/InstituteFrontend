@@ -25,6 +25,11 @@ import ExamManagement from './admin/pages/Exam/ExamSubjectManager';
 import ExamSubjectManager from './admin/pages/Exam/ExamSubjectManager';
 import AdmitCardGenerator from './admin/pages/AdmitCard/AdmitCardGenerator';
 import MarksheetDashboard from './admin/pages/Result/MarksheetDashboard';
+import Visionmission from './pages/Programs/Visionmission';
+import Aboutcihs from './pages/Programs/Aboutcihs';
+import Infrastructure from './pages/Programs/Infrastructure';
+import Contact from './pages/Programs/Contact';
+import Feedback from './pages/Programs/Feedback';
 
 
 const router = createBrowserRouter([
@@ -34,6 +39,11 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "programs/popular", element: <PopularProgram /> },
+      {path:"/programs/vision", element:<Visionmission/>},
+      {path:"/programs/About", element:<Aboutcihs/>},
+      {path:"/programs/infra", element:<Infrastructure/>},
+      {path:"/programs/Contact", element:<Contact/>},
+      {path:"/programs/feedback", element:<Feedback/>},
       { path: "login", element: <Login /> },
       { path: "forgot-password", element: <Forgot /> },
       { path: "change-password", element: <ChangePassword /> },

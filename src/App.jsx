@@ -1,11 +1,11 @@
-import React from 'react';
-import { RouterProvider } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ToastContainer } from 'react-toastify'; // ✅ Import ToastContainer
-import 'react-toastify/dist/ReactToastify.css';  // ✅ Import styles
-import { AuthProvider } from './context/AuthContext';
-import router from './Router';
+import React from "react";
+import { RouterProvider } from "react-router-dom";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ToastContainer } from "react-toastify"; // ✅ Import ToastContainer
+import "react-toastify/dist/ReactToastify.css"; // ✅ Import styles
+import { AuthProvider } from "./context/AuthContext";
+import router from "./Router";
 
 const theme = createTheme();
 const queryClient = new QueryClient();

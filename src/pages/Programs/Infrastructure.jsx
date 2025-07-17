@@ -1,13 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-// Sample images – replace these paths with your actual assets
+// Sample images – replace with your own
 import buildingImg from "../../assets/shal1.jpeg";
 import receptionImg from "../../assets/shal2.jpeg";
 import labImg from "../../assets/shal3.jpeg";
 import corridorImg from "../../assets/shal4.jpeg";
 
-// Dynamic infrastructure data
 const infrastructureData = [
   {
     title: "Main Institute Building",
@@ -37,40 +36,44 @@ const infrastructureData = [
 
 const Infrastructure = () => {
   return (
-    <div className="max-w-6xl mx-auto px-6 py-16">
-      <h2 className="text-4xl font-bold text-center text-orange-600 mb-6">
-        Our Infrastructure
-      </h2>
-      <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12">
-        CIHS offers a state-of-the-art infrastructure designed to provide
-        students with an immersive and safe learning environment.
-      </p>
+    <section className="bg-gray-50 py-16 px-4 sm:px-8 lg:px-24">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl font-bold text-center text-green-700 mb-6">
+          Our Infrastructure
+        </h2>
+        <p className="text-center text-gray-600 max-w-3xl mx-auto mb-12 text-lg">
+          CIHS offers state-of-the-art infrastructure designed to provide
+          students with an immersive and safe learning environment.
+        </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        {infrastructureData.map((item, index) => (
-          <motion.div
-            key={index}
-            className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition duration-300"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
-          >
-            <img
-              src={item.image}
-              alt={item.title}
-              className="w-full h-60 object-cover"
-            />
-            <div className="p-6">
-              <h3 className="text-xl font-semibold mb-2 text-orange-500">
-                {item.title}
-              </h3>
-              <p className="text-gray-600">{item.description}</p>
-            </div>
-          </motion.div>
-        ))}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          {infrastructureData.map((item, index) => (
+            <motion.div
+              key={index}
+              className="bg-white rounded-xl border border-gray-200 shadow-md hover:shadow-xl transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+              viewport={{ once: true }}
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-48 object-cover rounded-t-xl"
+              />
+              <div className="p-5">
+                <h3 className="text-lg font-semibold text-green-700 mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

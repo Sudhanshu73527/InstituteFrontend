@@ -9,9 +9,9 @@ export const NavbarMenu = [
     title: "About-Us",
     link: "/Programs",
     submenu: [
-      { id: 1, title: "Fee Programs", link: "/programs/popular" },
-      { id: 2, title: "Vison & Mission", link: "/programs/vision" },
-      { id: 3, title: "Classrooms", link: "/programs/class" },
+      { id: 1, title: "About CIHS", link: "/programs/About" },
+      { id: 2, title: "Fee Programs", link: "/programs/popular" },
+      { id: 3, title: "Vison & Mission", link: "/programs/vision" },
       { id: 4, title: "Infrastructure", link: "/programs/infra" },
     ],
   },
@@ -50,5 +50,9 @@ export const NavbarMenu = [
     id: 6,
     title: "Contact-Us",
     link: "#",
+    submenu: [
+      { id: 1, title: "Contact Us", link: "/programs/Contact" },
+      { id: 1, title: "Feedback", link: "/programs/feedback" },
+    ],
   },
 ];

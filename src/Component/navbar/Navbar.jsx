@@ -15,6 +15,7 @@ const Navbar = () => {
       <nav className="bg-purple-100 shadow-[0_4px_20px_rgba(0,0,0,0.05)] sticky top-0 z-50">
         <div className="container mx-auto flex items-center justify-between py-4 px-4 md:px-8">
           {/* Logo */}
+          <Link to={"/"}>
           <div className="flex items-center gap-3 flex-none">
             <img src={logo} alt="CIHS Logo" className="h-10 w-auto object-contain" />
             <div className="flex flex-col leading-tight">
@@ -24,6 +25,8 @@ const Navbar = () => {
               <span className="text-xs text-green-500 uppercase">Private Limited</span>
             </div>
           </div>
+          </Link>
+          
 
           {/* Centered Menu */}
           <div className="hidden md:flex flex-1 justify-center">
