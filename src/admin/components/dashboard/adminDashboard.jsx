@@ -45,6 +45,8 @@ const AdminDashboard = () => {
       {/* Verification Section */}
       <section className="mb-8">
         <h2 className="text-xl font-semibold mb-4">Verify Certificate</h2>
+        
+        
 
         <Grid container spacing={3}>
           <Grid item xs={12} sm={4}>

@@ -23,21 +23,26 @@ function Sidebar({ className, toggleSidebar }) {
         </NavSection>
 
         {/* ACADEMIC */}
-        
+
 
         {/* PERSONAL */}
         <NavSection title="Personal">
           <NavItem to="/admin/profile" label="Profile" icon={<FaUserAlt size={20} />} onClick={toggleSidebar} />
-          
+
         </NavSection>
 
         {/* DOCUMENTS */}
         <NavSection title="Documents">
-          <NavItem to="/admin/Course-List" label="All Course" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
-          {/* <NavItem to="/admin/Add-Course" label="Add-Course" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} /> */}
-          <NavItem to="/admin/register" label="Reg. New Student" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
-          <NavItem to="/admin/documents/hall-ticket" label="Hall Ticket" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
-          <NavItem to="/admin/documents/id-card" label="ID Card" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/admin/Course-List" label="Course" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/admin/Subject-List" label="Subjects" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
+          {/* <NavItem to="/admin/register" label="Reg. New Student" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} /> */}
+          <NavItem to="/admin/student/all" label="Students" icon={<FaClipboardList size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/admin/Exam" label="Exam-Management" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
+
+
+          {/* <NavItem to="/admin/documents/hall-ticket" label="Hall Ticket" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} /> */}
+          <NavItem to="/admin/Admit-Card" label="Admit Card" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/admin/Result" label="Result" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
           <NavItem to="/admin/documents/certificates" label="Certificates" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
         </NavSection>
 
@@ -73,8 +78,7 @@ const NavItem = ({ to, label, icon, onClick }) => (
     to={to}
     onClick={onClick}
     className={({ isActive }) =>
-      `mb-2 px-4 py-2 rounded-md flex items-center gap-2 transition-colors duration-300 ${
-        isActive ? "bg-green-200 text-green-800" : "hover:bg-green-100 text-gray-800"
+      `mb-2 px-4 py-2 rounded-md flex items-center gap-2 transition-colors duration-300 ${isActive ? "bg-green-200 text-green-800" : "hover:bg-green-100 text-gray-800"
       }`
     }
   >

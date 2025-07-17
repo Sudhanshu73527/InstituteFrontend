@@ -9,12 +9,23 @@ import Profile from './student/pages/profile/profile';
 import AdminLayout from './admin/adminLayout';
 import AdminDashboard from './admin/components/dashboard/adminDashboard';
 import StudentRegistrationForm from './admin/pages/StudentReg/StudentRegistrationForm';
+// import AllStudent from './admin/pages/StudentReg/AllStudent'; // ✅ Import AllStudent
 import Login from './auth/Login';
 import Forgot from './auth/Forgot';
 import ChangePassword from './auth/ChangePassword';
-import ProtectedRoute from "../src/admin/components/secureRoute/ProtectedRoute"; // import here
+import ProtectedRoute from "../src/admin/components/secureRoute/ProtectedRoute";
 import CreateCourseForm from './admin/pages/Course/CreateCourseForm';
 import CourseList from './admin/pages/Course/CourseList';
+import AllStudent from './admin/pages/StudentReg/AllStudent';
+import AdmitCard from './admin/pages/AdmitCard/AdmitCard';
+import StudentProfile from './admin/pages/StudentReg/StudentProfile';
+import EditStudentProfile from './admin/pages/StudentReg/EditStudentProfile'; // ✅ Import EditStudentProfile
+import SubjectManagement from './admin/pages/Subject/SubjectManagement';
+import ExamManagement from './admin/pages/Exam/ExamSubjectManager';
+import ExamSubjectManager from './admin/pages/Exam/ExamSubjectManager';
+import AdmitCardGenerator from './admin/pages/AdmitCard/AdmitCardGenerator';
+import MarksheetDashboard from './admin/pages/Result/MarksheetDashboard';
+
 
 const router = createBrowserRouter([
   {
@@ -32,7 +43,7 @@ const router = createBrowserRouter([
   // ✅ Protected Student Routes
   {
     path: "/student",
-    element: <ProtectedRoute role="student" />, // Protect entire student section
+    element: <ProtectedRoute role="student" />,
     children: [
       {
         element: <StudentLayout />,
@@ -47,16 +58,24 @@ const router = createBrowserRouter([
   // ✅ Protected Admin Routes
   {
     path: "/admin",
-    element: <ProtectedRoute role="admin" />, // Protect entire admin section
+    element: <ProtectedRoute role="admin" />,
     children: [
       {
         element: <AdminLayout />,
         children: [
           { index: true, element: <AdminDashboard /> },
           { path: "profile", element: <Profile /> },
-          {path: "Course-List", element: <CourseList/> },
+          { path: "Course-List", element: <CourseList /> },
+          { path: "Subject-List", element: <SubjectManagement /> },
           { path: "Add-Course", element: <CreateCourseForm /> },
           { path: "register", element: <StudentRegistrationForm /> },
+          { path: "student/all", element: <AllStudent /> }, // ✅ Correct
+          { path: "documents/hall-ticket", element: <AdmitCard /> },
+          { path: "students/:studentId", element: <StudentProfile /> },
+          { path: "students/:studentId/edit", element: <EditStudentProfile /> }, // ✅ Add EditStudentProfile route
+          { path: "Exam", element: < ExamSubjectManager /> },
+          { path: "Admit-Card",element: <AdmitCardGenerator /> },
+          { path: "Result", element: <MarksheetDashboard /> }, // Assuming AdmitCardGenerator handles results
         ],
       },
     ],
@@ -64,3 +83,4 @@ const router = createBrowserRouter([
 ]);
 
 export default router;
+
