@@ -43,13 +43,13 @@ function Sidebar({ className, toggleSidebar }) {
           {/* <NavItem to="/admin/documents/hall-ticket" label="Hall Ticket" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} /> */}
           <NavItem to="/admin/Admit-Card" label="Admit Card" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
           <NavItem to="/admin/Result" label="Result" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
-          <NavItem to="/admin/documents/certificates" label="Certificates" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
+          {/* <NavItem to="/admin/documents/certificates" label="Certificates" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} /> */}
         </NavSection>
 
         {/* CERTIFICATE VERIFICATION - New Section for Admin */}
-        <NavSection title="Certificate">
+        {/* <NavSection title="Certificate">
           <NavItem to="/admin/certificate-verification" label="Verify Certificates" icon={<FaClipboardList size={20} />} onClick={toggleSidebar} />
-        </NavSection>
+        </NavSection> */}
 
         {/* SETTINGS */}
         {/* <NavSection title="Settings">

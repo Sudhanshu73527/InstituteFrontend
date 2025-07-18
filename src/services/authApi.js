@@ -16,6 +16,7 @@ export const logout = async () => {
   delete Axios.defaults.headers.common['Authorization']; // ✅ clean up auth headers
 };
 export const getProfile = () => Axios.get('/user/profile');
+
 export const updateProfile = (data) => Axios.patch('/user/updateProfile', data);
 export const uploadAvatar = async (formData) => {
   const response = await Axios.post('/user/uploadAvatar', formData, {

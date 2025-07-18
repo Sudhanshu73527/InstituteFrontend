@@ -1,4 +1,3 @@
-// Header.jsx
 import React, { useState } from "react";
 import {
   AppBar,
@@ -10,19 +9,15 @@ import {
 } from "@mui/material";
 import { Menu as MenuIcon } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
-import ProfileMenu from "./ProfileMenu"; // Import the UserProfileMenu component
+import ProfileMenu from "./ProfileMenu";
+import { useAuth } from "../../../context/AuthContext"; // ✅ Import context
 
 const Header = ({ toggleSidebar }) => {
   const theme = useTheme();
- const aviraj = {
-    userName: "Aviraaj",
-    email: "aviraj@example.com",
-    role: "Admin",
-  };
-  // State for dropdown menu
+  const { user } = useAuth(); // ✅ Dynamic user from context
+
   const [anchorEl, setAnchorEl] = useState(null);
 
-  // Handle profile menu toggle
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -32,46 +27,43 @@ const Header = ({ toggleSidebar }) => {
   };
 
   const handleLogout = () => {
-    // Perform logout action here
     console.log("User logged out");
     handleMenuClose();
   };
+
+  const initials = `${user?.firstName?.[0] || "G"}${user?.lastName?.[0] || ""}`.toUpperCase();
 
   return (
     <AppBar
       position="fixed"
       sx={{
-        background: "linear-gradient(to bottom right, #d1fae5, #ffffff, #a7f3d0)", // Green gradient
+        background: "linear-gradient(to bottom right, #d1fae5, #ffffff, #a7f3d0)",
         boxShadow: 3,
-        zIndex: theme.zIndex.drawer + 1, // Ensures header is above sidebar
+        zIndex: theme.zIndex.drawer + 1,
         height: "10vh",
         justifyContent: "center",
       }}
     >
       <Toolbar sx={{ minHeight: "10vh", display: "flex", justifyContent: "space-between" }}>
-        {/* Mobile Menu Icon */}
         <IconButton
           color="inherit"
           edge="start"
           onClick={toggleSidebar}
           sx={{
             marginRight: 2,
-            "&:hover": {
-              backgroundColor: "rgba(255, 255, 255, 0.3)", // Lighter hover effect
-            },
-            color: "#1D4ED8", // Set menu icon color to blue
+            "&:hover": { backgroundColor: "rgba(255, 255, 255, 0.3)" },
+            color: "#1D4ED8",
           }}
         >
           <MenuIcon />
         </IconButton>
 
-        {/* Dashboard Title */}
         <Typography
           variant="h6"
           sx={{
             fontWeight: 600,
             fontSize: { xs: "1.5rem", sm: "1.75rem" },
-            color: "#1D4ED8", // Professional blue color
+            color: "#1D4ED8",
             textAlign: "center",
             flexGrow: 1,
           }}
@@ -79,14 +71,12 @@ const Header = ({ toggleSidebar }) => {
           Admin Dashboard
         </Typography>
 
-        {/* User Profile Avatar and Name */}
         <Box sx={{ display: "flex", alignItems: "center" }}>
           <Avatar
             sx={{ marginRight: 1, bgcolor: "#1D4ED8", cursor: "pointer" }}
             onClick={handleMenuOpen}
           >
-            {/* Display user's first letter or initials */}
-            {aviraj?.userName?.charAt(0)?.toUpperCase() || "G"}
+            {initials}
           </Avatar>
           <Typography
             variant="body1"
@@ -97,10 +87,9 @@ const Header = ({ toggleSidebar }) => {
             }}
             onClick={handleMenuOpen}
           >
-            {aviraj?.userName || "Guest"}
+            {user?.firstName || "Guest"}
           </Typography>
 
-          {/* Profile Menu */}
           <ProfileMenu
             anchorEl={anchorEl}
             handleMenuOpen={handleMenuOpen}

@@ -1,80 +1,77 @@
-import React, { useState } from "react";
-import { Menu, MenuItem, Box, Divider, Typography, Avatar } from "@mui/material";
+import React from "react";
+import {
+  Menu,
+  MenuItem,
+  Box,
+  Divider,
+  Typography,
+  Avatar,
+} from "@mui/material";
 import { MdEdit, MdKey, MdOutlineLogout } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../../context/AuthContext"; // Adjust path as needed
 
-// Hardcoded user data (aviraj)
-const aviraj = {
-  userName: "Aviraaj",
-  email: "aviraj@example.com",
-  role: "Admin",
-  phone: "+91 9876543210", // Added phone number
-};
-
-const ProfileMenu = ({ anchorEl, handleMenuOpen, handleMenuClose, handleLogout }) => {
+const ProfileMenu = ({ anchorEl, handleMenuClose, handleLogout }) => {
   const openMenu = Boolean(anchorEl);
+  const { user } = useAuth();
+
+  const fullName = `${user?.firstName || ""} ${user?.lastName || ""}`.trim();
+  const initials =
+    (user?.firstName?.[0] || "") + (user?.lastName?.[0] || "");
 
   return (
     <Menu
       anchorEl={anchorEl}
       open={openMenu}
       onClose={handleMenuClose}
-      MenuListProps={{
-        "aria-labelledby": "basic-button",
-      }}
       PaperProps={{
         sx: {
-          backgroundColor: "#f3f4f6", // A softer background color
-          minWidth: 240, // Increased minWidth for better layout
-          borderRadius: 1,
-          boxShadow: 2, // Added some shadow for better separation
+          backgroundColor: "#f9fafb",
+          minWidth: 250,
+          borderRadius: 2,
+          boxShadow: 4,
+          paddingY: 1,
         },
       }}
     >
-      <Box sx={{ textAlign: "center", padding: 2 }}>
-        {/* Profile Avatar */}
+      <Box sx={{ textAlign: "center", p: 2 }}>
         <Avatar
           sx={{
             width: 72,
             height: 72,
             bgcolor: "#1D4ED8",
-            margin: "0 auto 8px auto", // Centered Avatar and added margin
-            fontSize: 32,
+            margin: "0 auto 8px auto",
+            fontSize: 28,
           }}
         >
-          {aviraj?.userName?.charAt(0)?.toUpperCase() || "A"} {/* User's first letter */}
+          {initials.toUpperCase() || "U"}
         </Avatar>
-
-        {/* Profile Name */}
         <Typography variant="h6" sx={{ fontWeight: "bold", color: "#1D4ED8" }}>
-          {aviraj?.userName || "User"}
+          {fullName || "User"}
         </Typography>
         <Typography variant="body2" sx={{ color: "gray" }}>
-          {aviraj?.email || "Email not available"}
+          {user?.email || "No email"}
         </Typography>
         <Typography variant="body2" sx={{ color: "gray" }}>
-          {aviraj?.phone || "+91 9876543210"}
+          {user?.phone || "+91 9876543210"}
         </Typography>
-        <Typography variant="body2" sx={{ color: "gray" }}>
-          {aviraj?.role || "No role assigned"}
+        <Typography variant="body2" sx={{ color: "gray", textTransform: "capitalize" }}>
+          {user?.role || "No role"}
         </Typography>
       </Box>
 
-      <Divider sx={{ margin: "8px 0" }} />
+      <Divider sx={{ my: 1 }} />
 
-      {/* Menu Links */}
-      <MenuItem onClick={handleMenuClose}>
-        <Link to="/profile" style={{ textDecoration: "none", color: "black" }}>
-          <MdEdit size={20} style={{ marginRight: 10 }} />
-          Edit Profile
-        </Link>
+      <MenuItem onClick={handleMenuClose} component={Link} to="/profile">
+        <MdEdit size={20} style={{ marginRight: 10 }} />
+        Edit Profile
       </MenuItem>
-      <MenuItem onClick={handleMenuClose}>
-        <Link to="/change-password" style={{ textDecoration: "none", color: "black" }}>
-          <MdKey size={20} style={{ marginRight: 10 }} />
-          Change Password
-        </Link>
+
+      <MenuItem onClick={handleMenuClose} component={Link} to="/change-password">
+        <MdKey size={20} style={{ marginRight: 10 }} />
+        Change Password
       </MenuItem>
+
       <MenuItem onClick={handleLogout}>
         <MdOutlineLogout size={20} style={{ marginRight: 10 }} />
         Logout
