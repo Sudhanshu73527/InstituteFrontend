@@ -28,10 +28,11 @@ export const searchStudents = (query) => {
   return Axios.get(`/students/search?query=${encodeURIComponent(query)}`);
 };
 
+
 // export const fetchMarksheetList = (page = 1, pageSize = 10) => {
-//   return Axios.get(`/marksheet/list?page=${page}&pageSize=${pageSize}`);
+//   return Axios.get(`http://localhost:5001/api/marksheet/list?page=${page}&pageSize=${pageSize}`);
 // };
 
 export const fetchMarksheetList = (page = 1, pageSize = 10) => {
-  return Axios.get(`http://localhost:5001/api/marksheet/list?page=${page}&pageSize=${pageSize}`);
+  return Axios.get(`https://institute-backend-8u6d.onrender.com/api/marksheet/list?page=${page}&pageSize=${pageSize}`);
 };
