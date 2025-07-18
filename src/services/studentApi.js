@@ -20,3 +20,18 @@ export const updateStudentProfile = (studentId, data) =>
 // ❌ Delete student (and linked user)
 export const deleteStudentProfile = (studentId) =>
   Axios.delete(`/student/${studentId}`);
+
+export const searchStudents = (query) => {
+  if (!query || query.trim().length < 2) {
+    return Promise.reject(new Error('Search query must be at least 2 characters'));
+  }
+  return Axios.get(`/students/search?query=${encodeURIComponent(query)}`);
+};
+
+// export const fetchMarksheetList = (page = 1, pageSize = 10) => {
+//   return Axios.get(`/marksheet/list?page=${page}&pageSize=${pageSize}`);
+// };
+
+export const fetchMarksheetList = (page = 1, pageSize = 10) => {
+  return Axios.get(`http://localhost:5001/api/marksheet/list?page=${page}&pageSize=${pageSize}`);
+};

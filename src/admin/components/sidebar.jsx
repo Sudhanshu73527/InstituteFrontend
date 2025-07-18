@@ -52,9 +52,9 @@ function Sidebar({ className, toggleSidebar }) {
         </NavSection>
 
         {/* SETTINGS */}
-        <NavSection title="Settings">
+        {/* <NavSection title="Settings">
           <NavItem to="/admin/settings" label="Settings" icon={<FaCog size={20} />} onClick={toggleSidebar} />
-        </NavSection>
+        </NavSection> */}
 
         {/* LOGOUT */}
         <NavSection title="Logout">

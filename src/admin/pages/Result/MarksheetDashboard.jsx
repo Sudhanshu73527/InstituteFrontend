@@ -6,7 +6,7 @@ import {
   generateMarksheetPDF,
 } from '../../../services/marksheetApi';
 import ManualMarksheetForm from './ManualMarksheetForm';
-
+import { fetchMarksheetList } from '../../../services/studentApi';
 const PAGE_SIZE = 10;
 
 const MarksheetDashboard = () => {
@@ -26,20 +26,16 @@ const MarksheetDashboard = () => {
 
   const [previewMode, setPreviewMode] = useState(false);
 
-  // Fetch marksheets with pagination
   const fetchMarksheets = async () => {
     setLoadingList(true);
     try {
-      const res = await fetch(`/api/marksheet/list?page=${page}&pageSize=${PAGE_SIZE}`);
-      const data = await res.json();
-      if (res.ok) {
-        setStudentsMarksheets(data.marksheets || []);
-        setTotal(data.total || 0);
-      } else {
-        toast.error(data.message || 'Failed to fetch marksheets');
-      }
+      const res = await fetchMarksheetList(page, PAGE_SIZE); // 👈 using API function
+      const data = res.data;
+
+      setStudentsMarksheets(data.marksheets || []);
+      setTotal(data.total || 0);
     } catch (error) {
-      toast.error('Error fetching marksheets');
+      toast.error(error.response?.data?.message || 'Error fetching marksheets');
     }
     setLoadingList(false);
   };
@@ -74,10 +70,11 @@ const MarksheetDashboard = () => {
   };
 
   // Select student to edit marks
-  const handleSelectStudent = (student) => {
-    setSelectedStudent(student);
-    setMarks(student.subjects || []);
+  const handleSelectStudent = (marksheet) => {
+    setSelectedStudent(marksheet);
+    setMarks(marksheet.subjects || []);
   };
+
 
   // Change marks input for a subject
   const handleMarkChange = (index, value) => {
@@ -203,21 +200,32 @@ const MarksheetDashboard = () => {
               </tr>
             </thead>
             <tbody>
-
               {studentsMarksheets.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="p-4 text-center">
-                    No marksheets found
-                  </td>
+                  <td colSpan={6} className="p-4 text-center">No marksheets found</td>
                 </tr>
               ) : (
                 studentsMarksheets.map((m) => (
-                  <tr key={m.studentId} className="hover:bg-gray-50">
-                    <td className="border p-2">{m.rollNumber}</td>
-                    <td className="border p-2">{m.studentName}</td>
-                    <td className="border p-2">{m.batch}</td>
-                    <td className="border p-2">{m.courseName}</td>
-                    <td className="border p-2">{new Date(m.updatedAt).toLocaleString()}</td>
+                  <tr key={m._id} className="hover:bg-gray-50">
+                    <td className="border p-2">{m.studentId?.rollNumber || '-'}</td>
+                    <td className="border p-2">
+                      {m.studentId?.userId?.firstName || ''} {m.studentId?.userId?.lastName || ''}
+                    </td>
+                    <td className="border p-2">{m.studentId?.passingYear || '-'}</td>
+                    <td className="border p-2">{m.studentId?.courseId?.name || '-'}</td>
+                    <td className="border p-2">
+                      {m.studentId?.updatedAt
+                        ? new Date(m.studentId.updatedAt).toLocaleString('en-US', {
+                          dateStyle: 'medium',
+                          timeStyle: 'short',
+                        })
+                        : '-'}
+                    </td>
+
+
+
+
+
                     <td className="border p-2 space-x-2">
                       <button
                         onClick={() => handleSelectStudent(m)}
@@ -226,7 +234,7 @@ const MarksheetDashboard = () => {
                         Edit
                       </button>
                       <button
-                        onClick={() => handleDownloadPDF(m.studentId)}
+                        onClick={() => handleDownloadPDF(m.studentId?._id)}
                         className="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700"
                       >
                         {previewMode ? 'Preview PDF' : 'Download PDF'}
@@ -236,6 +244,7 @@ const MarksheetDashboard = () => {
                 ))
               )}
             </tbody>
+
           </table>
         )}
 
@@ -279,8 +288,8 @@ const MarksheetDashboard = () => {
               </thead>
               <tbody>
                 {marks.map((m, i) => (
-                  <tr key={m.subjectId}>
-                    <td className="border p-2">{m.subjectName || 'Subject'}</td>
+                  <tr key={m.subjectId?._id || i}>
+                    <td className="border p-2">{m.subjectId?.name || 'Subject'}</td>
                     <td className="border p-2">
                       <input
                         type="number"
@@ -294,6 +303,7 @@ const MarksheetDashboard = () => {
                   </tr>
                 ))}
               </tbody>
+
             </table>
           </div>
           <div className="mt-4 flex space-x-3">
