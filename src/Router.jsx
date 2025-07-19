@@ -33,8 +33,11 @@ import Feedback from './pages/Programs/Feedback';
 import Logout from './auth/Logout';
 import StudentProfileView from './student/pages/profile/StudentProfileView';
 import UnderConstruction from './pages/Programs/UnderConstruction';
-
-
+import AdmitCardDownload from './student/pages/AdmitCard/AdmitCardDownload';
+import ResultCardDownload from './student/pages/ResultCard/ResultCardDownload';
+import NoticeBoard from './pages/Programs/NoticeBoard';
+import StudentTickets from './student/pages/Ticket/StudentTickets';
+import AdminTickets from './admin/pages/Ticket/AdminTickets';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -68,6 +71,22 @@ const router = createBrowserRouter([
             path: "students/:studentId/view",
             element: <StudentProfileView />
           },
+          {
+             path :"/student/documents/admit-card" ,element: <AdmitCardDownload/>
+
+          },
+           {
+             path :"/student/documents/Result" ,element: <ResultCardDownload/>
+
+          },
+          {
+            path: "/student/notice",
+            element:< NoticeBoard />
+          },
+          {
+            path: "/student/issue",
+            element: <StudentTickets />
+          }
         ],
       },
     ],
@@ -97,7 +116,11 @@ const router = createBrowserRouter([
           { path: "students/:studentId/edit", element: <EditStudentProfile /> }, // ✅ Add EditStudentProfile route
           { path: "Exam", element: < ExamSubjectManager /> },
           { path: "Admit-Card", element: <AdmitCardGenerator /> },
-          { path: "Result", element: <MarksheetDashboard /> }, // Assuming AdmitCardGenerator handles results
+          { path: "Result", element: <MarksheetDashboard /> },
+          {
+            path: "Ticket",
+            element: <AdminTickets />
+          } // Assuming AdmitCardGenerator handles results
         ],
       },
 

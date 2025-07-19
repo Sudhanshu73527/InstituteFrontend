@@ -24,3 +24,7 @@ export const getAdmitCardByStudentId = (studentId) =>
 export const getAdmitCardByStudentName = async (name) => {
   return await fetch(`/api/admit-card/by-name?name=${encodeURIComponent(name)}`).then((res) => res.json());
 };
+
+// Check if admit card is available for a student
+export const checkAdmitCardAvailability = (studentId) =>
+  Axios.get('/admitCard/check', { params: { studentId } });

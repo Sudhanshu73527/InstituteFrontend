@@ -18,3 +18,6 @@ export const generateMarksheetPDF = (studentId) => {
     responseType: 'blob', // important for handling PDF file
   });
 };
+
+export const checkResultAvailability = (studentId) =>
+  Axios.get(`/marksheet/check`, { params: { studentId } });

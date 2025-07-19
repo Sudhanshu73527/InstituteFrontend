@@ -73,7 +73,8 @@ const Header = ({ toggleSidebar }) => {
             flexGrow: 1,
           }}
         >
-          Admin Dashboard
+          
+          Student Dashboard
         </Typography>
 
         <Box sx={{ display: "flex", alignItems: "center" }}>

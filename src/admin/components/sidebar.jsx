@@ -1,5 +1,5 @@
 import React from "react";
-import { FaBook, FaClipboardList, FaCalendarAlt, FaUserAlt, FaCog, FaSignOutAlt, FaFileAlt } from "react-icons/fa";
+import { FaBook, FaTicketAlt,FaClipboardList, FaCalendarAlt, FaUserAlt, FaCog, FaSignOutAlt, FaFileAlt } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
@@ -28,7 +28,7 @@ function Sidebar({ className, toggleSidebar }) {
         {/* PERSONAL */}
         <NavSection title="Personal">
           <NavItem to="/admin/profile" label="Profile" icon={<FaUserAlt size={20} />} onClick={toggleSidebar} />
-
+          <NavItem to="/admin/Ticket" label="Student Ticket" icon={<FaTicketAlt size={20} />} onClick={toggleSidebar} />
         </NavSection>
 
         {/* DOCUMENTS */}

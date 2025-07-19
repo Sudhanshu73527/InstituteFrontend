@@ -1,5 +1,13 @@
 import React from "react";
-import { FaBook, FaClipboardList, FaCalendarAlt, FaUserAlt, FaCog, FaSignOutAlt, FaFileAlt } from "react-icons/fa";
+import {
+  FaBook,
+  FaClipboardList,
+  FaUserAlt,
+  FaSignOutAlt,
+  FaFileAlt,
+  FaTicketAlt,
+  FaChartLine,
+} from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 
@@ -25,27 +33,20 @@ function Sidebar({ className, toggleSidebar }) {
         {/* ACADEMIC */}
         <NavSection title="Academics">
           <NavItem to="/student/courses" label="Courses" icon={<FaBook size={20} />} onClick={toggleSidebar} />
-          <NavItem to="/student/assignments" label="Assignments" icon={<FaClipboardList size={20} />} onClick={toggleSidebar} />
-          <NavItem to="/student/grades" label="Grades" icon={<FaCalendarAlt size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/student/notice" label="NoticeBoard" icon={<FaClipboardList size={20} />} onClick={toggleSidebar} />
         </NavSection>
 
         {/* PERSONAL */}
         <NavSection title="Personal">
           <NavItem to="/student/profile" label="Profile" icon={<FaUserAlt size={20} />} onClick={toggleSidebar} />
-          {/* <NavItem to="/student/calendar" label="Schedule" icon={<FaCalendarAlt size={20} />} onClick={toggleSidebar} /> */}
+          <NavItem to="/student/issue" label="Raise-Ticket" icon={<FaTicketAlt size={20} />} onClick={toggleSidebar} />
         </NavSection>
 
         {/* DOCUMENTS */}
         <NavSection title="Documents">
-          <NavItem to="/student/documents/hall-ticket" label="Hall Ticket" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
-          <NavItem to="/student/documents/id-card" label="ID Card" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
-          <NavItem to="/student/documents/certificates" label="Certificates" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/student/documents/admit-card" label="Admit Card" icon={<FaFileAlt size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/student/documents/Result" label="Result" icon={<FaChartLine size={20} />} onClick={toggleSidebar} />
         </NavSection>
-
-        {/* SETTINGS */}
-        {/* <NavSection title="Settings">
-          <NavItem to="/student/settings" label="Settings" icon={<FaCog size={20} />} onClick={toggleSidebar} />
-        </NavSection> */}
 
         {/* LOGOUT */}
         <NavSection title="Logout">
