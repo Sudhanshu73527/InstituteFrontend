@@ -32,7 +32,7 @@ function Sidebar({ className, toggleSidebar }) {
         {/* PERSONAL */}
         <NavSection title="Personal">
           <NavItem to="/student/profile" label="Profile" icon={<FaUserAlt size={20} />} onClick={toggleSidebar} />
-          <NavItem to="/student/calendar" label="Schedule" icon={<FaCalendarAlt size={20} />} onClick={toggleSidebar} />
+          {/* <NavItem to="/student/calendar" label="Schedule" icon={<FaCalendarAlt size={20} />} onClick={toggleSidebar} /> */}
         </NavSection>
 
         {/* DOCUMENTS */}
@@ -43,13 +43,13 @@ function Sidebar({ className, toggleSidebar }) {
         </NavSection>
 
         {/* SETTINGS */}
-        <NavSection title="Settings">
+        {/* <NavSection title="Settings">
           <NavItem to="/student/settings" label="Settings" icon={<FaCog size={20} />} onClick={toggleSidebar} />
-        </NavSection>
+        </NavSection> */}
 
         {/* LOGOUT */}
         <NavSection title="Logout">
-          <NavItem to="/student/logout" label="Logout" icon={<FaSignOutAlt size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/logout" label="Logout" icon={<FaSignOutAlt size={20} />} onClick={toggleSidebar} />
         </NavSection>
       </div>
     </aside>

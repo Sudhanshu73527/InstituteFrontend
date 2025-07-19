@@ -58,7 +58,7 @@ function Sidebar({ className, toggleSidebar }) {
 
         {/* LOGOUT */}
         <NavSection title="Logout">
-          <NavItem to="/admin/logout" label="Logout" icon={<FaSignOutAlt size={20} />} onClick={toggleSidebar} />
+          <NavItem to="/logout" label="Logout" icon={<FaSignOutAlt size={20} />} onClick={toggleSidebar} />
         </NavSection>
       </div>
     </aside>

@@ -30,6 +30,9 @@ import Aboutcihs from './pages/Programs/Aboutcihs';
 import Infrastructure from './pages/Programs/Infrastructure';
 import Contact from './pages/Programs/Contact';
 import Feedback from './pages/Programs/Feedback';
+import Logout from './auth/Logout';
+import StudentProfileView from './student/pages/profile/StudentProfileView';
+import UnderConstruction from './pages/Programs/UnderConstruction';
 
 
 const router = createBrowserRouter([
@@ -39,12 +42,13 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "programs/popular", element: <PopularProgram /> },
-      {path:"/programs/vision", element:<Visionmission/>},
-      {path:"/programs/About", element:<Aboutcihs/>},
-      {path:"/programs/infra", element:<Infrastructure/>},
-      {path:"/programs/Contact", element:<Contact/>},
-      {path:"/programs/feedback", element:<Feedback/>},
+      { path: "/programs/vision", element: <Visionmission /> },
+      { path: "/programs/About", element: <Aboutcihs /> },
+      { path: "/programs/infra", element: <Infrastructure /> },
+      { path: "/programs/Contact", element: <Contact /> },
+      { path: "/programs/feedback", element: <Feedback /> },
       { path: "login", element: <Login /> },
+      { path: "logout", element: <Logout /> },
       { path: "forgot-password", element: <Forgot /> },
       { path: "change-password", element: <ChangePassword /> },
     ],
@@ -60,6 +64,10 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <StudentDashboard /> },
           { path: "profile", element: <Profile /> },
+          {
+            path: "students/:studentId/view",
+            element: <StudentProfileView />
+          },
         ],
       },
     ],
@@ -75,6 +83,10 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <AdminDashboard /> },
           { path: "profile", element: <Profile /> },
+          {
+            path: "students/:studentId/view",
+            element: <StudentProfileView />
+          },
           { path: "Course-List", element: <CourseList /> },
           { path: "Subject-List", element: <SubjectManagement /> },
           { path: "Add-Course", element: <CreateCourseForm /> },
@@ -84,12 +96,20 @@ const router = createBrowserRouter([
           { path: "students/:studentId", element: <StudentProfile /> },
           { path: "students/:studentId/edit", element: <EditStudentProfile /> }, // ✅ Add EditStudentProfile route
           { path: "Exam", element: < ExamSubjectManager /> },
-          { path: "Admit-Card",element: <AdmitCardGenerator /> },
+          { path: "Admit-Card", element: <AdmitCardGenerator /> },
           { path: "Result", element: <MarksheetDashboard /> }, // Assuming AdmitCardGenerator handles results
         ],
       },
+
+
     ],
   },
+
+  {
+  path: "*",
+  element: <UnderConstruction />
+}
+
 ]);
 
 export default router;

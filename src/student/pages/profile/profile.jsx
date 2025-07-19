@@ -2,19 +2,20 @@ import React, { useEffect, useState } from "react";
 import {
   Box,
   Typography,
-  Card,
-  CardContent,
-  Avatar,
   Grid,
   CircularProgress,
   Paper,
   Chip,
+  Avatar,
+  Divider,
   useTheme,
+  Badge,
 } from "@mui/material";
 import { getProfile } from "../../../services/authApi";
 
 const Profile = () => {
   const [profile, setProfile] = useState(null);
+  const [student, setStudent] = useState(null);
   const [loading, setLoading] = useState(true);
   const theme = useTheme();
 
@@ -23,6 +24,7 @@ const Profile = () => {
       try {
         const res = await getProfile();
         setProfile(res.data.userProfileDetail);
+        setStudent(res.data.studentDetail);
       } catch (error) {
         console.error("❌ Error fetching profile:", error);
       } finally {
@@ -35,7 +37,7 @@ const Profile = () => {
   if (loading) {
     return (
       <Box display="flex" justifyContent="center" alignItems="center" height="60vh">
-        <CircularProgress />
+        <CircularProgress size={60} />
       </Box>
     );
   }
@@ -49,95 +51,161 @@ const Profile = () => {
   }
 
   return (
-    <Box sx={{ maxWidth: 900, mx: "auto", mt: 6, px: 3 }}>
+    <Box sx={{ maxWidth: 1100, mx: "auto", mt: 6, px: 2 }}>
       <Paper
-        elevation={4}
+        elevation={8}
         sx={{
           borderRadius: 4,
-          background: `linear-gradient(145deg, ${theme.palette.background.paper}, ${theme.palette.background.default})`,
-          p: 4,
+          overflow: "hidden",
+          background: "rgba(255, 255, 255, 0.8)",
+          backdropFilter: "blur(10px)",
+          boxShadow: "0 8px 30px rgba(0,0,0,0.08)",
         }}
       >
-        <Card
+        {/* Banner */}
+        <Box
           sx={{
+            height: 180,
+            background: `linear-gradient(to right, ${theme.palette.primary.light}, ${theme.palette.primary.main})`,
+          }}
+        />
+
+        {/* Avatar & Name */}
+        <Box
+          sx={{
+            px: 4,
+            mt: -10,
             display: "flex",
             flexDirection: { xs: "column", sm: "row" },
-            backgroundColor: "transparent",
-            boxShadow: "none",
+            gap: 3,
+            alignItems: "center",
           }}
         >
-          {/* Avatar Section */}
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              mr: { sm: 5 },
-              mb: { xs: 3, sm: 0 },
-            }}
+          <Badge
+            overlap="circular"
+            anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+            badgeContent={
+              profile.isEmailVerified && (
+                <Chip label="✔" size="small" color="primary" />
+              )
+            }
           >
             <Avatar
-              alt={`${profile.firstName} ${profile.lastName}`}
               src={profile.avatar || "/default-avatar.png"}
+              alt={`${profile.firstName} ${profile.lastName}`}
               sx={{
-                width: 120,
-                height: 120,
-                border: `3px solid ${theme.palette.primary.main}`,
+                width: 130,
+                height: 130,
+                border: `4px solid ${theme.palette.background.paper}`,
               }}
             />
-          </Box>
+          </Badge>
 
-          {/* Content Section */}
-          <CardContent sx={{ flex: 1 }}>
-            <Typography variant="h4" fontWeight={700} gutterBottom>
+          <Box>
+            <Typography variant="h4" fontWeight={700}>
               {profile.firstName} {profile.lastName}
             </Typography>
+            <Typography variant="subtitle1" color="text.secondary">
+              {capitalize(profile.role)}
+            </Typography>
+            <Box mt={1} display="flex" gap={1} flexWrap="wrap">
+              <Chip
+                label={capitalize(profile.status)}
+                color={profile.status === "active" ? "success" : "warning"}
+                size="small"
+              />
+              <Chip
+                label={profile.isEmailVerified ? "Email Verified" : "Not Verified"}
+                color={profile.isEmailVerified ? "primary" : "error"}
+                size="small"
+              />
+            </Box>
+          </Box>
+        </Box>
 
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <LabelValue label="Username" value={profile.username} />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <LabelValue label="Email" value={profile.email} />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <LabelValue label="Role" value={capitalize(profile.role)} />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <LabelValue
-                  label="Status"
+        <Divider sx={{ my: 4 }} />
+
+        {/* Profile Info */}
+        <Box px={4} pb={4}>
+          <Typography variant="h6" gutterBottom>
+            Profile Info
+          </Typography>
+          <Grid container spacing={2}>
+            <Detail label="Username" value={profile.username} />
+            <Detail label="Email" value={profile.email} />
+            <Detail label="Last Login" value={formatDateTime(profile.lastLogin)} />
+            <Detail label="Joined On" value={formatDate(profile.createdAt)} />
+          </Grid>
+
+          {/* Student Info */}
+          {student && (
+            <>
+              <Divider sx={{ my: 4 }} />
+              <Typography variant="h6" gutterBottom>
+                Student Details
+              </Typography>
+              <Grid container spacing={2}>
+                <Detail label="Phone Number" value={student.phoneNumber} />
+                <Detail label="Father's Name" value={student.fatherName} />
+                <Detail label="DOB" value={formatDate(student.dob)} />
+                <Detail label="Aadhar Number" value={student.aadharNumber} />
+                <Detail label="Roll Number" value={student.rollNumber} />
+                <Detail label="Passing Year" value={student.passingYear} />
+                <Detail
+                  label="Course"
+                  value={
+                    student.courseId
+                      ? `${student.courseId.name} (${student.courseId.code})`
+                      : "Not Assigned"
+                  }
+                />
+                <Detail
+                  label="Institution"
+                  value={`${student.institutionName || "-"}, ${student.institutionAddress || "-"}`}
+                />
+                <Detail label="Address" value={student.address} />
+                <Detail
+                  label="Student Status"
                   value={
                     <Chip
-                      label={capitalize(profile.status)}
-                      color={profile.status === "active" ? "success" : "warning"}
-                      variant="outlined"
+                      label={capitalize(student.status)}
+                      color={student.status === "active" ? "success" : "warning"}
                       size="small"
                     />
                   }
                 />
+                <Detail label="Enrolled On" value={formatDate(student.createdAt)} />
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <LabelValue
-                  label="Email Verified"
-                  value={
-                    <Chip
-                      label={profile.isEmailVerified ? "Verified" : "Not Verified"}
-                      color={profile.isEmailVerified ? "primary" : "error"}
-                      variant="outlined"
-                      size="small"
-                    />
-                  }
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <LabelValue label="Last Login" value={formatDateTime(profile.lastLogin)} />
-              </Grid>
-              <Grid item xs={12}>
-                <LabelValue label="Joined On" value={formatDate(profile.createdAt)} />
-              </Grid>
-            </Grid>
-          </CardContent>
-        </Card>
+
+              {/* Education Details */}
+              <Box mt={3}>
+                <Typography variant="subtitle1" fontWeight={600}>
+                  Education History
+                </Typography>
+                {student.educationDetails?.length > 0 ? (
+                  <Grid container spacing={1} mt={1}>
+                    {student.educationDetails.map((edu, idx) => (
+                      <Grid item xs={12} key={idx}>
+                        <Paper variant="outlined" sx={{ p: 2, borderRadius: 2 }}>
+                          <Typography variant="body2">
+                            🎓 <strong>{edu.degree}</strong> in <strong>{edu.major}</strong>
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            Grade: {edu.grade}
+                          </Typography>
+                        </Paper>
+                      </Grid>
+                    ))}
+                  </Grid>
+                ) : (
+                  <Typography variant="body2" mt={1}>
+                    No education details available.
+                  </Typography>
+                )}
+              </Box>
+            </>
+          )}
+        </Box>
       </Paper>
     </Box>
   );
@@ -145,24 +213,29 @@ const Profile = () => {
 
 export default Profile;
 
-// Reusable Components
-const LabelValue = ({ label, value }) => (
-  <Box>
+// Detail helper
+const Detail = ({ label, value }) => (
+  <Grid item xs={12} sm={6}>
     <Typography variant="body2" color="text.secondary">
       {label}
     </Typography>
     <Typography variant="body1" fontWeight={500}>
-      {value}
+      {value || "-"}
     </Typography>
-  </Box>
+  </Grid>
 );
 
-const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
-
-const formatDateTime = (date) => new Date(date).toLocaleString("en-US", {
-  dateStyle: "medium",
-  timeStyle: "short",
-});
-
+// Utility Functions
+const capitalize = (str) => str?.charAt(0).toUpperCase() + str?.slice(1);
+const formatDateTime = (date) =>
+  date
+    ? new Date(date).toLocaleString("en-US", { dateStyle: "medium", timeStyle: "short" })
+    : "-";
 const formatDate = (date) =>
-  new Date(date).toLocaleDateString("en-US", { dateStyle: "long" });
+  date
+    ? new Date(date).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    : "-";

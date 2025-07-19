@@ -11,10 +11,11 @@ import { Menu as MenuIcon } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import ProfileMenu from "./ProfileMenu";
 import { useAuth } from "../../../context/AuthContext"; // ✅ Import context
-
+import { useNavigate } from "react-router-dom";
 const Header = ({ toggleSidebar }) => {
   const theme = useTheme();
-  const { user } = useAuth(); // ✅ Dynamic user from context
+  const { user,logout } = useAuth(); // ✅ Dynamic user from context
+  const navigate = useNavigate();
 
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -26,9 +27,13 @@ const Header = ({ toggleSidebar }) => {
     setAnchorEl(null);
   };
 
-  const handleLogout = () => {
-    console.log("User logged out");
-    handleMenuClose();
+ const handleLogout = async () => {
+    try {
+      await logout(); // ← from context
+      navigate("/", { replace: true }); // ← go to homepage
+    } catch (error) {
+      console.error("Logout failed", error);
+    }
   };
 
   const initials = `${user?.firstName?.[0] || "G"}${user?.lastName?.[0] || ""}`.toUpperCase();
