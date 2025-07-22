@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import feeImage from "../../assets/fee.jpeg";
+import { Link } from "react-router-dom";
 
 const feeDetails = [
   {
@@ -83,9 +84,11 @@ function PopularProgram() {
           </ul>
 
           <div className="mt-8">
+          <Link to={"/programs/Contact"}>
             <button className="bg-orange-600 hover:bg-orange-700 text-white font-semibold px-6 py-2 rounded-full shadow-md transition duration-300 text-center">
               Enroll Now
             </button>
+            </Link>
           </div>
         </motion.div>
       </div>

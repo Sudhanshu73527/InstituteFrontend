@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaPlay } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import DumbbellImg from "../../assets/safty4.png";
+import { Link } from "react-router-dom";
 
 const prompts = [
   "A Safety Officer plays a vital role in creating a safe compliant environment.",
@@ -11,7 +12,7 @@ const prompts = [
   "Ensuring compliance, safety, and risk management every day.",
 ];
 
-const highlightKeywords = ["safety", "compliant", "risk", "hazards", "leadership", "prevention", "compliance"];
+const highlightKeywords = ["safety", "compliant", "risk","Protecting", "hazards", "leadership", "prevention", "compliance"];
 
 const HeroSection = () => {
   const [currentPromptIndex, setCurrentPromptIndex] = useState(0);
@@ -57,13 +58,15 @@ const HeroSection = () => {
           </div>
 
           <p className="text-gray-600 text-base md:text-lg mb-8 max-w-md">
-            It is a <strong className="text-green-700">long established</strong> fact that a reader will be distracted by readable content when focusing on the best product.
+            Understanding <span className="text-green-700">safety protocols minimizes risks</span> and improves efficiency. Enroll now to strengthen your safety foundation.
           </p>
 
           <div className="flex flex-row justify-center md:justify-start items-center gap-4">
+          <Link to={"/programs/Contact"}>
             <button className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-green-700 transition duration-300">
-              Book Now
+              Enquiry Now
             </button>
+            </Link>
             <button className="flex items-center gap-2 text-green-700 font-medium hover:underline">
               <FaPlay className="text-green-600 animate-pulse" /> Watch Now
             </button>

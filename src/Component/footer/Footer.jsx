@@ -93,9 +93,15 @@ const Footer = () => {
       </div>
 
       {/* Footer Bottom */}
-      <div className="text-center text-xs text-gray-500">
-        &copy; {new Date().getFullYear()} CIHS Studies Private Limited. All rights reserved.
-      </div>
+      <div className="bg-gray-100 dark:bg-gray-900 py-6 text-center">
+  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-1">
+    &copy; {new Date().getFullYear()} <span className="font-semibold text-green-600 dark:text-white">CIHS Studies Private Limited</span>. All rights reserved.
+  </p>
+  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-300">
+    Powered by <a href="https://portfolio-react-xi-mauve.vercel.app/#projects" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Webala</a>
+  </p>
+</div>
+
     </footer>
   );
 };

@@ -16,7 +16,7 @@ import PopularCourses from '../Component/PopularCourses/PopularCourses'
 import Saftyfaq from '../Component/Saftyfaq/Saftyfaq'
 // import Ragistrationform from '../Component/Regestration/Ragistrartionform'
 // import BannerSectionOnly from '../Component/Bannersectiononly/Bannersectiononly'
-// import BlogSection from '../Component/BlogSection/BlogSection'
+import BlogSection from '../Component/BlogSection/BlogSection'
 
 const Home = () => {
   return (
@@ -28,7 +28,7 @@ const Home = () => {
       <PopularCourses/>
       <Placements/>
       <Practical/>
-      {/* <BlogSection/> */}
+      <BlogSection/>
       <SafetyHighlights/>
       <Testimonials/>
       <Highlights/><br />

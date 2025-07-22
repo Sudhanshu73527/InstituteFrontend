@@ -4,7 +4,7 @@ import { FiArrowRight } from "react-icons/fi";
 
 const testimonials = [
   {
-    name: "Sahil Bhaiya",
+    name: "Sudhanhu Kumar",
     position: "Safety Officer, Mumbai",
     rating: 4.5,
     review:
@@ -12,7 +12,7 @@ const testimonials = [
     image: "https://randomuser.me/api/portraits/men/32.jpg",
   },
   {
-    name: "Sudhanshu",
+    name: "Sahbaj khan",
     position: "Trainee, CIHS Institute",
     rating: 4,
     review:
@@ -20,7 +20,7 @@ const testimonials = [
     image: "https://randomuser.me/api/portraits/men/45.jpg",
   },
   {
-    name: "Sunny",
+    name: "Amit kumar",
     position: "Fire & Safety Intern",
     rating: 4,
     review:
@@ -100,12 +100,12 @@ const Testimonials = () => {
 
             <p className="text-gray-700 text-base mb-6 flex-grow">{t.review}</p>
 
-            <a
+            {/* <a
               href="#"
               className="inline-flex items-center text-yellow-600 font-semibold text-sm hover:text-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded"
             >
               Read more <FiArrowRight className="ml-1" />
-            </a>
+            </a> */}
           </article>
         ))}
       </div>

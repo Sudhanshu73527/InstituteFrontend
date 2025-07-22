@@ -38,6 +38,10 @@ import ResultCardDownload from './student/pages/ResultCard/ResultCardDownload';
 import NoticeBoard from './pages/Programs/NoticeBoard';
 import StudentTickets from './student/pages/Ticket/StudentTickets';
 import AdminTickets from './admin/pages/Ticket/AdminTickets';
+import AboutCourse from './pages/Programs/AboutCourse';
+import NewProgram from './pages/Programs/NewProgram';
+import AdmissionRequest from './pages/Programs/AdmissionRequest';
+import HowToUse from './pages/Programs/HowToUse';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,10 +50,14 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "programs/popular", element: <PopularProgram /> },
       { path: "/programs/vision", element: <Visionmission /> },
-      { path: "/programs/About", element: <Aboutcihs /> },
+      { path: "/About/Program", element: <Aboutcihs /> },
       { path: "/programs/infra", element: <Infrastructure /> },
       { path: "/programs/Contact", element: <Contact /> },
       { path: "/programs/feedback", element: <Feedback /> },
+      {path:"/About/Course", element:<AboutCourse/>},
+      {path:"/programs/new", element:<NewProgram/>},
+      {path:"/programs/old", element:<AdmissionRequest/>},
+      {path:"/Instruction/use", element:<HowToUse/>},
       { path: "login", element: <Login /> },
       { path: "logout", element: <Logout /> },
       { path: "forgot-password", element: <Forgot /> },
