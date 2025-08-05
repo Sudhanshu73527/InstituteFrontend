@@ -9,7 +9,7 @@ import {
 const Footer = () => {
   return (
     <footer className="bg-gradient-to-tr from-green-100 to-green-200 text-gray-700 pt-12 pb-6 shadow-inner">
-      <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="container mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-12">
         {/* Safety Promise */}
         <div>
           <h2 className="text-lg font-bold mb-4 text-green-800">Our Safety Promise</h2>
@@ -39,6 +39,20 @@ const Footer = () => {
               </li>
             ))}
           </ul>
+        </div>
+
+        {/* Address */}
+        <div>
+          <h2 className="text-lg font-bold mb-4 text-green-800">Our Address</h2>
+          <p className="text-sm leading-relaxed">
+            CIHS Studies Pvt. Ltd. <br />
+            Main Road, Infront of Mufassil Thana <br />
+            Mansha Tola, Bettiah <br />
+            Bettiah, West Champaran, Bihar - 845438 <br />
+            India
+          </p>
+          <p className="mt-2 text-sm text-green-700 font-medium">Phone: +91  87579 21402</p>
+          <p className="text-sm text-green-700 font-medium">Email: info@cihsstudies.com</p>
         </div>
 
         {/* Subscribe */}
@@ -94,14 +108,13 @@ const Footer = () => {
 
       {/* Footer Bottom */}
       <div className="bg-gray-100 dark:bg-gray-900 py-6 text-center">
-  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-1">
-    &copy; {new Date().getFullYear()} <span className="font-semibold text-green-600 dark:text-white">CIHS Studies Private Limited</span>. All rights reserved.
-  </p>
-  <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-300">
-    Powered by <a href="https://portfolio-react-xi-mauve.vercel.app/#projects" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Webala</a>
-  </p>
-</div>
-
+        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-1">
+          &copy; {new Date().getFullYear()} <span className="font-semibold text-green-600 dark:text-white">CIHS Studies Private Limited</span>. All rights reserved.
+        </p>
+        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-300">
+          Powered by <a href="https://portfolio-react-xi-mauve.vercel.app/#projects" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Webala</a>
+        </p>
+      </div>
     </footer>
   );
 };

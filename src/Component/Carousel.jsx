@@ -3,20 +3,20 @@ import image1 from "../assets/shal3.jpeg";
 import image2 from "../assets/shal2.jpeg";
 import image3 from "../assets/shal4.jpeg";
 import image4 from "../assets/shal5.jpeg";
-import image5 from "../assets/shal6.jpeg";
-import image6 from "../assets/shal7.jpeg";
-import image7 from "../assets/shal8.jpeg";
-import image8 from "../assets/shal9.jpeg";
+// import image5 from "../assets/shal6.jpeg";
+// import image6 from "../assets/shal7.jpeg";
+// import image7 from "../assets/shal8.jpeg";
+// import image8 from "../assets/shal9.jpeg";
 
 const cardData = [
   { id: 1, title: "Industrial Safety", author: "CIHS", image: image1 },
   { id: 2, title: "Fire Safety", author: "CIHS", image: image2 },
   { id: 3, title: "Construction Safety", author: "CIHS", image: image3 },
   { id: 4, title: "Electrical Safety", author: "CIHS", image: image4 },
-  { id: 5, title: "Chemical Safety", author: "CIHS", image: image5 },
-  { id: 6, title: "Workplace Safety", author: "CIHS", image: image6 },
-  { id: 7, title: "Safety Audit", author: "CIHS", image: image7 },
-  { id: 8, title: "Fire & Rescue", author: "CIHS", image: image8 },
+  // { id: 5, title: "Chemical Safety", author: "CIHS", image: image5 },
+  // { id: 6, title: "Workplace Safety", author: "CIHS", image: image6 },
+  // { id: 7, title: "Safety Audit", author: "CIHS", image: image7 },
+  // { id: 8, title: "Fire & Rescue", author: "CIHS", image: image8 },
 ];
 
 const PaginatedCarousel = () => {

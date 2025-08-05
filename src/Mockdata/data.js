@@ -13,6 +13,7 @@ export const NavbarMenu = [
       { id: 2, title: "Fee Programs", link: "/programs/popular" },
       { id: 3, title: "Vison & Mission", link: "/programs/vision" },
       { id: 4, title: "Infrastructure", link: "/programs/infra" },
+      { id: 5, title: "Job Placement", link: "/programs/Placement" },
     ],
   },
   {

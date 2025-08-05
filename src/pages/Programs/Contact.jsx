@@ -16,8 +16,8 @@ const Contact = () => {
             <FaPhoneAlt className="text-green-600 text-xl mt-1" />
             <div>
               <h4 className="font-semibold text-lg text-green-700 mb-1">Phone Numbers</h4>
-              <p className="text-gray-600">+91 9876543210</p>
-              <p className="text-gray-600">+91 9123456780</p>
+              <p className="text-gray-600">+91 87579 21402</p>
+              <p className="text-gray-600">+91 73718 71737</p>
             </div>
           </div>
 
@@ -38,7 +38,7 @@ const Contact = () => {
               <h4 className="font-semibold text-lg text-green-700 mb-1">Address</h4>
               <p className="text-gray-600">
                 CIHS Institute, Main Road,<br />
-                Patna, Bihar – 800001
+                 Infront of Mufassil Thana, Mansha Tola, Bettiah-Bihar
               </p>
             </div>
           </div>

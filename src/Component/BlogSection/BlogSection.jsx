@@ -68,12 +68,7 @@ const BlogSection = () => {
                   </div>
                   <h3 className="text-xl font-bold text-green-700 mb-2">{post.title}</h3>
                   <p className="text-sm text-gray-700 mb-4">{post.excerpt}</p>
-                  <a
-                    href={`/blog/${post.id}`}
-                    className="text-sm font-medium text-green-600 hover:text-purple-600 transition"
-                  >
-                    Read More →
-                  </a>
+                  
                 </div>
               </motion.div>
             );

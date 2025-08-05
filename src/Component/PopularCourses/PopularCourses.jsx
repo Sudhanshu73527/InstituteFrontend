@@ -34,6 +34,22 @@ const courses = [
     ],
     color: "border-purple-500",
   },
+  {
+    title: "NEBOSH IGC",
+    items: [
+      "Globally Recognized Safety Qualification",
+      "Ideal for International HSE Careers",
+    ],
+    color: "border-red-500",
+  },
+  {
+    title: "First Aid & CPR Training",
+    items: [
+      "Hands-on Emergency Medical Training",
+      "Covers CPR, Bleeding Control & Shock Management",
+    ],
+    color: "border-green-400",
+  },
 ];
 
 const PopularCourses = () => {
@@ -43,7 +59,7 @@ const PopularCourses = () => {
         Popular Courses
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {courses.map((course, idx) => (
           <div
             key={idx}
@@ -60,14 +76,6 @@ const PopularCourses = () => {
                   <span>{item}</span>
                 </div>
               ))}
-            </div>
-            <div className="px-6 pb-4 pt-2">
-              <a
-                href="#"
-                className="inline-block text-green-400 text-sm font-semibold"
-              >
-                + Check More
-              </a>
             </div>
           </div>
         ))}

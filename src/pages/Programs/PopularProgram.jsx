@@ -1,122 +1,81 @@
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import feeImage from "../../assets/fee.jpeg";
-import { Link } from "react-router-dom";
+import React from 'react';
 
-const feeDetails = [
-  {
-    icon: "💼",
-    title: "Diploma in Fire & Industrial Safety",
-    amount: "₹35,000",
-    note: "One Time",
-  },
-  {
-    icon: "🧑‍🏫",
-    title: "IOSH (Managing Safely)",
-    amount: "₹10,000",
-    note: "One Time",
-  },
-  {
-    icon: "🏠",
-    title: "Hostel Fee",
-    amount: "₹5,000/month",
-    note: "Including food & accommodation",
-  },
-  {
-    icon: "📘",
-    title: "Registration Fee",
-    amount: "₹1,000",
-    note: "Non-refundable",
-  },
-  {
-    icon: "🎓",
-    title: "Certification Charges",
-    amount: "Included",
-    note: "In course fee",
-  },
-];
-
-function PopularProgram() {
-  const [showModal, setShowModal] = useState(false);
+const CourseTable = () => {
+  const courses = [
+    {
+      no: 1,
+      name: 'Diploma in Fire and Industrial Safety',
+      description:
+        'A comprehensive program focusing on fire prevention techniques, industrial safety systems, emergency response planning, risk assessment, and legal compliance under the Factories Act and BOCW Act. Ideal for individuals seeking careers as safety officers in industries and construction.',
+      fee: '₹38,000',
+    },
+    {
+      no: 2,
+      name: 'IOSH (Managing Safely)',
+      description:
+        'A globally recognized certification from the UK, designed for managers and supervisors. Covers risk identification, control, legal responsibilities, and modern incident investigation methods.',
+      fee: '₹9,000',
+    },
+    {
+      no: 3,
+      name: 'OSHA (30 Hours)',
+      description:
+        'U.S.-based certification in occupational health standards, hazard identification, and workplace compliance. Perfect for supervisors in global industrial settings.',
+      fee: '₹12,000',
+    },
+    {
+      no: 4,
+      name: 'IOSH + OSHA (Combo Offer)',
+      description:
+        'A dual certification merging IOSH (UK) and OSHA (USA). Elevates employability and international safety compliance. Ideal for oil & gas and manufacturing jobs.',
+      fee: '₹19,000',
+    },
+    {
+      no: 5,
+      name: 'NEBOSH IGC',
+      description:
+        'One of the world’s most prestigious safety certificates. Based on ILO standards, covering global laws, leadership, and risk management. Ideal for HSE careers abroad.',
+      fee: '₹42,000',
+    },
+    {
+      no: 6,
+      name: 'First Aid & CPR Training',
+      description:
+        'Hands-on emergency training including CPR, bleeding control, and shock management. Crucial for all workplace responders.',
+      fee: '₹2,500',
+    },
+    {
+      no: 7,
+      name: 'Advanced Diploma in Industrial Safety (ADIS)',
+      description:
+        'Professional-level diploma in industrial safety, audits, and disaster preparedness. Valid under BSS and MSBTE boards. Fees vary based on board.',
+      fee: 'As per Board',
+    },
+  ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-14 relative z-10">
-      <h2 className="text-4xl font-extrabold text-center text-slate-600 mb-10">
-        Fee Structure at CIHS
-      </h2>
+    <div className="px-4 py-10 bg-gradient-to-br from-white via-green-50 to-white">
+      <h2 className="text-3xl font-bold text-center text-green-700 mb-10">🎓 Our Popular Safety Courses</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        {/* Image */}
-        <motion.img
-          src={feeImage}
-          alt="CIHS Fee Structure"
-          className="rounded-3xl shadow-2xl w-full cursor-pointer"
-          onClick={() => setShowModal(true)}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        />
-
-        {/* Fee Details */}
-        <motion.div
-          className="bg-white p-6 rounded-2xl shadow-xl border"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <h3 className="text-2xl font-semibold mb-6 text-gray-800">
-            Program & Hostel Fees
-          </h3>
-
-          <ul className="space-y-5">
-            {feeDetails.map((item, index) => (
-              <li key={index} className="flex items-start gap-3">
-                <span className="text-2xl">{item.icon}</span>
-                <div>
-                  <p className="font-medium text-gray-900">{item.title}</p>
-                  <p className="text-sm text-gray-600">
-                    <strong>{item.amount}</strong>{" "}
-                    {item.note && <span>- {item.note}</span>}
-                  </p>
-                </div>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-8">
-          <Link to={"/programs/Contact"}>
-            <button className="bg-orange-600 hover:bg-orange-700 text-white font-semibold px-6 py-2 rounded-full shadow-md transition duration-300 text-center">
-              Enroll Now
-            </button>
-            </Link>
-          </div>
-        </motion.div>
-      </div>
-
-      {/* Modal Section */}
-      <AnimatePresence>
-        {showModal && (
-          <motion.div
-            className="fixed inset-0 z-50 bg-black bg-opacity-70 flex items-center justify-center"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setShowModal(false)}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2">
+        {courses.map((course) => (
+          <div
+            key={course.no}
+            className="bg-white border border-gray-200 rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300"
           >
-            <motion.img
-              src={feeImage}
-              alt="Zoomed Fee Structure"
-              className="max-w-3xl max-h-[90vh] rounded-xl shadow-lg"
-              initial={{ scale: 0.7 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.7 }}
-              onClick={(e) => e.stopPropagation()} // Prevent closing when clicking image
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <div className="flex justify-between items-center mb-2">
+              <span className="text-sm text-gray-500 font-medium">Course #{course.no}</span>
+              <span className="bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full">
+                {course.fee}
+              </span>
+            </div>
+            <h3 className="text-xl font-semibold text-green-800 mb-2">{course.name}</h3>
+            <p className="text-gray-700 leading-relaxed text-sm">{course.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
-}
+};
 
-export default PopularProgram;
+export default CourseTable;
