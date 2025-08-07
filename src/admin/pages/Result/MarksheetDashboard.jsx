@@ -137,61 +137,65 @@ const MarksheetDashboard = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-white rounded shadow space-y-8">
-      <h1 className="text-3xl font-bold mb-6">Marksheet Dashboard</h1>
-      {/* Manual Marksheet Entry Section */}
-      <section className="space-y-4">
-        <button
-          onClick={() => setShowManualForm(true)}
-          className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800"
-        >
-          Add Marksheet Manually
-        </button>
-      </section>
-      {/* Upload Excel Section */}
-      <section className="space-y-2">
-        <label className="block font-semibold">Upload Marksheet Excel</label>
-        <input type="file" accept=".xls,.xlsx" onChange={handleFileChange} />
-        <button
-          onClick={handleUploadExcel}
-          disabled={uploading || !file}
-          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 disabled:opacity-50"
-        >
-          {uploading ? 'Uploading...' : 'Upload Excel'}
-        </button>
-      </section>
-      {/* Manual Marksheet Form */}
-      {showManualForm && (
-        <ManualMarksheetForm
-          onCancel={() => setShowManualForm(false)}
-          onSave={() => {
-            setShowManualForm(false);
-            fetchMarksheets(); // refresh list
-          }}
-        />
-      )}
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 bg-white rounded shadow space-y-8">
+    <h1 className="text-3xl font-bold mb-6">Marksheet Dashboard</h1>
 
-      {/* Preview Mode Toggle */}
-      <section className="flex items-center space-x-2">
-        <input
-          id="previewToggle"
-          type="checkbox"
-          checked={previewMode}
-          onChange={() => setPreviewMode(!previewMode)}
-          className="cursor-pointer"
-        />
-        <label htmlFor="previewToggle" className="select-none cursor-pointer">
-          Preview PDF instead of Download
-        </label>
-      </section>
+    {/* Manual Marksheet Entry Section */}
+    <section className="space-y-4">
+      <button
+        onClick={() => setShowManualForm(true)}
+        className="bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800"
+      >
+        Add Marksheet Manually
+      </button>
+    </section>
 
-      {/* Marksheets Table */}
-      <section>
-        <h2 className="text-xl font-semibold mb-3">Uploaded Marksheet Records</h2>
-        {loadingList ? (
-          <p>Loading marksheets...</p>
-        ) : (
-          <table className="w-full border text-sm">
+    {/* Upload Excel Section */}
+    <section className="space-y-2">
+      <label className="block font-semibold">Upload Marksheet Excel</label>
+      <input type="file" accept=".xls,.xlsx" onChange={handleFileChange} />
+      <button
+        onClick={handleUploadExcel}
+        disabled={uploading || !file}
+        className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 disabled:opacity-50"
+      >
+        {uploading ? 'Uploading...' : 'Upload Excel'}
+      </button>
+    </section>
+
+    {/* Manual Marksheet Form */}
+    {showManualForm && (
+      <ManualMarksheetForm
+        onCancel={() => setShowManualForm(false)}
+        onSave={() => {
+          setShowManualForm(false);
+          fetchMarksheets();
+        }}
+      />
+    )}
+
+    {/* Preview Mode Toggle */}
+    <section className="flex items-center space-x-2">
+      <input
+        id="previewToggle"
+        type="checkbox"
+        checked={previewMode}
+        onChange={() => setPreviewMode(!previewMode)}
+        className="cursor-pointer"
+      />
+      <label htmlFor="previewToggle" className="select-none cursor-pointer">
+        Preview PDF instead of Download
+      </label>
+    </section>
+
+    {/* Marksheets Table */}
+    <section>
+      <h2 className="text-xl font-semibold mb-3">Uploaded Marksheet Records</h2>
+      {loadingList ? (
+        <p>Loading marksheets...</p>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="w-full border text-sm min-w-[600px]">
             <thead className="bg-gray-100">
               <tr>
                 {['Roll', 'Student Name', 'Batch', 'Course', 'Updated At', 'Actions'].map((header) => (
@@ -216,26 +220,21 @@ const MarksheetDashboard = () => {
                     <td className="border p-2">
                       {m.studentId?.updatedAt
                         ? new Date(m.studentId.updatedAt).toLocaleString('en-US', {
-                          dateStyle: 'medium',
-                          timeStyle: 'short',
-                        })
+                            dateStyle: 'medium',
+                            timeStyle: 'short',
+                          })
                         : '-'}
                     </td>
-
-
-
-
-
-                    <td className="border p-2 space-x-2">
+                    <td className="border p-2 space-y-2 sm:space-y-0 sm:space-x-2 sm:flex sm:items-center">
                       <button
                         onClick={() => handleSelectStudent(m)}
-                        className="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600"
+                        className="bg-yellow-500 text-white px-3 py-1 rounded hover:bg-yellow-600 w-full sm:w-auto"
                       >
                         Edit
                       </button>
                       <button
                         onClick={() => handleDownloadPDF(m.studentId?._id)}
-                        className="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700"
+                        className="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700 w-full sm:w-auto"
                       >
                         {previewMode ? 'Preview PDF' : 'Download PDF'}
                       </button>
@@ -244,90 +243,89 @@ const MarksheetDashboard = () => {
                 ))
               )}
             </tbody>
-
           </table>
-        )}
-
-        {/* Pagination */}
-        {total > PAGE_SIZE && (
-          <div className="flex justify-between items-center mt-4">
-            <button
-              disabled={page === 1}
-              onClick={() => setPage((p) => Math.max(1, p - 1))}
-              className="border px-3 py-1 rounded disabled:opacity-50"
-            >
-              Previous
-            </button>
-            <span>
-              Page {page} of {Math.ceil(total / PAGE_SIZE)}
-            </span>
-            <button
-              disabled={page * PAGE_SIZE >= total}
-              onClick={() => setPage((p) => Math.min(Math.ceil(total / PAGE_SIZE), p + 1))}
-              className="border px-3 py-1 rounded disabled:opacity-50"
-            >
-              Next
-            </button>
-          </div>
-        )}
-      </section>
-
-      {/* Manual Marksheet Update Form */}
-      {selectedStudent && (
-        <section className="mt-10 p-4 border rounded shadow bg-gray-50">
-          <h2 className="text-2xl font-semibold mb-4">
-            Edit Marksheet for {selectedStudent.studentName}
-          </h2>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border">
-              <thead className="bg-gray-200">
-                <tr>
-                  <th className="border p-2 text-left">Subject</th>
-                  <th className="border p-2 text-left">Marks Obtained</th>
-                </tr>
-              </thead>
-              <tbody>
-                {marks.map((m, i) => (
-                  <tr key={m.subjectId?._id || i}>
-                    <td className="border p-2">{m.subjectId?.name || 'Subject'}</td>
-                    <td className="border p-2">
-                      <input
-                        type="number"
-                        min={0}
-                        max={100}
-                        value={m.marksObtained || ''}
-                        onChange={(e) => handleMarkChange(i, e.target.value)}
-                        className="w-20 border rounded px-2 py-1"
-                      />
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-
-            </table>
-          </div>
-          <div className="mt-4 flex space-x-3">
-            <button
-              onClick={handleSaveMarksheet}
-              disabled={saving}
-              className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
-            >
-              {saving ? 'Saving...' : 'Save Marksheet'}
-            </button>
-            <button
-              onClick={() => {
-                setSelectedStudent(null);
-                setMarks([]);
-              }}
-              className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
-            >
-              Cancel
-            </button>
-          </div>
-        </section>
+        </div>
       )}
-    </div>
-  );
+
+      {/* Pagination */}
+      {total > PAGE_SIZE && (
+        <div className="flex flex-col sm:flex-row justify-between items-center mt-4 gap-2">
+          <button
+            disabled={page === 1}
+            onClick={() => setPage((p) => Math.max(1, p - 1))}
+            className="border px-3 py-1 rounded disabled:opacity-50"
+          >
+            Previous
+          </button>
+          <span>
+            Page {page} of {Math.ceil(total / PAGE_SIZE)}
+          </span>
+          <button
+            disabled={page * PAGE_SIZE >= total}
+            onClick={() => setPage((p) => Math.min(Math.ceil(total / PAGE_SIZE), p + 1))}
+            className="border px-3 py-1 rounded disabled:opacity-50"
+          >
+            Next
+          </button>
+        </div>
+      )}
+    </section>
+
+    {/* Manual Marksheet Update Form */}
+    {selectedStudent && (
+      <section className="mt-10 p-4 border rounded shadow bg-gray-50 overflow-x-auto">
+        <h2 className="text-2xl font-semibold mb-4">
+          Edit Marksheet for {selectedStudent.studentName}
+        </h2>
+        <table className="w-full text-sm border min-w-[500px]">
+          <thead className="bg-gray-200">
+            <tr>
+              <th className="border p-2 text-left">Subject</th>
+              <th className="border p-2 text-left">Marks Obtained</th>
+            </tr>
+          </thead>
+          <tbody>
+            {marks.map((m, i) => (
+              <tr key={m.subjectId?._id || i}>
+                <td className="border p-2">{m.subjectId?.name || 'Subject'}</td>
+                <td className="border p-2">
+                  <input
+                    type="number"
+                    min={0}
+                    max={100}
+                    value={m.marksObtained || ''}
+                    onChange={(e) => handleMarkChange(i, e.target.value)}
+                    className="w-full sm:w-20 border rounded px-2 py-1"
+                  />
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <div className="mt-4 flex flex-col sm:flex-row gap-3">
+          <button
+            onClick={handleSaveMarksheet}
+            disabled={saving}
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+          >
+            {saving ? 'Saving...' : 'Save Marksheet'}
+          </button>
+          <button
+            onClick={() => {
+              setSelectedStudent(null);
+              setMarks([]);
+            }}
+            className="bg-gray-300 px-4 py-2 rounded hover:bg-gray-400"
+          >
+            Cancel
+          </button>
+        </div>
+      </section>
+    )}
+  </div>
+);
+
 };
 
 export default MarksheetDashboard;

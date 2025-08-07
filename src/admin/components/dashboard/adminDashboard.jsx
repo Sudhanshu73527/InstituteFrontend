@@ -115,7 +115,7 @@ const AdminDashboard = () => {
       {/* Other Sections */}
       <Grid container spacing={3} sx={{ padding: { xs: 2, sm: 3 }, marginTop: 2 }}>
         {/* Existing Cards */}
-       add other sections soon .. development mode
+       {/* add other sections soon .. development mode */}
       
   
       </Grid>
