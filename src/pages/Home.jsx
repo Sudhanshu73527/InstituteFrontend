@@ -17,11 +17,13 @@ import Saftyfaq from '../Component/Saftyfaq/Saftyfaq'
 // import Ragistrationform from '../Component/Regestration/Ragistrartionform'
 import BannerSectionOnly from '../Component/Bannersectiononly/Bannersectiononly'
 import BlogSection from '../Component/BlogSection/BlogSection'
+import Banner from '../Component/Banner/Banner'
 
 const Home = () => {
   return (
     <div className='overflow-x-hidden'>
       {/* <Navbar/> */}
+      <Banner/>
       <Hero/>
       {/* <TrustedCompanies/> */}
       <InfoSection/>

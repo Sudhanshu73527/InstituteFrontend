@@ -44,11 +44,6 @@ export const NavbarMenu = [
     ],
   },
   {
-    id: 5,
-    title: "Blog",
-    link: "#",
-  },
-  {
     id: 6,
     title: "Contact-Us",
     link: "#",
