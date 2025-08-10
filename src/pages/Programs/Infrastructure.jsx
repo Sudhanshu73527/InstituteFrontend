@@ -2,10 +2,13 @@ import React from "react";
 import { motion } from "framer-motion";
 
 // Sample images – replace with your own
-import buildingImg from "../../assets/shal1.jpeg";
-import receptionImg from "../../assets/shal2.jpeg";
-import labImg from "../../assets/shal3.jpeg";
-import corridorImg from "../../assets/shal4.jpeg";
+import buildingImg from "../../assets/mock7.jpeg";
+import receptionImg from "../../assets/infra2.jpeg";
+import labImg from "../../assets/infra3.jpeg";
+import corridorImg from "../../assets/infra4.jpeg";
+import image1 from "../../assets/infra5.jpeg"
+import image2 from "../../assets/infra6.jpeg"
+import image3 from "../../assets/mock6.jpeg"
 
 const infrastructureData = [
   {
@@ -32,6 +35,22 @@ const infrastructureData = [
       "Clean and ventilated corridors for smooth navigation across classrooms, admin blocks, and labs.",
     image: corridorImg,
   },
+   {
+    title: "Class Room Area",
+    description:
+      "Clean and ventilated corridors for smooth navigation across classrooms, admin blocks, and labs.",
+    image: image1,
+  }, {
+    title: "Practical Room",
+    description:
+      "Clean and ventilated corridors for smooth navigation across classrooms, admin blocks, and labs.",
+    image: image2,
+  }, {
+    title: "Computer Lab Area",
+    description:
+      "Clean and ventilated corridors for smooth navigation across classrooms, admin blocks, and labs.",
+    image: image3,
+  }
 ];
 
 const Infrastructure = () => {

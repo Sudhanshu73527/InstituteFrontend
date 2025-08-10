@@ -43,6 +43,7 @@ import NewProgram from './pages/Programs/NewProgram';
 import AdmissionRequest from './pages/Programs/AdmissionRequest';
 import HowToUse from './pages/Programs/HowToUse';
 import JobPlacement from './pages/Programs/JobPlacement';
+import MockInterview from './pages/Programs/MockInterview';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -60,6 +61,7 @@ const router = createBrowserRouter([
       {path:"/programs/old", element:<AdmissionRequest/>},
       {path:"/Instruction/use", element:<HowToUse/>},
       {path:"/programs/Placement", element:<JobPlacement/>},
+      {path:"/programs/interview", element: <MockInterview/>},
       { path: "login", element: <Login /> },
       { path: "logout", element: <Logout /> },
       { path: "forgot-password", element: <Forgot /> },

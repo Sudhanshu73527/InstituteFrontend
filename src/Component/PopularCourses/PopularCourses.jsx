@@ -1,5 +1,5 @@
 import React from "react";
-import { CheckCircle } from "lucide-react";
+import { CheckCircle, Flame, ShieldCheck, Briefcase, HardHat, Globe, HeartPulse } from "lucide-react";
 
 const courses = [
   {
@@ -9,6 +9,7 @@ const courses = [
       "Advanced Industrial Safety Techniques and Regulations",
     ],
     color: "border-orange-500",
+    icon: <Flame className="w-6 h-6 mr-2" />,
   },
   {
     title: "IOSH (Managing Safely)",
@@ -17,6 +18,7 @@ const courses = [
       "Designed for Managers and Supervisors",
     ],
     color: "border-blue-500",
+    icon: <ShieldCheck className="w-6 h-6 mr-2" />,
   },
   {
     title: "ADIS & PDIS",
@@ -25,6 +27,7 @@ const courses = [
       "Post Diploma in Industrial Safety (PDIS) – Government Approved",
     ],
     color: "border-yellow-500",
+    icon: <Briefcase className="w-6 h-6 mr-2" />,
   },
   {
     title: "OSHA 30-Hour Training",
@@ -33,6 +36,7 @@ const courses = [
       "Authorized OSHA 30-Hour Certification Course",
     ],
     color: "border-purple-500",
+    icon: <HardHat className="w-6 h-6 mr-2" />,
   },
   {
     title: "NEBOSH IGC",
@@ -41,6 +45,7 @@ const courses = [
       "Ideal for International HSE Careers",
     ],
     color: "border-red-500",
+    icon: <Globe className="w-6 h-6 mr-2" />,
   },
   {
     title: "First Aid & CPR Training",
@@ -49,6 +54,7 @@ const courses = [
       "Covers CPR, Bleeding Control & Shock Management",
     ],
     color: "border-green-400",
+    icon: <HeartPulse className="w-6 h-6 mr-2" />,
   },
 ];
 
@@ -66,7 +72,8 @@ const PopularCourses = () => {
             className={`bg-white rounded-2xl shadow-md border-t-4 ${course.color}
               flex flex-col overflow-hidden`}
           >
-            <div className="bg-gradient-to-r from-green-500 to-green-600 text-white text-lg font-semibold py-4 px-6">
+            <div className="bg-gradient-to-r from-green-500 to-green-600 text-white text-lg font-semibold py-4 px-6 flex items-center">
+              {course.icon}
               {course.title}
             </div>
             <div className="px-6 py-5 text-left flex-grow space-y-3">
