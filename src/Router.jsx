@@ -66,6 +66,11 @@ const router = createBrowserRouter([
       { path: "logout", element: <Logout /> },
       { path: "forgot-password", element: <Forgot /> },
       { path: "change-password", element: <ChangePassword /> },
+      { path: "about", element: <Aboutcihs /> },
+      { path: "courses", element: <AboutCourse /> },
+      { path: "privacy", element: < HowToUse/> },
+      
+      { path: "contact", element: <Contact /> },
     ],
   },
 
@@ -118,6 +123,7 @@ const router = createBrowserRouter([
             path: "students/:studentId/view",
             element: <StudentProfileView />
           },
+      
           { path: "Course-List", element: <CourseList /> },
           { path: "Subject-List", element: <SubjectManagement /> },
           { path: "Add-Course", element: <CreateCourseForm /> },
