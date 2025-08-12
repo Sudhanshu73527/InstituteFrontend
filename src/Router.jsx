@@ -44,6 +44,7 @@ import AdmissionRequest from './pages/Programs/AdmissionRequest';
 import HowToUse from './pages/Programs/HowToUse';
 import JobPlacement from './pages/Programs/JobPlacement';
 import MockInterview from './pages/Programs/MockInterview';
+import VerifyMarksheet from './pages/Programs/VerifyMarksheet'; // ✅ Import VerifyMarksheet
 const router = createBrowserRouter([
   {
     path: "/",
@@ -69,7 +70,7 @@ const router = createBrowserRouter([
       { path: "about", element: <Aboutcihs /> },
       { path: "courses", element: <AboutCourse /> },
       { path: "privacy", element: < HowToUse/> },
-      
+      { path: "verify-marksheet", element: <VerifyMarksheet /> }, // ✅ Add VerifyMarksheet route
       { path: "contact", element: <Contact /> },
     ],
   },
