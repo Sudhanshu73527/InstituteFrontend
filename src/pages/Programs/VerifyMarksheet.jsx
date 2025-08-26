@@ -1,59 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from '../../utils/Axios';
 import { motion } from 'framer-motion';
 
 const VerifyMarksheet = () => {
   const [rollNumber, setRollNumber] = useState('');
+  const [fullName, setFullName] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [marksheetUrl, setMarksheetUrl] = useState(null);
-  const [progress, setProgress] = useState(0); // Progress state
-
-  const handleRollNumberChange = (e) => {
-    setRollNumber(e.target.value);
-  };
+  const [progress, setProgress] = useState(0);
 
   const handleVerifyMarksheet = async () => {
-    if (!rollNumber) {
-      setError('Please enter a roll number');
+    if (!rollNumber || !fullName) {
+      setError('Please enter both full name and roll number');
       return;
     }
 
     setLoading(true);
     setError(null);
     setMarksheetUrl(null);
-    setProgress(0); // Reset progress bar
+    setProgress(0);
 
-    // Simulate progress increment during processing
     const interval = setInterval(() => {
-      setProgress((prevProgress) => {
-        if (prevProgress >= 100) {
-          clearInterval(interval); // Stop the interval when progress reaches 100%
-
-          setTimeout(() => {
-            // Hold at 100% for 2-3 seconds after completion
-            if (marksheetUrl && !error) {
-              setProgress(100); // Make sure progress stays at 100%
-            }
-          }, 3000); // Hold for 3 seconds before showing the result
-
-          return prevProgress;
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          return prev;
         }
-        return prevProgress + 5; // Increment progress by 2% for smoother progress
+        return prev + 5;
       });
-    }, 1000); // Increment every 1 second
+    }, 300);
 
     try {
-      const response = await axios.get(`/marksheet/verify/${rollNumber}`, { responseType: 'arraybuffer' });
+      const response = await axios.post(
+        `/marksheet/verify/${rollNumber}`,
+        { fullName },
+        { responseType: 'arraybuffer' }
+      );
 
-      // Create a Blob for the PDF data
       const file = new Blob([response.data], { type: 'application/pdf' });
       const fileURL = URL.createObjectURL(file);
-
-      setMarksheetUrl(fileURL); // Set URL to show the PDF download link
+      setMarksheetUrl(fileURL);
     } catch (err) {
-      setError('Error generating marksheet. Please try again.');
+      setError(
+        err?.response?.data?.message || 'Error generating marksheet. Please try again.'
+      );
     } finally {
+      clearInterval(interval);
+      setProgress(100);
       setLoading(false);
     }
   };
@@ -72,12 +66,28 @@ const VerifyMarksheet = () => {
         </h2>
 
         <div className="mb-6">
-          <label htmlFor="rollNumber" className="block text-lg font-medium text-gray-700 mb-2">Enter Roll Number</label>
+          <label htmlFor="fullName" className="block text-lg font-medium text-gray-700 mb-2">
+            Enter Full Name (First + Last)
+          </label>
+          <input
+            type="text"
+            id="fullName"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            placeholder="E.g. Avi Raj"
+            className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+          />
+        </div>
+
+        <div className="mb-6">
+          <label htmlFor="rollNumber" className="block text-lg font-medium text-gray-700 mb-2">
+            Enter Roll Number
+          </label>
           <input
             type="text"
             id="rollNumber"
             value={rollNumber}
-            onChange={handleRollNumberChange}
+            onChange={(e) => setRollNumber(e.target.value)}
             placeholder="Enter roll number"
             className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
           />
@@ -97,8 +107,7 @@ const VerifyMarksheet = () => {
         ) : (
           <motion.button
             onClick={handleVerifyMarksheet}
-            // disabled={loading}
-            className={`w-full p-4 text-white font-medium rounded-lg ${loading ? 'bg-gray-400' : 'bg-green-600 hover:bg-green-700'} focus:outline-none focus:ring-2 focus:ring-green-500`}
+            className="w-full p-4 text-white font-medium rounded-lg bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
@@ -126,7 +135,6 @@ const VerifyMarksheet = () => {
               Download Marksheet
             </motion.a>
 
-            {/* Celebration effect */}
             <motion.div
               className="mt-6 text-center"
               initial={{ opacity: 0 }}
