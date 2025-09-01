@@ -15,7 +15,7 @@ export const NavbarMenu = [
       { id: 4, title: "Infrastructure", link: "/programs/infra" },
       { id: 5, title: "Job Placement", link: "/programs/Placement" },
       { id: 6, title: "Mock Interview", link: "/programs/interview" },
-      { id: 7, title: "Computer Lab", link: "/programs/lab" },
+      { id: 6, title: "Site Visit", link: "/programs/sitevisit" },
     ],
   },
   {
@@ -28,10 +28,10 @@ export const NavbarMenu = [
       { id: 2, title: "Admission Request", link: "/programs/old" },
     ],
   },
-    {
+  {
     id: 4,
     title: "Verify Marksheet",
-    link: "/verify-marksheet", 
+    link: "/verify-marksheet",
     // submenu: [
     //   { id: 1, title: "About Course", link: "/About/Course" },
     //   { id: 2, title: "New Programs", link: "/programs/new" },

@@ -16,41 +16,67 @@ const Bannersectiononly = ({
   ],
 }) => {
   return (
-    <section className="w-full min-h-[80vh] bg-gradient-to-br from-white to-slate-100 flex items-center">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-10 px-4 md:flex-row-reverse">
+    <section className="w-full min-h-[85vh] bg-gradient-to-br from-green-50 via-white to-green-100 flex items-center py-12">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 px-6">
         
-        {/* Image Section */}
+        {/* Image Section - Left Side (Desktop) */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
+          initial={{ opacity: 0, x: -60 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="md:w-1/2 w-full"
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="md:w-1/2 w-full flex justify-center"
         >
-          <img
+          <motion.img
             src={image}
             alt="CIHS Institute"
-            className="w-full max-w-md mx-auto md:mx-0 rounded-2xl shadow-2xl object-cover border border-gray-200"
+            className="w-full max-w-lg rounded-3xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] object-cover border border-gray-200"
+            whileHover={{ scale: 1.03, rotate: 1 }}
+            transition={{ duration: 0.4 }}
           />
         </motion.div>
 
-        {/* Text Section */}
+        {/* Text Section - Right Side */}
         <motion.div
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: 60 }}
           whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          className="md:w-1/2 text-center md:text-left space-y-6"
+          transition={{ duration: 0.9, ease: "easeOut" }}
+          className="md:w-1/2 w-full text-center md:text-left space-y-6"
         >
-          <h2 className="text-4xl font-bold text-green-700">{heading}</h2>
-          <p className="text-gray-700 text-lg">{subheading}</p>
+          <motion.h2
+            className="text-3xl md:text-5xl font-extrabold text-green-800 leading-snug"
+            whileInView={{ scale: [0.95, 1] }}
+            transition={{ duration: 0.6 }}
+          >
+            {heading}
+          </motion.h2>
+          <p className="text-gray-700 text-lg md:text-xl font-medium">
+            {subheading}
+          </p>
 
-          <div className="space-y-3">
+          <div className="space-y-4">
             {points.map((point, index) => (
-              <div key={index} className="flex items-start gap-3 text-gray-800">
-                <CheckCircle className="text-green-600 mt-1 w-5 h-5" />
-                <span className="text-base">{point}</span>
-              </div>
+              <motion.div
+                key={index}
+                className="flex items-start gap-3 text-gray-800"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.2, duration: 0.5 }}
+              >
+                <CheckCircle className="text-green-600 mt-1 w-6 h-6 flex-shrink-0" />
+                <span className="text-base md:text-lg">{point}</span>
+              </motion.div>
             ))}
           </div>
+
+          {/* CTA Button */}
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <button className="mt-6 px-6 py-3 bg-green-700 text-white font-semibold rounded-full shadow-lg hover:bg-green-800 transition">
+              Enroll Now
+            </button>
+          </motion.div>
         </motion.div>
       </div>
     </section>

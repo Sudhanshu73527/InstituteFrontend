@@ -22,7 +22,7 @@ import image15 from "../../assets/place15.jpeg";
 const placementImages = [
   image1,
   image2,
-  image3,
+  // image3,
   image4,
   image5,
   image6,
@@ -31,7 +31,7 @@ const placementImages = [
   image9,
   image10,
   image11,
-  image12,
+  // image12,
   image13,
   image14,
   image15,
