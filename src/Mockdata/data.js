@@ -28,6 +28,16 @@ export const NavbarMenu = [
       { id: 2, title: "Admission Request", link: "/programs/old" },
     ],
   },
+    {
+    id: 4,
+    title: "Verify Marksheet",
+    link: "/verify-marksheet", 
+    // submenu: [
+    //   { id: 1, title: "About Course", link: "/About/Course" },
+    //   { id: 2, title: "New Programs", link: "/programs/new" },
+    //   { id: 2, title: "Admission Request", link: "/programs/old" },
+    // ],
+  },
   {
     id: 4,
     title: "Instruction's",
