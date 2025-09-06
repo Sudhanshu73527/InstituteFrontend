@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FaPlay } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import DumbbellImg from "../../assets/safty4.png";
+import DumbbellImg from "../../assets/image3.png";
 import bg1 from "../../assets/look1.jpg"; // background 1
 import bg2 from "../../assets/safety6.webp"; // background 2
 import { Link } from "react-router-dom";

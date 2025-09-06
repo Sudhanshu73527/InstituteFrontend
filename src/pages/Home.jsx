@@ -18,6 +18,7 @@ import Saftyfaq from '../Component/Saftyfaq/Saftyfaq'
 import BannerSectionOnly from '../Component/Bannersectiononly/Bannersectiononly'
 import BlogSection from '../Component/BlogSection/BlogSection'
 import Banner from '../Component/Banner/Banner'
+import Collab from '../Component/Collab/Collab'
 
 const Home = () => {
   return (
@@ -29,6 +30,7 @@ const Home = () => {
       <InfoSection/>
       <PopularCourses/>
       <Placements/>
+      <Collab/>
       <Practical/>
       <BlogSection/>
       <SafetyHighlights/>

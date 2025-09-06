@@ -46,6 +46,7 @@ import JobPlacement from './pages/Programs/JobPlacement';
 import MockInterview from './pages/Programs/MockInterview';
 import VerifyMarksheet from './pages/Programs/VerifyMarksheet'; // ✅ Import VerifyMarksheet
 import Sitevisit from './pages/Programs/Sitevisit';
+import Collab1 from './pages/Programs/Collab1';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -65,6 +66,7 @@ const router = createBrowserRouter([
       {path:"/programs/Placement", element:<JobPlacement/>},
       {path:"/programs/interview", element: <MockInterview/>},
       {path:"/programs/sitevisit", element:<Sitevisit/>},
+      {path:"/programs/collab", element : <Collab1/>},
       { path: "login", element: <Login /> },
       { path: "logout", element: <Logout /> },
       { path: "forgot-password", element: <Forgot /> },
