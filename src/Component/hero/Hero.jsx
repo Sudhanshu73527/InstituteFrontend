@@ -35,7 +35,7 @@ const HeroSection = () => {
   useEffect(() => {
     const promptInterval = setInterval(() => {
       setCurrentPromptIndex((prev) => (prev + 1) % prompts.length);
-    }, 5000);
+    }, 5000);    
     return () => clearInterval(promptInterval);
   }, []);
 
@@ -109,23 +109,33 @@ const HeroSection = () => {
               textShadow: "1px 1px 4px rgba(255,255,255,0.7)",
             }}
           >
-            Understanding{" "}
-            <span className="text-green-700">
-              safety protocols minimizes risks
-            </span>{" "}
-            and improves efficiency. Enroll now to strengthen your safety
-            foundation.
-          </p>
+            Understanding{" "}   
+            <span className="text-green-700">     
+              safety protocols minimizes risks                                    
+            </span>{" "}  
+            and improves efficiency. Enroll now to strengthen your safety 
+            foundation. 
+          </p>  
 
-          <div className="flex flex-row justify-center md:justify-start items-center gap-4">
+          <div className="flex flex-col sm:flex-row justify-center md:justify-start items-center gap-4">
             <Link to={"/programs/Contact"}>
               <button className="bg-green-600 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-green-700 transition duration-300">
                 Enquiry Now
               </button>
             </Link>
-            <button className="flex items-center gap-2 text-green-700 font-medium hover:underline">
-              <FaPlay className="text-green-600 animate-pulse" /> Watch Now
-            </button>
+
+            {/* NEW BUTTON */}
+            <a
+              href="https://www.champaransafetybysahilkhan.com/" // <-- replace with actual portfolio link
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <button className="bg-purple-500 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-orange-700 transition duration-300">
+                Sahil's Portfolio
+              </button>
+            </a>
+
+            
           </div>
         </div>
 
