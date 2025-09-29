@@ -32,7 +32,7 @@ export const NavbarMenu = [
   {
     id: 4,
     title: "Verify Marksheet",
-    link: "/verify-marksheet",
+    link: "https://vcvrt.org/certificate.php",
     // submenu: [
     //   { id: 1, title: "About Course", link: "/About/Course" },
     //   { id: 2, title: "New Programs", link: "/programs/new" },
