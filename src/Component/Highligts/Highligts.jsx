@@ -35,7 +35,7 @@ const metrics = [
     value: "350",
     label: "Jobs",
     description:
-      "Many of our students got campus placement in companies like Amazon, Nagarro, Dell & Wipro etc.",
+      "Many of our students got campus placement in multi reputed companies of india and abroad.",
     color: "from-green-600 to-green-400",
     shadow: "hover:shadow-green-400/50",
   },
