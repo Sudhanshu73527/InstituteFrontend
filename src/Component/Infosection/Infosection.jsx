@@ -3,62 +3,68 @@ import { Users, ClipboardList, ShieldCheck } from "lucide-react";
 
 const cards = [
   {
-    title: "Safety Officer Mentorship",
+    title: "Expert Safety Mentorship",
     content:
-      "Get one-on-one guidance from experienced professionals to kickstart or advance your safety career with real-world knowledge.",
-    icon: <Users className="w-12 h-12 text-green-600" />,
-    colorFrom: "from-green-100",
-    colorTo: "to-red-100",
-    hoverShadow: "hover:shadow-[0_8px_30px_rgba(22,163,74,0.5)]",
+      "Receive guidance from seasoned safety professionals to excel in your career with practical insights and industry know-how.",
+    icon: <Users className="w-14 h-14 text-gradient-to-r from-green-500 to-emerald-500" />,
+    colorFrom: "from-green-200",
+    colorTo: "to-green-100",
+    hoverShadow: "hover:shadow-[0_12px_40px_rgba(22,163,74,0.4)]",
     borderColor: "border-t-4 border-green-500",
   },
   {
-    title: "Compliance & Certification",
+    title: "Certification & Compliance",
     content:
-      "Understand industrial safety laws, documentation, and how to clear safety certifications like NEBOSH, IOSH, and more.",
-    icon: <ClipboardList className="w-12 h-12 text-green-600" />,
-    colorFrom: "from-blue-100",
-    colorTo: "to-orange-100",
-    hoverShadow: "hover:shadow-[0_8px_30px_rgba(249,115,22,0.5)]",
-    borderColor: "border-t-4 border-orange-500",
+      "Master industrial safety regulations, documentation, and earn key certifications like NEBOSH, IOSH, and ISO standards.",
+    icon: <ClipboardList className="w-14 h-14 text-gradient-to-r from-blue-500 to-indigo-500" />,
+    colorFrom: "from-blue-200",
+    colorTo: "to-blue-100",
+    hoverShadow: "hover:shadow-[0_12px_40px_rgba(59,130,246,0.4)]",
+    borderColor: "border-t-4 border-blue-500",
   },
   {
-    title: "Risk Management Training",
+    title: "Advanced Risk Management",
     content:
-      "Learn hazard identification, risk assessment, and emergency planning techniques to enhance workplace safety.",
-    icon: <ShieldCheck className="w-12 h-12 text-green-600" />,
-    colorFrom: "from-yellow-100",
+      "Learn to identify hazards, assess risks, and plan emergency responses to maintain a safe and compliant workplace.",
+    icon: <ShieldCheck className="w-14 h-14 text-gradient-to-r from-purple-500 to-pink-500" />,
+    colorFrom: "from-purple-200",
     colorTo: "to-purple-100",
-    hoverShadow: "hover:shadow-[0_8px_30px_rgba(168,85,247,0.5)]",
+    hoverShadow: "hover:shadow-[0_12px_40px_rgba(139,92,246,0.4)]",
     borderColor: "border-t-4 border-purple-500",
   },
 ];
 
 const InfoSection = () => {
   return (
-    <div className="bg-green-200 py-16 px-4 md:px-20">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-green-700 uppercase">Our Key Offerings</h2>
-        <p className="text-gray-600 text-lg mt-3">
-          Build a career in industrial safety with professional mentoring and skill-based training.
+    <section className="bg-gradient-to-br from-green-50 via-white to-green-100 py-20 px-4 md:px-20">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-green-800 uppercase">
+          Our Key Offerings
+        </h2>
+        <p className="text-gray-600 text-lg md:text-xl mt-4 max-w-2xl mx-auto">
+          Empower your industrial safety career with expert mentorship, hands-on training, and globally recognized certifications.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
         {cards.map((card, index) => (
           <div
             key={index}
-            className={`bg-gradient-to-br ${card.colorFrom} ${card.colorTo} ${card.borderColor} rounded-3xl shadow-md p-8 text-center transform transition-all duration-300 hover:-translate-y-1 ${card.hoverShadow}`}
+            className={`bg-gradient-to-br ${card.colorFrom} ${card.colorTo} ${card.borderColor} rounded-4xl shadow-lg p-10 text-center transform transition-all duration-500 hover:-translate-y-2 ${card.hoverShadow}`}
           >
-            <div className="mb-4 flex justify-center">{card.icon}</div>
-            <h3 className="text-xl font-semibold text-green-700 mb-3 uppercase tracking-wide">
+            <div className="mb-6 flex justify-center">
+              {card.icon}
+            </div>
+            <h3 className="text-2xl font-bold text-green-800 mb-4 uppercase tracking-wide">
               {card.title}
             </h3>
-            <p className="text-sm text-gray-700">{card.content}</p>
+            <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+              {card.content}
+            </p>
           </div>
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 

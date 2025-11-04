@@ -17,18 +17,18 @@ const certifications = [
 
 const Banner = () => {
   return (
-    <section className="bg-gradient-to-r from-green-50 via-white to-green-100 py-14 shadow-inner overflow-hidden">
+    <section className="bg-gradient-to-r from-green-50 via-white to-green-100 py-16 shadow-inner overflow-hidden">
       <div className="max-w-7xl mx-auto px-4">
         {/* Animated Heading */}
         <motion.h2
-          className="text-center text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent mb-10 relative"
+          className="text-center text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-green-700 to-emerald-500 bg-clip-text text-transparent mb-12 relative"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
           Our Certifications & Accreditations
           <motion.span
-            className="block w-24 h-1 bg-gradient-to-r from-green-500 to-emerald-400 mx-auto mt-2 rounded-full"
+            className="block w-28 h-1 bg-gradient-to-r from-green-500 to-emerald-400 mx-auto mt-3 rounded-full"
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
@@ -51,26 +51,26 @@ const Banner = () => {
           {certifications.map((cert, index) => (
             <motion.div
               key={index}
-              className="flex-shrink-0 w-56 md:w-auto flex flex-col items-center bg-white p-6 rounded-3xl shadow-md border border-gray-100 cursor-pointer
-                         hover:shadow-xl hover:shadow-green-200 transition-all duration-500 snap-center"
+              className="flex-shrink-0 w-60 md:w-auto flex flex-col items-center bg-gradient-to-tr from-green-100 to-white p-6 rounded-4xl shadow-md border border-green-200 cursor-pointer
+                         hover:shadow-2xl hover:shadow-green-300 hover:border-green-400 transition-all duration-500 snap-center"
               variants={{
                 hidden: { opacity: 0, scale: 0.85, y: 30 },
                 visible: { opacity: 1, scale: 1, y: 0 },
               }}
-              whileHover={{ scale: 1.08, rotate: 1 }}
+              whileHover={{ scale: 1.1, rotate: 1 }}
               whileTap={{ scale: 0.97 }}
             >
               {/* Floating logo animation */}
               <motion.img
                 src={cert.img}
                 alt={cert.title}
-                className="h-16 md:h-20 object-contain mb-4"
-                animate={{ y: [0, -5, 0] }}
+                className="h-20 md:h-24 object-contain mb-4 drop-shadow-lg"
+                animate={{ y: [0, -6, 0] }}
                 transition={{ repeat: Infinity, duration: 3, ease: "easeInOut" }}
               />
               <motion.span
                 className="text-gray-800 font-semibold text-center text-sm md:text-base tracking-wide"
-                whileHover={{ color: "#16a34a" }}
+                whileHover={{ color: "#059669" }}
               >
                 {cert.title}
               </motion.span>

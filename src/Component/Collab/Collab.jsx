@@ -44,7 +44,7 @@ const Collab = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          🤝 Collaboration <span className="text-purple-500">& Placements </span>
+         Collaboration <span className="text-purple-500">& Placements </span>
         </motion.h2>
 
         {/* Paragraph */}
@@ -62,20 +62,20 @@ const Collab = () => {
         </motion.p>
 
         {/* Images Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mt-14">
           {images.map((src, index) => (
             <motion.div
               key={index}
-              className="rounded-2xl overflow-hidden shadow-xl backdrop-blur-md bg-white/70 border border-gray-200"
+              className="rounded-3xl overflow-hidden shadow-2xl backdrop-blur-md bg-white/70 border border-gray-200 cursor-pointer"
               initial={{ opacity: 0, scale: 0.9, y: 30 }}
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               transition={{ duration: 0.7, delay: index * 0.2 }}
-              whileHover={{ scale: 1.05, rotate: 1 }}
+              whileHover={{ scale: 1.08, rotate: 1.5, boxShadow: "0 20px 40px rgba(0,0,0,0.2)" }}
             >
               <img
                 src={src}
                 alt={`Collaboration ${index + 1}`}
-                className="w-full h-40 sm:h-48 md:h-56 object-cover"
+                className="w-full h-64 sm:h-72 md:h-80 lg:h-96 object-cover transition-transform duration-300"
               />
             </motion.div>
           ))}
