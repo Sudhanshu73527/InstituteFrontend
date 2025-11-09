@@ -112,7 +112,7 @@ const Footer = () => {
           &copy; {new Date().getFullYear()} <span className="font-semibold text-green-600 dark:text-white">CIHS Studies Private Limited</span>. All rights reserved.
         </p>
         <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-300">
-          Powered by <a href="https://portfolio-react-xi-mauve.vercel.app/#projects" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Webala</a>
+          Powered by <a href="https://www.webala.in/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Webala</a>
         </p>
       </div>
     </footer>

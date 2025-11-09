@@ -8,20 +8,20 @@ import {
   HardHat,
   Globe,
   HeartPulse,
-} from "lucide-react";
+} from "lucide-react"; 
 
 const courses = [
   {
     title: "Diploma in Fire & Industrial Safety",
-    items: [
+    items: [ 
       "Complete hands-on Fire & Safety Training",
       "Industrial Safety Techniques & Regulations",
     ],
     shortItems: ["Fire & Safety Training", "Industrial Safety Basics"],
     color: "from-yellow-200 to-yellow-100",
-    icon: <Flame className="w-7 h-7 text-orange-500" />,
+    icon: <Flame className="w-7 h-7 text-orange-500 animate-bounce" />,
   },
-  {
+  { 
     title: "IOSH: Managing Safely",
     items: [
       "Globally Recognized Safety Program",
@@ -29,7 +29,7 @@ const courses = [
     ],
     shortItems: ["Global Safety Program", "For Managers & Supervisors"],
     color: "from-blue-200 to-blue-100",
-    icon: <ShieldCheck className="w-7 h-7 text-blue-500" />,
+    icon: <ShieldCheck className="w-7 h-7 text-blue-500 animate-bounce" />,
   },
   {
     title: "ADIS & PDIS Safety Programs",
@@ -39,7 +39,7 @@ const courses = [
     ],
     shortItems: ["ADIS & PDIS Safety Programs"],
     color: "from-yellow-200 to-yellow-100",
-    icon: <Briefcase className="w-7 h-7 text-yellow-500" />,
+    icon: <Briefcase className="w-7 h-7 text-yellow-500 animate-bounce" />,
   },
   {
     title: "OSHA 30-Hour Training",
@@ -48,8 +48,8 @@ const courses = [
       "Authorized OSHA 30-Hour Certification",
     ],
     shortItems: ["OSHA 30-Hour Safety Training"],
-    color: "from-yellow-200 to-yellow-100",
-    icon: <HardHat className="w-7 h-7 text-purple-500" />,
+    color: "from-blue-200 to-blue-100",
+    icon: <HardHat className="w-7 h-7 text-purple-500 animate-bounce" />,
   },
   {
     title: "NEBOSH IGC",
@@ -59,7 +59,7 @@ const courses = [
     ],
     shortItems: ["International Safety Qualification"],
     color: "from-yellow-200 to-yellow-100",
-    icon: <Globe className="w-7 h-7 text-red-500" />,
+    icon: <Globe className="w-7 h-7 text-red-500 animate-bounce" />,
   },
   {
     title: "First Aid & CPR",
@@ -68,8 +68,8 @@ const courses = [
       "Covers CPR, Bleeding Control & Shock Management",
     ],
     shortItems: ["First Aid & CPR Basics"],
-    color: "from-yellow-200 to-yellow-100",
-    icon: <HeartPulse className="w-7 h-7 text-green-500" />,
+    color: "from-blue-200 to-blue-100",
+    icon: <HeartPulse className="w-7 h-7 text-green-500 animate-bounce" />,
   },
 ];
 
@@ -79,12 +79,12 @@ const PopularCourses = () => {
   return (
     <section className="bg-green-50 py-20 px-4 md:px-20">
       <motion.h2
-        className="text-4xl md:text-5xl font-extrabold text-green-800 mb-14 text-center"
+        className="text-4xl md:text-5xl font-extrabold text-gray-700 mb-14 text-center"
         initial={{ opacity: 0, y: -30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
       >
-        Popular Courses to Boost Your Safety Career
+        Popular Courses to Boost <span className="text-green-500">Your Safety Career </span>
       </motion.h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
@@ -140,7 +140,7 @@ const PopularCourses = () => {
         ))}
       </div>
     </section>
-  );
-};
+  ); 
+}; 
 
-export default PopularCourses;
+export default PopularCourses; 

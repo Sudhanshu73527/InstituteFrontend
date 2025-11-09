@@ -26,7 +26,7 @@ const Banner = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          Our Certifications & Accreditations
+          Our Certifications <span className="text-green-500"> & Accreditations</span>
           <motion.span
             className="block w-28 h-1 bg-gradient-to-r from-green-500 to-emerald-400 mx-auto mt-3 rounded-full"
             initial={{ scaleX: 0 }}

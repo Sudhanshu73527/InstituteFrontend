@@ -38,8 +38,8 @@ const InfoSection = () => {
   return (
     <section className="bg-gradient-to-br from-green-50 via-white to-green-100 py-20 px-4 md:px-20">
       <div className="text-center mb-16">
-        <h2 className="text-4xl md:text-5xl font-extrabold text-green-800 uppercase">
-          Our Key Offerings
+        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-700 uppercase">
+          Our Key <span className="text-green-500">Offerings</span>
         </h2>
         <p className="text-gray-600 text-lg md:text-xl mt-4 max-w-2xl mx-auto">
           Empower your industrial safety career with expert mentorship, hands-on training, and globally recognized certifications.

@@ -27,8 +27,8 @@ const BlogSection = () => {
       <div className="max-w-7xl mx-auto">
         {/* Heading */}
         <div className="text-center mb-14">
-          <h2 className="text-4xl font-extrabold text-green-700 relative inline-block">
-            Latest from Our Blog
+          <h2 className="text-4xl font-extrabold text-gray-700 relative inline-block">
+            Latest from <span className="text-green-500">Our Blog</span>
             <span className="block w-24 h-1 bg-gradient-to-r from-green-400 to-purple-500 mx-auto mt-2 rounded-full"></span>
           </h2>
           <p className="mt-3 text-gray-600 text-sm md:text-base max-w-xl mx-auto">

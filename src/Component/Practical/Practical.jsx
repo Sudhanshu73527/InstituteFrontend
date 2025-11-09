@@ -32,7 +32,7 @@ const Practical = () => {
   return (
     <section className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
       <h2 className="text-4xl font-extrabold text-center text-slate-700 mb-4">
-        Site Visit At Cihs
+        Site Visit <span className="text-green-500">At Cihs</span>
       </h2>
       <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12 text-lg">
         At <span className="text-purple-600 font-semibold">CIHS</span>, we believe in the power of hands-on learning. Our training sessions provide real-world exposure in safe and engaging environments.

@@ -62,7 +62,7 @@ const Placements = () => {
   return (
     <section className="py-20 px-4 text-center bg-white">
       <h2 className="text-2xl md:text-3xl font-bold text-slate-600 mb-2 uppercase">
-        Placement History At CIHS
+        Placement History <span className="text-green-500">At CIHS</span>
       </h2>
       <p className="text-gray-500 max-w-2xl mx-auto mb-10">
         Our industry-aligned courses are carefully curated to ensure you don’t just learn — you get placed. With 100% placement assurance, we guide your journey from classroom to career.

@@ -44,7 +44,7 @@ const Collab = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-         Collaboration <span className="text-purple-500">& Placements </span>
+         Collaboration <span className="text-green-500">& Placements </span>
         </motion.h2>
 
         {/* Paragraph */}

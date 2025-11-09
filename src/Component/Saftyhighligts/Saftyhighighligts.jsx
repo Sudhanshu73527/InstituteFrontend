@@ -1,148 +1,121 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { Lightbulb, ArrowRight } from "lucide-react";
+import { ShieldCheck, Flame, Cpu, Briefcase } from "lucide-react";
 
-// Highlight content
 const highlights = [
   {
     id: "01",
     title: "Field Training & Drills",
     description:
-      "Get real-world experience with fire safety drills, industrial hazard handling, and emergency evacuations.",
-    short: "Hands-on drills & emergency training.",
+      "Master real-world safety practices through industrial simulations, emergency evacuations, and fire safety drills.",
+    icon: <Flame className="w-8 h-8 text-white" />,
+    color: "from-orange-400 via-amber-400 to-yellow-400",
   },
   {
     id: "02",
     title: "Certified Expert Faculty",
     description:
-      "Learn from certified professionals and retired safety officers with years of field experience.",
-    short: "Trained by certified experts.",
+      "Learn from seasoned professionals, certified trainers, and ex-safety officers with decades of real experience.",
+    icon: <ShieldCheck className="w-8 h-8 text-white" />,
+    color: "from-emerald-400 via-green-500 to-lime-400",
   },
   {
     id: "03",
     title: "Modern Safety Labs",
     description:
-      "Our labs simulate industrial environments to help students train on real equipment safely.",
-    short: "Industrial-like lab training.",
+      "Train in simulated industrial environments with cutting-edge tools and real-time hazard control exercises.",
+    icon: <Cpu className="w-8 h-8 text-white" />,
+    color: "from-sky-400 via-blue-500 to-indigo-500",
   },
   {
     id: "04",
     title: "Job-Oriented Curriculum",
     description:
-      "Courses aligned with international safety standards, designed to boost your employability.",
-    short: "Career-focused curriculum.",
+      "Globally aligned courses that boost employability with internationally recognized safety certifications.",
+    icon: <Briefcase className="w-8 h-8 text-white" />,
+    color: "from-purple-500 via-fuchsia-500 to-pink-400",
   },
 ];
 
-// Unique hover shadow colors per card
-const shadowColors = [
-  "hover:shadow-orange-400/60",
-  "hover:shadow-green-400/60",
-  "hover:shadow-blue-400/60",
-  "hover:shadow-purple-400/60",
-];
-
 const SafetyHighlights = () => {
-  const [hoveredIndex, setHoveredIndex] = useState(null);
-  const [expanded, setExpanded] = useState(null);
+  const [hovered, setHovered] = useState(null);
 
   return (
-    <section className="py-16 bg-white text-center">
-      <motion.h2
-        className="text-3xl md:text-4xl font-bold text-slate-800 mb-16"
-        initial={{ opacity: 0, y: -30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        Why Safety Officer Course at{" "}
-        <span className="text-green-500">CIHS</span> Stands Out
-      </motion.h2>
+    <section className="relative py-24 bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-hidden">
+      {/* Background Glow */}
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_40%_30%,rgba(16,185,129,0.1),transparent_70%)]" />
 
-      <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto relative px-4">
+      {/* Title */}
+      <div className="text-center mb-20 px-6">
+        <motion.h2
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7 }}
+          className="text-4xl md:text-5xl font-extrabold text-slate-800"
+        >
+          Why Choose{" "}
+          <span className="bg-gradient-to-r from-green-500 via-emerald-400 to-teal-500 bg-clip-text text-transparent">
+            CIHS Safety Courses
+          </span>
+        </motion.h2>
+        <p className="text-gray-500 max-w-2xl mx-auto mt-4 text-base md:text-lg">
+          Experience safety training redefined with immersive learning,
+          cutting-edge labs, and guidance from industry veterans.
+        </p>
+      </div>
+
+      {/* Card Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 max-w-7xl mx-auto px-6">
         {highlights.map((item, index) => (
           <motion.div
-            key={index}
-            className={`relative flex flex-col items-center text-center bg-white rounded-3xl p-6 shadow-md transition-transform duration-500 ease-in-out cursor-pointer
-              ${
-                hoveredIndex === index
-                  ? `scale-105 z-10 shadow-2xl ${shadowColors[index % shadowColors.length]}`
-                  : ""
-              } ${shadowColors[index % shadowColors.length]}`}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.15 }}
-            whileHover={{ scale: 1.05 }}
-            onClick={() =>
-              setExpanded(expanded === index ? null : index)
-            }
+            key={item.id}
+            onMouseEnter={() => setHovered(index)}
+            onMouseLeave={() => setHovered(null)}
+            whileHover={{ y: -8, scale: 1.03 }}
+            transition={{ type: "spring", stiffness: 150, damping: 12 }}
+            className="relative group rounded-3xl overflow-hidden bg-white/10 backdrop-blur-lg border border-white/30 shadow-[0_8px_30px_rgba(0,0,0,0.08)] hover:shadow-[0_12px_40px_rgba(16,185,129,0.25)] transition-all duration-500"
           >
-            {/* Circle Icon with Animated Number */}
-            <motion.div
-              className={`relative flex items-center justify-center rounded-full w-20 h-20 md:w-24 md:h-24 mb-6 bg-gradient-to-tr from-orange-400 to-yellow-300 text-white
-              transition-all duration-500 ease-in-out ${
-                hoveredIndex === index ? "scale-110 shadow-2xl" : "shadow-md"
-              }`}
-              whileHover={{ rotate: 10 }}
-            >
-              <Lightbulb
-                className={`w-8 h-8 md:w-10 md:h-10 text-white transition-transform duration-700 ease-in-out ${
-                  hoveredIndex === index ? "rotate-[20deg] scale-110" : ""
-                }`}
-              />
-              <span
-                className={`absolute -top-3 -left-3 bg-orange-600 text-white font-bold text-xs md:text-sm w-6 h-6 md:w-7 md:h-7 rounded-full flex items-center justify-center
-                transition-transform duration-700 ease-in-out ${
-                  hoveredIndex === index ? "rotate-[360deg]" : "rotate-0"
+            {/* Animated Gradient Border */}
+            <div
+              className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 rounded-3xl bg-gradient-to-r ${item.color}`}
+            ></div>
+
+            {/* Glass Content */}
+            <div className="relative z-10 p-8 text-center bg-white/70 backdrop-blur-md rounded-3xl">
+              {/* Icon Container */}
+              <motion.div
+                className={`w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-tr ${item.color} flex items-center justify-center shadow-lg transition-transform duration-500 ${
+                  hovered === index ? "scale-110 rotate-3" : ""
                 }`}
               >
-                {item.id}
-              </span>
-            </motion.div>
+                {item.icon}
+              </motion.div>
 
-            {/* Title */}
-            <h3
-              className={`text-sm md:text-xl font-semibold mb-2 transition-colors duration-500 ${
-                hoveredIndex === index ? "text-green-600" : "text-gray-900"
-              }`}
-            >
-              {item.title}
-            </h3>
-
-            {/* Description */}
-            <p className="text-gray-600 text-xs md:text-base px-1 md:px-2">
-              {/* Mobile: Short with toggle */}
-              <span className="block md:hidden">
-                {expanded === index ? item.description : item.short}
-              </span>
-              {/* Desktop: Full description */}
-              <span className="hidden md:block">{item.description}</span>
-            </p>
-
-            {/* Toggle button for mobile */}
-            <button
-              className="mt-2 text-green-600 text-[10px] md:hidden"
-              onClick={(e) => {
-                e.stopPropagation();
-                setExpanded(expanded === index ? null : index);
-              }}
-            >
-              {expanded === index ? "Show Less" : "Read More"}
-            </button>
-
-            {/* Arrow */}
-            {index < highlights.length - 1 && (
-              <ArrowRight
-                size={28}
-                className={`hidden lg:block absolute right-[-48px] top-1/2 transform -translate-y-1/2 text-gray-400 transition-all duration-500
-                ${
-                  hoveredIndex === index
-                    ? "opacity-100 translate-x-2"
-                    : "opacity-40 translate-x-0"
+              {/* Title */}
+              <h3
+                className={`text-lg font-semibold mb-3 transition-colors ${
+                  hovered === index
+                    ? "text-emerald-600"
+                    : "text-gray-800"
                 }`}
-              />
-            )}
+              >
+                {item.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-gray-600 text-sm leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+
+            {/* Glow Effect */}
+            <div
+              className={`absolute inset-0 rounded-3xl transition-all duration-700 ${
+                hovered === index
+                  ? "bg-gradient-to-tr from-white/30 via-transparent to-transparent"
+                  : ""
+              }`}
+            ></div>
           </motion.div>
         ))}
       </div>

@@ -120,7 +120,7 @@ const HeroSection = () => {
               rel="noopener noreferrer"
             >
               <button className="bg-gray-500 text-white px-6 py-3 rounded-lg font-semibold shadow-md hover:bg-green-600 transition duration-300">
-                Sahil's Portfolio
+                Director Portfolio
               </button>
             </a>
           </div>
